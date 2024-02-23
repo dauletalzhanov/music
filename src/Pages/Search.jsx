@@ -1,7 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 function Search(){
 	const [inputText, setInputText] = useState('')
+
+	useEffect(() => {
+		let body = document.querySelector('body')
+		body.style.backgroundColor = `rgb(${Math.random()*120}, ${Math.random()*120}, ${Math.random()*120})`
+		console.log(`color: ${body.style.backgroundColor}`)
+	})
 
 	function update(){
 		setInputText(event.target.value)
@@ -21,12 +27,10 @@ function Search(){
 		let url = `https://itunes.apple.com/search?term=${term}${entity}${limit}`
 		let results = await fetch(url, { mode: 'cors' })
 		results = await results.json()
-		results = await results.results
+		results = results.results
 		console.log(results)
 
 		await populate(results)
-		
-		//return results
 	}
 
 	function populate(results){
@@ -35,14 +39,25 @@ function Search(){
 		ul.innerHTML = ''
 		for(let i=0; i<results.length; i++){
 			let node = document.createElement('li')
-			node.innerHTML = `<a href='artist/artist.html?artist=@${results[i].artistId}'>${results[i].artistName}</a> - ${results[i].trackName}`
+			//node.addEventListener('mouseover', function(){
+			//	let body = document.querySelector('body')
+				//body.style.backgroundColor = `rgb(${Math.random()*120}, ${Math.random()*120}, ${Math.random()*120})`
+				//body.style.backgroundImage = `url(${results[i].artworkUrl100})`
+			//})
+			node.innerHTML = `<a href='/artist/${results[i].artistId}'>${results[i].artistName}</a> - ${results[i].trackName} (${results[i].releaseDate.split('-')[0]})`
 			ul.appendChild(node)
 		}
 	}
 
+	function changeBackground(){
+		let body = document.querySelector('body')
+		body.style.backgroundColor = `rgb(${Math.random()*120}, ${Math.random()*120}, ${Math.random()*120})`
+	}
+
 	function start(){
 		let search = document.querySelector('#search-bar').value
-		fetching(search)
+		if(search != '')
+			fetching(search)
 
 		return ''
 	}
