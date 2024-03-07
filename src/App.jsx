@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Search/>}></Route>
-        <Route path="/artist/:id" styles='./Pages/artist.css' element={<Artist/>} ></Route>
+        <Route path="/artist/:id" element={<Artist/>} ></Route>
         <Route path='/charts' styles='./Pages/charts.css' element={<Charts/>}></Route>
         <Route path="*" element={<NoPage/>}></Route>
         

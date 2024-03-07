@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react"
-import Album from '../Album'
-import './artist.css'
+import Album from '../Components/Album'
+import Header from "../Components/Header"
+
+import './CSS/artist.css'
 
 function Artist(){
 	const [artist, setArist] = useState('')
@@ -19,7 +21,6 @@ function Artist(){
 					throw new Error(res.error)
 	
 				let data = await res.json()
-				//data = data.results
 				document.title = `Artist: ${data.results[0].artistName}`
 				setArist(data.results[0].artistName)
 	
@@ -39,6 +40,7 @@ function Artist(){
 	}, [])
 		
 	return(<>
+		<Header></Header>
 		<h1>Artist: {artist} </h1>
 
 		{albums.map((value, index)=> <Album key={index} album={value}></Album>)}

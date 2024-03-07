@@ -1,0 +1,70 @@
+body {
+	background-color: white;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	padding: 0;
+	margin: 5vh 5vw;
+	
+	border-radius: 8px;	
+
+	background-color: black;
+	color: white;
+	box-shadow: 10px 10px 156px -58px rgba(0,0,0,0.75);
+}
+
+.rank-container {
+	display: grid;
+	justify-content: center;
+	margin: 5vh 5vw;
+	grid-template-columns: repeat(3, 29vw);
+	gap: 1vw;
+}
+
+.ranking {
+	background-color: rgb(212, 212, 212);
+	padding: 2vh 1.5vw;
+	border-radius: 3px;
+}
+
+.ranking > h4 {
+	text-align: center;
+	background-color: white;
+	margin: 0;
+	padding: 4vh 0;
+	border-radius: 8px;
+
+}
+
+/***************SONG****************/
+
+.song {
+	padding-right: 1vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.song:nth-child(odd){
+	background-color: white;
+}
+
+.song > .leftie {
+	display: flex;
+	align-items: center;
+}
+
+.song > .rightie {
+	color: goldenrod;
+}
+
+.song > .leftie > img {
+	height: 8vh;
+	margin-right: 0.6vw;
+	border-radius: 1px;
+}

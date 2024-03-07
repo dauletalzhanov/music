@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react"
+import Header from "../Components/Header"
+
+import './CSS/search.css'
 
 function Search(){
 	const [inputText, setInputText] = useState('')
@@ -64,7 +67,7 @@ function Search(){
 
 	//fetching()
 	return(<>
-
+		<Header></Header>
 		<div className="search">
 
 			<input id="search-bar" type='text' placeholder="search music..."></input>
