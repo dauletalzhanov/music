@@ -38,6 +38,10 @@ function Charts() {
 
 
 		document.body.style.backgroundColor = `rgb(${getRandomIntInclusive(230, 255)},${getRandomIntInclusive(230, 255)},${getRandomIntInclusive(230, 255)})`
+		//let mini = 155
+		//let maxi = 200
+		//let colorValue = `rgb(${getRandomIntInclusive(mini, maxi)},${getRandomIntInclusive(mini, maxi)},${getRandomIntInclusive(mini, maxi)})`
+		//document.querySelectorAll('.ranking').forEach(i => i.style.backgroundColor = colorValue)
 	}, [])
 	
 	console.log(top100)

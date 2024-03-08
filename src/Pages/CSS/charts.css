@@ -11,10 +11,10 @@ body {
 	padding: 0;
 	margin: 5vh 5vw;
 	
-	border-radius: 8px;	
+	border-radius: 8px;
 
 	background-color: black;
-	color: white;
+	color: goldenrod;
 	box-shadow: 10px 10px 156px -58px rgba(0,0,0,0.75);
 }
 
@@ -37,21 +37,32 @@ body {
 	background-color: white;
 	margin: 0;
 	padding: 4vh 0;
-	border-radius: 8px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom: 1px solid lightgray;
+	
 
 }
 
-/***************SONG****************/
+/*************** SONG ****************/
 
 .song {
 	padding-right: 1vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background-color: white;
+	color: black;
 }
 
 .song:nth-child(odd){
-	background-color: white;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.song:hover {
+	background-color: lightyellow;
+	color: black;
 }
 
 .song > .leftie {
