@@ -28,12 +28,12 @@ function Search(){
 		let limit = ``
 		let entity = `&entity=song`
 		let url = `https://itunes.apple.com/search?term=${term}${entity}${limit}`
-		let results = await fetch(url, { mode: 'cors' })
-		results = await results.json()
+		let results = 	await fetch(url, { mode: 'cors' })
+		results = 		await results.json()
 		results = results.results
 		console.log(results)
 
-		await populate(results)
+		populate(results)
 	}
 
 	function populate(results){
@@ -42,12 +42,7 @@ function Search(){
 		ul.innerHTML = ''
 		for(let i=0; i<results.length; i++){
 			let node = document.createElement('li')
-			//node.addEventListener('mouseover', function(){
-			//	let body = document.querySelector('body')
-				//body.style.backgroundColor = `rgb(${Math.random()*120}, ${Math.random()*120}, ${Math.random()*120})`
-				//body.style.backgroundImage = `url(${results[i].artworkUrl100})`
-			//})
-			node.innerHTML = `<a href='/artist/${results[i].artistId}'>${results[i].artistName}</a> - ${results[i].trackName} (${results[i].releaseDate.split('-')[0]})`
+			node.innerHTML = `<img src='${results[i].artworkUrl100}'><a href='/artist/${results[i].artistId}'>${results[i].artistName}</a><p> - ${results[i].trackName} (${results[i].releaseDate.split('-')[0]})</p>`
 			ul.appendChild(node)
 		}
 	}

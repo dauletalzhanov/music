@@ -58,13 +58,11 @@ ul {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	
 	align-items: center;
 	padding: 0;
 }
 
 li {
-	justify-self: center;
 	width: 50vw;
 	font-size: large;
 	background-color: rgba(254, 254, 254, 0.35);
@@ -73,12 +71,17 @@ li {
 	padding: 2vw;
 	border-radius: 4px;
 	color: white;
-	
+	display: flex;
+	align-items: center;
+}
+
+li > img {
+	margin: 0 1vw;
 }
 
 li > a {
 	text-decoration: none;
 	font-weight: bold;
-	color: blanchedalmond;
+	color: lavender;
 
 }

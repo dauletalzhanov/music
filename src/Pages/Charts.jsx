@@ -37,7 +37,7 @@ function Charts() {
 		getCharts(url100)
 
 
-		document.body.style.backgroundColor = `rgb(${getRandomIntInclusive(210, 255)},${getRandomIntInclusive(210, 255)},${getRandomIntInclusive(210, 255)})`
+		document.body.style.backgroundColor = `rgb(${getRandomIntInclusive(230, 255)},${getRandomIntInclusive(230, 255)},${getRandomIntInclusive(230, 255)})`
 	}, [])
 	
 	console.log(top100)
