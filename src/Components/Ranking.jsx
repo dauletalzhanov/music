@@ -21,7 +21,7 @@ function Ranking({title, url}){
 		{songs.map(song => {
 			return(<div className="song">
 				<div className="leftie">
-					<img src={song['image']} alt='album cover' />
+					<img src={song['image']}  alt='album cover' />
 					<p>{song['artist']} - {song['name']}</p>
 				</div>
 				<div className="rightie">

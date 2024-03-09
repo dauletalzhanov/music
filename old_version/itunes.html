@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search Music</title>
+	<link rel="stylesheet" href="itunes.css">
+	<script src="itunes.js" defer></script>
+	<style>
+		body{
+			background-color: rgb(34, 32, 48);
+			margin: 0;
+		}
+
+		.search {
+			display: flex;
+			align-items: end;
+			justify-content: center;
+			height: 20vh;
+		}
+
+		.results > ul {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="search">
+		<input placeholder="search here" type="text" id="search-bar">
+		<button id="search">Search</button>
+	</div>
+	<div class="results">
+		<ul>
+		</ul>
+	</div>
+	
+	
+</body>
+</html>

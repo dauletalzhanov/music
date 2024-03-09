@@ -1,0 +1,62 @@
+body {
+	font-family: Helvetica, sans-serif;
+	font-size: 0.8vh;
+
+}
+
+.search > input {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: white;
+	border: none;
+	height: 3vh;
+	width: 20vw;
+	padding: 0.5vh 0.5vw;
+
+	border-radius: 8px 0 0 8px;
+	
+}
+
+.search > input:focus-visible {
+	outline: none;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: black;
+}
+
+.search > button {
+	background-color: black;
+	color: white;
+	border: none;
+	height: 4vh;
+
+	padding: 0.5vw;
+	border-radius: 0 8px 8px 0;
+}
+
+.search > button:active {
+	background-color: white;
+	color: black;
+}
+
+/******************************************/
+
+.results > ul > li {
+	justify-self: center;
+	width: 50vw;
+	font-size: large;
+	background-color: rgba(245, 245, 220, 0.35);
+	list-style: none;
+	margin-top: 1vh;
+	padding: 2vw;
+	border-radius: 4px;
+	color: white;
+}
+
+.results a {
+	font-weight: bold;
+	color: lightblue;
+	text-decoration: none;
+}
+
+.results a:hover {
+	color: white;
+}

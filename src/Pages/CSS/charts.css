@@ -63,6 +63,7 @@ body {
 .song:hover {
 	background-color: lightyellow;
 	color: black;
+
 }
 
 .song > .leftie {
@@ -78,4 +79,8 @@ body {
 	height: 8vh;
 	margin-right: 0.6vw;
 	border-radius: 1px;
+}
+
+.song > .leftie > img:hover {
+	height: 20vh;
 }
