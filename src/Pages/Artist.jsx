@@ -1,17 +1,22 @@
 import React, {useState, useEffect} from "react"
+import { useParams } from "react-router-dom"
+
 import Album from '../Components/Album'
 import Header from "../Components/Header"
 
 import './CSS/artist.css'
 
 function Artist(){
+	const params = useParams()
 	const [artist, setArist] = useState('')
 	let [albums, setAlbums] = useState([])
 
 	useEffect(()=>{
-		let artist = document.URL.split('/')
-		artist = artist[artist.length-1]
-		console.log(artist)
+		// let artist = document.URL.split('/')
+		// artist = artist[artist.length-1]
+		// console.log(artist)
+		const artist = params['id']
+		console.log(params)
 
 		async function getAlbums(){
 			try {

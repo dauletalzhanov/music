@@ -8,9 +8,6 @@ import Ranking from "../Components/Ranking"
 import './CSS/charts.css'
 
 function Charts() {
-	const [top100, set100] = useState([])
-	const [top200, set200] = useState([])
-	const [topGlo, setGlo] = useState([])
 	const [day, setDay] = useState('')
 	
 	const url100 = 'https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-hot-100/recent.json'
@@ -44,7 +41,6 @@ function Charts() {
 		//document.querySelectorAll('.ranking').forEach(i => i.style.backgroundColor = colorValue)
 	}, [])
 	
-	console.log(top100)
 	return(<>
 		<Header></Header>
 		<div className="title">
