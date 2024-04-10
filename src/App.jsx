@@ -6,6 +6,7 @@ import Search from "./Pages/Search"
 import Artist from "./Pages/Artist"
 import NoPage from "./Pages/NoPage"
 import Charts from "./Pages/Charts"
+import Profile from "./Pages/Profile"
 
   /*
     <BrowserRouter>
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
     path: '/charts',
     element: <Charts></Charts>
   },
+  {
+    path: '/profile',
+    element: <Profile></Profile>
+  }
 
   //{
   //  path: "*",

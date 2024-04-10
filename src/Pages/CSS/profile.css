@@ -1,0 +1,58 @@
+/*				Profile Section				*/
+.profile-details {
+	background-color: #eeeeee;
+	margin: 0 25vw;
+	margin-top: 2.5vh;
+	padding: 2vh 1.5vw;
+	border-radius: 8px;
+	border: 1px solid lightgray;
+
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
+}
+
+h3 {
+	margin: 0;
+	font-size: 1.33vw;
+}
+
+.profile-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mood {
+	margin-top: 2vh;
+	margin-bottom: 1vh;
+	background-color: lightgray;
+	padding: 0.75vh 0.5vw;
+	height: 20vh;
+	width: 20vw;
+	border-radius: 6px;
+}
+
+#giffy {
+	height: 18vh;
+	width: 18vw;
+}
+
+h5 {
+	margin: 0;
+	margin-bottom: 0.5vh;
+}
+
+.metrics > .stat > p {
+	margin: 0;
+
+}
+.metrics > .stat {
+	margin-bottom: 2vh;
+}
+
+.metrics > .stat:last-of-type {
+	margin-bottom: 0;
+}
+
+/*****************SONGS********************/

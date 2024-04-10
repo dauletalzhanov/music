@@ -1,40 +1,41 @@
 import React, {useState, useEffect} from "react"
 import { useParams } from "react-router-dom"
 
-import Album from '../Components/Album'
+
 import Header from "../Components/Header"
 
-import './CSS/artist.css'
+import "./CSS/artist.css"
 
 function Artist(){
 	const params = useParams()
-	const [artist, setArist] = useState('')
+	let [artist, setArist] = useState([])
 	let [albums, setAlbums] = useState([])
 
 	useEffect(()=>{
-		// let artist = document.URL.split('/')
-		// artist = artist[artist.length-1]
-		// console.log(artist)
-		const artist = params['id']
-		console.log(params)
+		const artistID = params['id']
 
 		async function getAlbums(){
 			try {
-				let url = `https://itunes.apple.com/lookup?id=${artist}&entity=album&limit=2000`
+				let url = `https://itunes.apple.com/lookup?id=${artistID}&entity=album&limit=2000`
 				const res = await fetch(url, { mode: `cors` })
 				if(!res.ok)
 					throw new Error(res.error)
 	
 				let data = await res.json()
-				document.title = `Artist: ${data.results[0].artistName}`
-				setArist(data.results[0].artistName)
+				console.log(data)
+
+				setArist((a)=> [...a, data.results[0]])
+				
+				
+				//for(let [key, value] of Object.entries(data.results[0]))
+				//	artist.push({[key] : value})
 	
 				let temp = data.results.slice(1, data.resultCount)
 				for(let i=0; i<temp.length; i++){
 					if(temp[i].trackCount > 3)
 						albums.push(temp[i])
 				}
-				console.log(temp)
+				//console.log(temp)
 				return data
 			} catch(error){
 				console.log(error)
@@ -43,12 +44,28 @@ function Artist(){
 
 		getAlbums()
 	}, [])
-		
+
 	return(<>
 		<Header></Header>
-		<h1>Artist: {artist} </h1>
 
-		{albums.map((value, index)=> <Album key={index} album={value}></Album>)}
+		<div className="artistSection">
+			<p>Primary Genre: </p>
+			
+		</div>
+
+		<div className="albums">
+			{albums.map((value, index)=> {
+				
+				return (
+					<a key={index} href={'/album/' + value['collectionId']}>
+						<img src={value['artworkUrl100']}/> 
+						<p>{value['collectionName']}</p> 
+					</a>)
+			})}
+		</div>
+
+		
+		
 				
 	</>)
 }
