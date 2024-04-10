@@ -8,16 +8,16 @@ import NoPage from "./Pages/NoPage"
 import Charts from "./Pages/Charts"
 import Profile from "./Pages/Profile"
 
-  /*
-    <BrowserRouter>
-        <Routes>
-          <Route index              element={<Search/>}></Route>
-          <Route path="/artist/:id" element={<Artist/>} ></Route>
-          <Route path='/charts'     element={<Charts/>}></Route>
-          <Route path="*"           element={<NoPage/>}></Route>    
-        </Routes>
-    </BrowserRouter>
-  */
+/*
+  <BrowserRouter>
+      <Routes>
+        <Route index              element={<Search/>}></Route>
+        <Route path="/artist/:id" element={<Artist/>} ></Route>
+        <Route path='/charts'     element={<Charts/>}></Route>
+        <Route path="*"           element={<NoPage/>}></Route>    
+      </Routes>
+  </BrowserRouter>
+*/
 
 const router = createBrowserRouter([
   {

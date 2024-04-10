@@ -1,16 +1,48 @@
 import Header from "../Components/Header"
+import { useEffect, useState } from "react"
 
 import "./CSS/profile.css"
 
 export default function Profile(){
+	const key = import.meta.env.VITE_keyGIF //process.env.keyGIF
+	let [query, setQuery] = useState(`find me`)
+	let url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
+	let [embedURL, setEmbedURL] = useState('')
+	let [alt_text, setAltText] = useState('')
+	
+	useEffect(() => {	
+		document.title = `Profile`
+		
+
+		async function getGIF(){
+			let result = await fetch(url, { mode: 'cors' })
+			result = await result.json()
+			setEmbedURL(result.data.images.downsized_medium.url)
+			setAltText()
+	
+			console.log(result)
+		}
+
+		getGIF()
+	}, [url])
+
+	function updateQuery(event){
+		setQuery(event.target.value)
+		url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
+	}
+
 	return(<>
 		<Header></Header>
 		<div className="profile-details">
 			<h3>Profile Section</h3>
 			<div className="profile-content">
 				<div className="mood">
-					<h5>Current Mood: </h5>
-					<img src={""} alt="GIF of a current mood" id="giffy" />
+					<div>
+						<h5>Current Mood: </h5>
+						<input type="text" onChange={updateQuery} value={query} className="search-query"/>
+					</div>
+
+					<img src={embedURL} alt="GIF of a current mood" id="giffy" />
 				</div>
 
 				<div className="metrics">
