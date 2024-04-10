@@ -25,6 +25,10 @@ body {
 	box-shadow: 10px 10px 156px -58px rgba(0,0,0,0.75);
 }
 
+.title > h3 {
+	margin-bottom: 2vh;
+}
+
 .rank-container {
 	display: grid;
 	justify-content: center;

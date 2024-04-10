@@ -7,9 +7,7 @@
 	border-radius: 8px;
 	border: 1px solid lightgray;
 
-	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
-	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
+
 }
 
 h3 {
@@ -45,6 +43,7 @@ h5 {
 
 .metrics > .stat > p {
 	margin: 0;
+	font-size: 0.8vw;
 
 }
 .metrics > .stat {
@@ -56,3 +55,74 @@ h5 {
 }
 
 /*****************SONGS********************/
+.playlist {
+	margin: 0 25vw;
+	margin-top: 4vh;
+}
+
+.playlist-title {
+	display: flex;
+	justify-content: space-between;
+	background-color: #e6e6e6;
+	padding: 3vh 1.5vw;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border: 1px solid lightgray;
+	border-bottom: none;
+}
+
+.playlist-title > h3 {
+	font-weight: lighter;
+}
+
+.playlist-content {
+	background-color: #fafafa;
+	padding: 2vh 2vw;
+	border: lightgray 1px solid;
+	border-top: none;
+}
+
+/*		Song		*/
+.playlist-song {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #e6e6e6;
+	padding: 0.5vh 1vw;
+	border-radius: 6px;
+	-webkit-box-shadow: 0px 4px 5px -1px gray;
+	-moz-box-shadow: 0px 4px 5px -1px gray;
+	box-shadow: 0px 4px 5px -1px gray;
+}
+
+.leftie {
+	display: flex;
+	align-items: center;
+	gap: 1vw;
+}
+
+.album-cover {
+	height: 5vw;
+	width: 5vw;
+	background-color: white;
+	margin: 1vh 0;
+}
+
+.song-details > p {
+	margin: 0;
+	margin-bottom: 0.5vh;
+	font-weight: bold;
+}
+
+#remove-button {
+	padding: 1vw;
+	border-radius: 24px;
+	width: 9vw;
+	border: none;
+	background-color: #cacaca;
+	color: black;
+}
+
+#remove-button:active {
+	background-color: white;
+}

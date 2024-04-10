@@ -36,9 +36,23 @@ export default function Profile(){
 
 		<div className="playlist">
 			<div className="playlist-title">
-				
+				<h3>SAVED SONGS</h3>
+				<h3>TOTAL SONGS: {16}</h3>
 			</div>
-			<div className="playlist-content"></div>
+
+			<div className="playlist-content">
+				<div className="playlist-song">
+					<div className="leftie">
+						<div className="album-cover"></div>
+						<div className="song-details">
+							<p>{"Dua Lipa"}</p>
+							<p>{"Dance the Night"}</p>
+							<p>{"4:33"}</p>
+						</div>
+					</div>
+					<button id="remove-button">REMOVE</button>
+				</div>
+			</div>
 		</div>
 	</>)
 }
