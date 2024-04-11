@@ -1,13 +1,17 @@
-import React, { ReactDOM } from "react"
+import React, { ReactDOM, useEffect } from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+//import { MongoClient } from "mongodb"
 
 import Search from "./Pages/Search"
 import Artist from "./Pages/Artist"
 import NoPage from "./Pages/NoPage"
 import Charts from "./Pages/Charts"
 import Profile from "./Pages/Profile"
+import Album from "./Pages/Album"
 
+// first router system
 /*
   <BrowserRouter>
       <Routes>
@@ -19,6 +23,7 @@ import Profile from "./Pages/Profile"
   </BrowserRouter>
 */
 
+// modern router system (2024)
 const router = createBrowserRouter([
   {
     path: '/',
@@ -40,6 +45,14 @@ const router = createBrowserRouter([
   {
     path: '/profile',
     element: <Profile></Profile>
+  },
+  {
+    path: '/album/',
+    element: <Album></Album>,
+    children: [{
+      path: '/album/:id',
+      element: <Album></Album>
+    }]
   }
 
   //{
@@ -49,6 +62,19 @@ const router = createBrowserRouter([
 ])
 
 function App() {
+  /*
+  const mongoDB = import.meta.env.VITE_mongoDB
+  const client = new MongoClient(mongoDB)
+  useEffect(() => {
+    async function mongo(){
+      await MongoClient.connect()
+    }
+    
+    mongo()
+    
+
+  }, [])
+  */
 
   return (<>
     <React.StrictMode>
