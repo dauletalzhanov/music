@@ -1,9 +1,11 @@
+// importing libraries and react stuff
 import React, { ReactDOM, useEffect } from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 //import { MongoClient } from "mongodb"
 
+// pages
 import Search from "./Pages/Search"
 import Artist from "./Pages/Artist"
 import NoPage from "./Pages/NoPage"
@@ -61,21 +63,7 @@ const router = createBrowserRouter([
   //}
 ])
 
-function App() {
-  /*
-  const mongoDB = import.meta.env.VITE_mongoDB
-  const client = new MongoClient(mongoDB)
-  useEffect(() => {
-    async function mongo(){
-      await MongoClient.connect()
-    }
-    
-    mongo()
-    
-
-  }, [])
-  */
-
+export default function App() {
   return (<>
     <React.StrictMode>
       <RouterProvider router={router}></RouterProvider>
@@ -83,5 +71,3 @@ function App() {
   </>)
 
 }
-
-export default App

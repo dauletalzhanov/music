@@ -21,20 +21,19 @@ export default function Album(){
 
             if (isMounted) {
 				albumInfo = {
-					...albumInfo,
-					...results.results[0]
+					...results.results.slice(0)[0]
 				}
                 tracks = [
 					...results.results.slice(1)
 				]
 
 				console.log(tracks)
+                console.log(albumInfo)
             }
-
+            
 			document.title = `Album: ${albumInfo.collectionName}`
         }
         getAlbums();
-		console.log(albumInfo)
 
         return () => {
             isMounted = false;

@@ -18,8 +18,8 @@ function Ranking({title, url}){
 	return(<div className="ranking">
 		<h4>{title}</h4>
 
-		{songs.map(song => {
-			return(<div className="song">
+		{songs.map((song, index) => {
+			return(<div key={index} className="song">
 				<div className="leftie">
 					<img src={song['image']}  alt='album cover' />
 					<p>{song['artist']} - {song['name']}</p>
