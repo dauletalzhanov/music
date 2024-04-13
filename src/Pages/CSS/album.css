@@ -1,0 +1,106 @@
+#album-details {
+	display: flex;
+	background-color: #eeeeee;
+	padding: 2vh 2vw;
+	margin: 0 20vw;
+	border-radius: 8px;
+	justify-content: space-between;
+
+	-webkit-box-shadow: inset 0px 9px 15px -7px rgba(171,171,171,1);
+	-moz-box-shadow: inset 0px 9px 15px -7px rgba(171,171,171,1);
+	box-shadow: inset 0px 9px 15px -7px rgba(171,171,171,1);
+
+	margin-top: 5vh;
+}
+
+#album-details > img {
+	width: 20vw;
+	height: 20vh;
+	background-color: white;
+	margin: 1vh 1vw;
+}
+
+.album-leftie {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.album-leftie > div {
+	display: flex;
+	justify-content: space-between;
+	width: 30vw;
+}
+
+#album-cover {
+	height: 100px;
+	width: 100px;
+	border-radius: 2px;
+}
+
+.album-name {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5vw;
+}
+
+.album-name > div > h2 {
+	margin: 0;
+	font-size: 1vw;
+}
+
+.album-name > div > h2:first-child {
+	font-size: 1.2vw;
+}
+
+
+.album-metrics > p {
+	margin: 0;
+	font-size: 0.8vw;
+}
+
+.gray {
+	border-top: 1px solid #dadada;
+	display: flex;
+	justify-content: space-between;
+}
+.gray > p, .gray > a {
+	color: gray;
+	margin: 0;
+	font-size: 0.8vw;
+}
+
+/*********TRACKLIST**********/
+#trackList {
+	margin: 0 20vw;
+	background-color: #eeeeee;
+	padding: 2vh 2vw;
+	margin-top: 2vh;
+	border-radius: 8px;
+	-webkit-box-shadow: 10px 10px 32px -4px rgba(201,201,201,1);
+	-moz-box-shadow: 10px 10px 32px -4px rgba(201,201,201,1);
+	box-shadow: 10px 10px 32px -4px rgba(201,201,201,1);
+}
+
+#trackList > p {
+	background-color: white;
+	margin: 0;
+	padding: 0.5vw;
+	font-size: 0.8vw;
+}
+
+#trackList > p:nth-child(even) {
+	background-color: #f0f0f0;
+}
+
+#trackList > p:first-child {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+
+}
+
+#trackList > p:last-child {
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+
+}
