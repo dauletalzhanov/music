@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import React from "react"
 
 import Header from "../Components/Header"
+import TrackList from "../Components/Tracklist"
 
 import "./CSS/album.css"
 
@@ -12,6 +13,11 @@ export default function Album(){
 
     const [trackList, setTracks] = useState([])
 	const [albumInfo, setAlbumInfo] = useState({})
+
+    let [query, setQuery] = useState('')
+    let [embedURL, setEmbedURL] = useState('')
+    const key = import.meta.env.VITE_keyGIF //process.env.keyGIF
+    let url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
 
     useEffect(()=>{
         async function getAlbums(){
@@ -25,14 +31,37 @@ export default function Album(){
             
             setTracks(results.slice(1))
             setAlbumInfo(albums)
+            setQuery(albumInfo.artistName)
+            url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
             
             //console.log(albumInfo)
+            //console.log(trackList)
 
             
             document.title = "Album: " + albumInfo.collectionName
         }
         getAlbums();
     }, [trackList, albumInfo])
+
+    useEffect(()=>{
+        async function getGIF(){
+            let result = await fetch(url, { mode: 'cors' })
+			result = await result.json()
+            setEmbedURL(result.data.images.downsized_medium.url)
+        }
+        getGIF()
+
+    }, [url])
+
+    function hovering(event){
+        let songTitle = event.target.querySelector("p").innerHTML
+        songTitle = songTitle.split(".")[1]
+
+        setQuery(`${songTitle} - ${albumInfo.artistName}`)
+        url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
+
+        //console.log(query)
+    }
 
     return(<>
         <Header></Header>
@@ -59,14 +88,31 @@ export default function Album(){
                     <a href={albumInfo.collectionViewUrl}>iTunes Link</a>
                 </div>
             </div>
-            <img src="" alt="Music Video of 'Artist Name - Song Name'" />
+            <img src={embedURL} alt="Music Video of 'Artist Name - Song Name'" />
         </div>
 
         <div id="trackList">
             { trackList.map(i => {
-                let content = `${i.trackNumber}. `
-                content += `${i.trackName}`
-                return <p key={i.trackNumber}> {content} </p>
+                let trackNum = `${i.trackNumber}. `
+                if(i.discCount > 1){
+                    trackNum = `${i.discNumber}) ` + trackNum
+                }
+                let content = trackNum + `${i.trackName}`
+                
+                let time = i.trackTimeMillis
+                time /= 1000
+                time = Math.floor(time)
+                let mins = Math.floor(time/60)
+                let secs = time - 60*mins
+                mins = mins <= 10 ? "0"+mins : mins
+                secs = secs <= 10 ? "0"+secs : secs
+                time = `${mins}:${secs}`
+
+                
+                let p = <p>{content}</p>
+
+                let div = <div>{time}</div>
+                return <div key={trackNum} onMouseEnter={hovering}>{p} {div}</div>
             })}
         </div>
     
