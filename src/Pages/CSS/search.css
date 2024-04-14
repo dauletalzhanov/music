@@ -77,6 +77,14 @@ li {
 
 li > img {
 	margin: 0 1vw;
+	width: 7vw;
+	border-radius: 2px;
+	transition: width 1s, border-radius 1s;
+}
+
+li > img:hover {
+	width: 15vw;
+	border-radius: 4px;
 }
 
 li > a {

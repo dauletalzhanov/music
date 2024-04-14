@@ -34,9 +34,14 @@
 }
 
 #album-cover {
-	height: 100px;
-	width: 100px;
+	width: 7.5vw;
 	border-radius: 2px;
+	margin-bottom: 2vh;
+	transition: width 1s;
+}
+
+#album-cover:hover {
+	width: 15vw;
 }
 
 .album-name {
@@ -69,6 +74,10 @@
 	color: gray;
 	margin: 0;
 	font-size: 0.8vw;
+}
+
+.gray > p {
+	max-width: 20vw;
 }
 
 /*********TRACKLIST**********/

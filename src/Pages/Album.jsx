@@ -20,27 +20,32 @@ export default function Album(){
     let url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
 
     useEffect(()=>{
-        async function getAlbums(){
+        async function getAlbum(){
             let url = `https://itunes.apple.com/lookup?id=${albumID}&entity=song`
             let results = await fetch(url, { mode: 'cors' })
             results = await results.json()
             results = results.results
 
-            let albums = results.slice(0)[0]
-            albums.releaseDate = albums.releaseDate.slice(0, 10)
+            let album = results.slice(0)[0]
+            album.releaseDate = album.releaseDate.slice(0, 10)
+            let albumCover = album.artworkUrl100
+            albumCover = albumCover.replace("100x100bb", "1000x1000bb")
+            album["albumCover"] = albumCover
+            //album.artworkUrl100 = albumCover
+
             
             setTracks(results.slice(1))
-            setAlbumInfo(albums)
+            setAlbumInfo(album)
             setQuery(albumInfo.artistName)
             url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
             
-            //console.log(albumInfo)
+            console.log(albumInfo)
             //console.log(trackList)
 
             
             document.title = "Album: " + albumInfo.collectionName
         }
-        getAlbums();
+        getAlbum();
     }, [trackList, albumInfo])
 
     useEffect(()=>{
@@ -69,7 +74,7 @@ export default function Album(){
             <div className="album-leftie">
                 <div>
                     <div className="album-name">
-                        <img src={albumInfo.artworkUrl100} alt="album cover" id="album-cover" />
+                        <img src={albumInfo.albumCover} alt="album cover" id="album-cover" />
                         <div>
                             <h2>{albumInfo.collectionName}</h2>
                             <h2>{albumInfo.artistName}</h2>
@@ -104,8 +109,8 @@ export default function Album(){
                 time = Math.floor(time)
                 let mins = Math.floor(time/60)
                 let secs = time - 60*mins
-                mins = mins <= 10 ? "0"+mins : mins
-                secs = secs <= 10 ? "0"+secs : secs
+                mins = mins < 10 ? "0"+mins : mins
+                secs = secs < 10 ? "0"+secs : secs
                 time = `${mins}:${secs}`
 
                 

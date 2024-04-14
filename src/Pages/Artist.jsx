@@ -10,6 +10,7 @@ function Artist(){
 	const params = useParams()
 	let [artist, setArist] = useState([])
 	let [albums, setAlbums] = useState([])
+	let [artistInfo, setAristInfo] = useState({})
 
 	useEffect(()=>{
 		const artistID = params['id']
@@ -22,19 +23,28 @@ function Artist(){
 					throw new Error(res.error)
 	
 				let data = await res.json()
-				console.log(data)
+				data = data.results
+				//console.log(data)
 
-				setArist((a)=> [...a, data.results[0]])
-				
-				
-				//for(let [key, value] of Object.entries(data.results[0]))
-				//	artist.push({[key] : value})
-	
-				let temp = data.results.slice(1, data.resultCount)
-				for(let i=0; i<temp.length; i++){
-					if(temp[i].trackCount > 3)
-						albums.push(temp[i])
+				setAristInfo({ ...data[0] })
+				document.title = "Artist: " + artistInfo.artistName
+
+				let alb = data.slice(1)
+				alb = alb.filter(a => a.trackCount > 3)
+
+				//alb.forEach(a => a.artworkUrl100 = alb.artworkUrl100.replace("100x100bb", "1000x1000bb"))
+				//alb.artworkUrl100 = alb.artworkUrl100.replace("100x100bb", "1000x1000bb")
+				//console.log(alb)
+
+				for(let i=0; i<alb.length; i++){
+					let albumCover = alb[i].artworkUrl100.replace("100x100bb", "1000x1000bb")
+					alb[i].albumCover = albumCover
 				}
+
+				setAlbums([...alb])
+
+				
+
 				//console.log(temp)
 				return data
 			} catch(error){
@@ -43,13 +53,17 @@ function Artist(){
 		}
 
 		getAlbums()
-	}, [])
+	}, [artistInfo])
 
 	return(<>
 		<Header></Header>
 
 		<div className="artistSection">
-			<p>Primary Genre: </p>
+			<p>{artistInfo.artistName}</p>
+			<p>Primary Genre: {artistInfo.primaryGenreName}</p>
+			{artistInfo.artistType != "Artist" ? <p>Artist Type: {artistInfo.artistType}</p> : ""}
+			<a href={artistInfo.artistLinkUrl}>iTunes</a>
+
 			
 		</div>
 
@@ -58,10 +72,11 @@ function Artist(){
 				
 				return (
 					<a key={index} href={'/album/' + value['collectionId']}>
-						<img src={value['artworkUrl100']}/> 
+						<img className="artist-album-cover" src={value['albumCover']}/> 
 						<p>{value['collectionName']}</p> 
 					</a>)
-			})}
+				})
+			}
 		</div>
 
 		

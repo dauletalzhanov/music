@@ -11,7 +11,7 @@ function NoPage(){
 			<Link to='/'>Go Home?</Link>
 			<Link to='/charts'>See Charts?</Link>
 			<Link to='/artist/159260351'>Magic</Link>
-			<Link to='/profile'>More Errors</Link>
+			<Link to='/profile'>Profile Page</Link>
 			
 		</div>
 
