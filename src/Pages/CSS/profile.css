@@ -115,6 +115,8 @@ h5 {
 	-webkit-box-shadow: 0px 4px 5px -1px gray;
 	-moz-box-shadow: 0px 4px 5px -1px gray;
 	box-shadow: 0px 4px 5px -1px gray;
+
+	margin-bottom: 2vh;
 }
 
 .leftie {
@@ -124,10 +126,10 @@ h5 {
 }
 
 .album-cover {
-	height: 5vw;
-	width: 5vw;
+	width: 9vw;
 	background-color: white;
 	margin: 1vh 0;
+	border-radius: 2px;
 }
 
 .song-details > p {
