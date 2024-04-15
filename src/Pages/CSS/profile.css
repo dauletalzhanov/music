@@ -139,7 +139,7 @@ h5 {
 	font-size: 0.8vw;
 }
 
-#remove-button {
+.remove-button {
 	padding: 1vw;
 	border-radius: 24px;
 	width: 9vw;
@@ -152,6 +152,6 @@ h5 {
 	box-shadow: 0px 4px 5px -1px gray;
 }
 
-#remove-button:active {
+.remove-button:active {
 	background-color: white;
 }

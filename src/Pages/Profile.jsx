@@ -2,7 +2,7 @@ import Header from "../Components/Header"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 
-import { collection, doc, collectionGroup, addDoc, getDocs, where, query, orderBy } from "firebase/firestore";
+import { collection, doc, collectionGroup, addDoc, getDocs, where, query, orderBy, deleteDoc } from "firebase/firestore";
 import { db } from '../../firebase'
 
 import "./CSS/profile.css"
@@ -34,12 +34,17 @@ export default function Profile(){
 			const songColl = collection(db, "song")
 			//const res = query(songColl, orderBy('timeAdded'))
 			const songDocs = await getDocs(songColl)
-			const songSnap = songDocs.docs.map(doc => doc.data())
+			const songSnap = songDocs.docs.map(doc => {
+				let data = doc.data()
+				data["id"] = doc.id
+				return data
+			})
+
+			console.log(songDocs)
 
 			setPlaylist(songSnap)
 		  
-			console.log(songSnap)
-
+			//console.log(songSnap)
 			//latest = playlist.sort((a, b) => new Date(a.timeAdded) - new Date(b.timeAdded))
 			//setLatest("latest")
 			//console.log("latest", latest)
@@ -49,18 +54,28 @@ export default function Profile(){
 		getPlaylist(db)
 
 
-	}, [])
+	}, [playlist])
 
 	function updateQuery(event){
 		setQuery(event.target.value)
 		url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
 	}
 
-	function removeSong(event){
-		let songName = event.target.parentNode.querySelector(".songName").innerHTML
-		let artistName = event.target.parentNode.querySelector(".artistName").innerHTML
+	async function removeSong(event){
+		//let songName = event.target.parentNode.querySelector(".songName").innerHTML
+		//let artistName = event.target.parentNode.querySelector(".artistName").innerHTML
+		
+		const index = event.target.getAttribute('id')
+		const song = playlist[index]
+		const songID = song.id
+		
+		//console.log(index)
+		//console.log(song)
+		//console.log(`removing "${artistName} - ${songName}"`)
 
-		console.log(`removing "${artistName} - ${songName}"`)
+		await deleteDoc(doc(db, "song", songID))
+		playlist.slice(index, 1)
+		
 	}
 
 	return(<>
@@ -116,7 +131,7 @@ export default function Profile(){
 							</div>
 
 						</div>
-						<button id="remove-button" onClick={removeSong}>REMOVE</button>
+						<button id={index} className="remove-button" onClick={removeSong}>REMOVE</button>
 					</div>)
 				})}
 			</div>
