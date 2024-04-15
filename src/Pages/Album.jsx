@@ -2,6 +2,10 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import React from "react"
 
+import { db } from "../../firebase"
+import { collection, doc, collectionGroup, addDoc, getDocs, setDoc} from "firebase/firestore";
+
+
 import Header from "../Components/Header"
 import TrackList from "../Components/Tracklist"
 
@@ -39,7 +43,7 @@ export default function Album(){
             setQuery(albumInfo.artistName)
             url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
             
-            console.log(albumInfo)
+            //console.log(albumInfo)
             //console.log(trackList)
 
             
@@ -58,6 +62,20 @@ export default function Album(){
 
     }, [url])
 
+    function convertTime(millies){
+
+        let time = millies
+        time /= 1000
+        time = Math.floor(time)
+        let mins = Math.floor(time/60)
+        let secs = time - 60*mins
+        mins = mins < 10 ? "0"+mins : mins
+        secs = secs < 10 ? "0"+secs : secs
+        time = `${mins}:${secs}`
+
+        return time
+    }
+
     function hovering(event){
         let songTitle = event.target.querySelector("p").innerHTML
         songTitle = songTitle.split(".")[1]
@@ -66,6 +84,30 @@ export default function Album(){
         url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
 
         //console.log(query)
+    }
+
+    async function addSong(event){
+        //console.log(event.target.getAttribute("id"))
+        const index = event.target.getAttribute("id")
+        console.log(trackList[index])
+        const song = trackList[index]
+
+        let addition = {
+            artworkURL: albumInfo.albumCover,
+            artistName: song.artistName,
+            songName: song.trackName,
+            artistURL : `artist/${song.artistId}`,
+            genre: song.primaryGenreName,
+            length: convertTime(song.trackTimeMillis),
+            user: "user"
+            //timeAdded: new Date().now(),
+        }
+
+        const docID = `${addition.artistName} - ${addition.songName}`
+
+        await setDoc(doc(db, "song", docID), addition)
+
+        console.log(addition)
     }
 
     return(<>
@@ -97,27 +139,23 @@ export default function Album(){
         </div>
 
         <div id="trackList">
-            { trackList.map(i => {
+            { trackList.map((i, index) => {
                 let trackNum = `${i.trackNumber}. `
                 if(i.discCount > 1){
                     trackNum = `${i.discNumber}) ` + trackNum
                 }
                 let content = trackNum + `${i.trackName}`
-                
-                let time = i.trackTimeMillis
-                time /= 1000
-                time = Math.floor(time)
-                let mins = Math.floor(time/60)
-                let secs = time - 60*mins
-                mins = mins < 10 ? "0"+mins : mins
-                secs = secs < 10 ? "0"+secs : secs
-                time = `${mins}:${secs}`
+                let time = convertTime(i.trackTimeMillis)
 
-                
-                let p = <p>{content}</p>
-
-                let div = <div>{time}</div>
-                return <div key={trackNum} onMouseEnter={hovering}>{p} {div}</div>
+                return (<div key={index} onMouseEnter={hovering}>
+                            <p>{content}</p>
+                            
+                            <div className="track-rightie">
+                                <p>{time}</p>
+                                <button id={index} onClick={addSong}></button>
+                            </div>
+                            
+                        </div>)
             })}
         </div>
     

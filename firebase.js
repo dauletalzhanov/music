@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs  } from "firebase/firestore";
+import { getFirestore, collection, doc, collectionGroup, addDoc, getDocs, where, query, orderBy } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_firebase_key,

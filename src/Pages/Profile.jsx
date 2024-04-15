@@ -2,7 +2,7 @@ import Header from "../Components/Header"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, doc, collectionGroup, addDoc, getDocs, where, query, orderBy } from "firebase/firestore";
 import { db } from '../../firebase'
 
 import "./CSS/profile.css"
@@ -14,6 +14,7 @@ export default function Profile(){
 	let [embedURL, setEmbedURL] = useState('')
 	let [alt_text, setAltText] = useState('')
 	let [playlist, setPlaylist] = useState([])
+	let [latest, setLatest] = useState([])
 	
 	useEffect(() => {	
 		document.title = `Profile`
@@ -30,13 +31,18 @@ export default function Profile(){
 
 	useEffect(()=>{
 		async function getPlaylist(db){
-			const playlistColl = collection(db, "playlist")
-			const playlistDocs = await getDocs(playlistColl)
-			const playlistSnap = playlistDocs.docs.map(doc => doc.data())
+			const songColl = collection(db, "song")
+			//const res = query(songColl, orderBy('timeAdded'))
+			const songDocs = await getDocs(songColl)
+			const songSnap = songDocs.docs.map(doc => doc.data())
 
-			setPlaylist(playlistSnap)
+			setPlaylist(songSnap)
 		  
-			console.log(playlistSnap)
+			console.log(songSnap)
+
+			//latest = playlist.sort((a, b) => new Date(a.timeAdded) - new Date(b.timeAdded))
+			//setLatest("latest")
+			//console.log("latest", latest)
 		  
 		  }
 		  
@@ -51,10 +57,10 @@ export default function Profile(){
 	}
 
 	function removeSong(event){
-		const songName = event.target.querySelector(".songName").innerHTML
-		const artistName = event.target
+		let songName = event.target.parentNode.querySelector(".songName").innerHTML
+		let artistName = event.target.parentNode.querySelector(".artistName").innerHTML
 
-		console.log(`removing ${songName}`)
+		console.log(`removing "${artistName} - ${songName}"`)
 	}
 
 	return(<>
@@ -104,7 +110,7 @@ export default function Profile(){
 						<div className="leftie">
 							<img src={song.artworkURL} alt={"album cover for " + song.artistName + song.songName} className="album-cover" />
 							<div className="song-details">
-								<p className="artistName"> <Link to={song.artistURL}> {song.artistName}</Link></p>
+								<Link className="artistName" to={song.artistURL}> {song.artistName}</Link>
 								<p className="songName">{song.songName}</p>
 								<p>{song.length}</p>
 							</div>
