@@ -2,7 +2,7 @@ import Header from "../Components/Header"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 
-import { collection, doc, collectionGroup, addDoc, getDocs, where, query, orderBy, deleteDoc } from "firebase/firestore";
+import { collection, doc, getDocs, where, query, orderBy, limit, deleteDoc } from "firebase/firestore";
 import { db } from '../../firebase'
 
 import "./CSS/profile.css"
@@ -49,12 +49,12 @@ export default function Profile(){
 			//setLatest("latest")
 			//console.log("latest", latest)
 		  
-		  }
-		  
+		}
+		
 		getPlaylist(db)
 
 
-	}, [playlist])
+	}, [])
 
 	function updateQuery(event){
 		setQuery(event.target.value)
@@ -74,8 +74,8 @@ export default function Profile(){
 		//console.log(`removing "${artistName} - ${songName}"`)
 
 		await deleteDoc(doc(db, "song", songID))
-		playlist.slice(index, 1)
-		
+		//playlist.slice(index, 1)
+		window.location.reload()
 	}
 
 	return(<>
@@ -85,7 +85,7 @@ export default function Profile(){
 			<div className="profile-content">
 				<div className="mood">
 					<div>
-						<h5>Current Mood: </h5>
+						<label for="search-query" aria-label="Current Mood">Current Mood: </label>
 						<input type="text" onChange={updateQuery} value={query} className="search-query"/>
 					</div>
 

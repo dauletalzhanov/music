@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from "react"
 import { useParams } from "react-router-dom"
 
-
 import Header from "../Components/Header"
 
 import "./CSS/artist.css"
 
 function Artist(){
 	const params = useParams()
-	let [artist, setArist] = useState([])
 	let [albums, setAlbums] = useState([])
 	let [artistInfo, setAristInfo] = useState({})
 
@@ -42,10 +40,7 @@ function Artist(){
 				}
 
 				setAlbums([...alb])
-
 				
-
-				//console.log(temp)
 				return data
 			} catch(error){
 				console.log(error)
@@ -58,8 +53,8 @@ function Artist(){
 	return(<>
 		<Header></Header>
 
-		<div className="artistSection">
-			<p>{artistInfo.artistName}</p>
+		<div role="contentinfo" className="artistSection">
+			<p>Artist Name: {artistInfo.artistName}</p>
 			<p>Primary Genre: {artistInfo.primaryGenreName}</p>
 			{artistInfo.artistType != "Artist" ? <p>Artist Type: {artistInfo.artistType}</p> : ""}
 			<a href={artistInfo.artistLinkUrl}>iTunes</a>
@@ -67,15 +62,14 @@ function Artist(){
 			
 		</div>
 
-		<div className="albums">
+		<div role="main" className="albums">
 			{albums.map((value, index)=> {
-				
 				return (
 					<a key={index} href={'/album/' + value['collectionId']}>
-						<img className="artist-album-cover" src={value['albumCover']}/> 
-						<p>{value['collectionName']}</p> 
-					</a>)
-				})
+						<img className="artist-album-cover" alt={"album cover for: " + value["collectionName"]} src={value['albumCover']}/> 
+						<p role="definition" >{value['collectionName']}</p> 
+					</a>
+				)})
 			}
 		</div>
 

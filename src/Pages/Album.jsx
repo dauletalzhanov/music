@@ -112,7 +112,7 @@ export default function Album(){
 
     return(<>
         <Header></Header>
-        <div id="album-details">
+        <div role="contentinfo" id="album-details">
             <div className="album-leftie">
                 <div>
                     <div className="album-name">
@@ -138,26 +138,27 @@ export default function Album(){
             <img src={embedURL} alt="Music Video of 'Artist Name - Song Name'" />
         </div>
 
-        <div id="trackList">
-            { trackList.map((i, index) => {
-                let trackNum = `${i.trackNumber}. `
-                if(i.discCount > 1){
-                    trackNum = `${i.discNumber}) ` + trackNum
-                }
-                let content = trackNum + `${i.trackName}`
-                let time = convertTime(i.trackTimeMillis)
+        <main>
+            <ul id="trackList">
+                { trackList.map((i, index) => {
+                    let trackNum = `${i.trackNumber}. `
+                    if(i.discCount > 1){
+                        trackNum = `${i.discNumber}) ` + trackNum
+                    }
+                    let content = trackNum + `${i.trackName}`
+                    let time = convertTime(i.trackTimeMillis)
 
-                return (<div key={index} onMouseEnter={hovering}>
-                            <p>{content}</p>
-                            
-                            <div className="track-rightie">
-                                <p>{time}</p>
-                                <button id={index} onClick={addSong}></button>
-                            </div>
-                            
-                        </div>)
-            })}
-        </div>
-    
+                    return (<li className="album-track" key={index} onMouseEnter={hovering}>
+                                <p>{content}</p>
+                                
+                                <div className="track-rightie">
+                                    <p>{time}</p>
+                                    <button aria-label="add song to a playlist" id={index} onClick={addSong}>+</button>
+                                </div>
+                                
+                            </li>)
+                })}
+            </ul>
+        </main>
     </>)
 }

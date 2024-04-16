@@ -43,7 +43,7 @@ body {
 	border-radius: 3px;
 }
 
-.ranking > h4 {
+.ranking-title {
 	text-align: center;
 	background-color: white;
 	margin: 0;
@@ -87,7 +87,7 @@ body {
 }
 
 .song > .rightie {
-	color: goldenrod;
+	color: black;
 }
 
 .song > .leftie > img {

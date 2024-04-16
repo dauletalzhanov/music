@@ -4,9 +4,10 @@ import Header from "../Components/Header"
 import './CSS/no_page.css'
 
 function NoPage(){
+	document.title = "404: Page Not Found"
 	return(<>
 		<Header></Header>
-		<div className="four0four">
+		<div role="main" className="four0four">
 			<h1>404: Page Not Found</h1>
 			<Link to='/'>Go Home?</Link>
 			<Link to='/charts'>See Charts?</Link>

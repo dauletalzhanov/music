@@ -42,12 +42,12 @@ export default function Charts() {
 
     return(<>
             <Header></Header>
-            <div className="title">
-                <h1>Billboard Charts</h1>
-                <h3>{beginning} - {end}</h3>
+            <div role="banner" className="title">
+                <h1 role="banner">Billboard Charts</h1>
+                <p role="info">{beginning} - {end}</p>
             </div>
 
-            <div className="rank-container">
+            <div role="main" className="rank-container">
                 <Ranking title='Albums' url={url200} />
                 <Ranking title='Songs' url={url100} />
                 <Ranking title='Global' url={urlGlo} />

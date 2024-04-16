@@ -49,6 +49,10 @@ body {
 	color: black;
 }
 
+#search-bar:focus {
+	border: 1px solid black;
+}
+
 #search-bar::placeholder {
 	color: lightgray;
 }
@@ -65,7 +69,7 @@ ul {
 li {
 	width: 50vw;
 	font-size: large;
-	background-color: rgba(254, 254, 254, 0.35);
+	background-color: rgba(254, 254, 254, 0.5);
 	list-style: none;
 	margin-top: 1vh;
 	padding: 2vw;
@@ -90,6 +94,9 @@ li > img:hover {
 li > a {
 	text-decoration: none;
 	font-weight: bold;
-	color: lavender;
+	color: black;
+}
 
+li > p {
+	color: black;
 }

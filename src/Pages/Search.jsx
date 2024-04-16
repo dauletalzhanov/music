@@ -16,7 +16,10 @@ export default function Search(){
 		let colorNumber = 120
 		function changeBackground(){
 			let body = document.querySelector('body')
-			body.style.backgroundColor = `rgb(${Math.random()*120}, ${Math.random()*120}, ${Math.random()*120})`
+			let root = document.querySelector('#root')
+			let color =  `rgb(${Math.random()*120}, ${Math.random()*120}, ${Math.random()*120})`
+			body.style.backgroundColor = color
+			root.style.backgroundColor = color
 		}
 
 		changeBackground()
@@ -113,16 +116,19 @@ export default function Search(){
 	//fetching()
 	return(<>
 		<Header></Header>
-		<div className="search">
+		<div role="search" className="search">
 			<input id="search-bar" type='text' onChange={queryChange} placeholder="search music..."></input>
 			<button onClick={start}>Search</button>
 		</div>
 		
-		<ul className="results">
-			{ searchResults.map((term)=> {
-				return(<SearchTerm parameters={term}></SearchTerm>)
-			}) }
-		</ul>
+		<main>
+			<ul className="results">
+				{ searchResults.map((term)=> {
+					return(<SearchTerm parameters={term}></SearchTerm>)
+				}) }
+			</ul>
+		</main>
+
 
 	</>)
 }
