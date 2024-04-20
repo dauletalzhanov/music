@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 import Header from "../Components/Header"
 import SearchTerm from "../Components/SearchTerm"
@@ -9,6 +9,10 @@ import './CSS/search.css'
 export default function Search(){
 	const [inputText, setInputText] = useState('')
 	const [searchResults, setSearchResults] = useState([])
+	let params = useParams(":query")
+	
+	if(params != {})
+		console.log(params)
 
 	useEffect(() => {
 		let body = document.querySelector('body')

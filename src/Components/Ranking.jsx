@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 function Ranking({title, url}){
 	const [songs, setSongs] = useState([])
@@ -27,7 +28,7 @@ function Ranking({title, url}){
 					<p>{song['artist']} - {song['name']}</p>
 				</div>
 				<div className="rightie">
-					<p>add</p>
+					<Link to={"/search/" + song['artist'] + " - " + song['name']}> Search </Link>
 				</div>
 				
 			</div>)

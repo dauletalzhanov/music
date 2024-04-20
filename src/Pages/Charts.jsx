@@ -36,15 +36,15 @@ export default function Charts() {
 
         getCharts(url100);
 
-        document.body.style.backgroundColor = `rgb(${getRand(230, 255)},${getRand(230, 255)},${getRand(230, 255)})`;
+        //document.body.style.backgroundColor = `rgb(${getRand(230, 255)},${getRand(230, 255)},${getRand(230, 255)})`;
 		document.title = `Billboard Rankings`
     }, []);
 
     return(<>
             <Header></Header>
             <div role="banner" className="title">
-                <h1 role="banner">Billboard Charts</h1>
-                <p role="info">{beginning} - {end}</p>
+                <h1>Billboard Charts</h1>
+                <p role="contentinfo" aria-label="charts for this week">{beginning} - {end}</p>
             </div>
 
             <div role="main" className="rank-container">

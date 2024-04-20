@@ -30,7 +30,11 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Search></Search>,
-    errorElement: <NoPage/>
+    errorElement: <NoPage/>,
+    children: [{
+      path: '/search/:query',
+      element: <Search></Search>
+    }],
   },
   {
     path: '/artist/',

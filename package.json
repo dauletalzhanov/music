@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "https://itunes.apple.com",
   "scripts": {
     "dev": "vite",
     "old": "nodemon ./old_version/itunes.html ",
@@ -18,7 +19,8 @@
     "nodemon": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-firebase-hooks": "^5.1.1"
+    "react-firebase-hooks": "^5.1.1",
+    "react-helmet-async": "^2.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
