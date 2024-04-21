@@ -9,14 +9,21 @@ import './CSS/search.css'
 export default function Search(){
 	const [inputText, setInputText] = useState('')
 	const [searchResults, setSearchResults] = useState([])
+
 	let params = useParams(":query")
+
+	let term = ``
+	let query = ``
+	let limit = ``
+	let entity = `&entity=song`
+
+	let url = `https://itunes.apple.com/search?term=${term}${entity}${limit}`
 	
 	if(params != {})
 		console.log(params)
 
 	useEffect(() => {
 		let body = document.querySelector('body')
-		//body.style.backgroundColor = `rgb(${Math.random()*120}, ${Math.random()*120}, ${Math.random()*120})`
 		let colorNumber = 120
 		function changeBackground(){
 			let body = document.querySelector('body')
@@ -27,77 +34,36 @@ export default function Search(){
 		}
 
 		changeBackground()
-	}, [searchResults])
 
-	function update(event){
-		setInputText(event.target.value)
-		fetching(inputText)
-	}
-	if(inputText.length == 0)
-		document.title = "Search"
-	else
-		document.title = 'Searching: "' + inputText + '"'
+	}, [])
 
-	let term = ``
-	let query = ``
-	let limit = ``
-	let entity = `&entity=song`
-	let url = `https://itunes.apple.com/search?term=${term}${entity}${limit}`
-
-	async function fetching(term){
-		console.clear()
+	useEffect(()=>{
+		async function searchStuff(query=params){
+			let term = query
+			let limit = ``
+			let entity = `&entity=song`
 		
-		let query = ``
-		let limit = ``
-		let entity = `&entity=song`
-		let url = `https://itunes.apple.com/search?term=${term}${entity}${limit}`
-		let results = await fetch(url, { mode: 'cors' })
-		results = await results.json()
-		results = results.results
-		
-		setSearchResults([])
-		for(let i=0; i<results.length; i++){
-			let albumCover = results[i].artworkUrl100.replace("100x100bb", "1000x1000bb")
-			results[i].artworkUrl100 = albumCover
-			searchResults.push(results[i])
-		}
+			let url = `https://itunes.apple.com/search?term=${term}${entity}${limit}`
+
+			let data = await fetch(url, { mode: "cors" })
+			data = await data.json()
 			
-		
+			data = data.results
 
-		console.log(searchResults)
-
-		populate(results)
-		
-	}
-
-	function populate(results){
-		let ul = document.querySelector('ul')
-		ul.innerHTML = ''
-		for(let i=0; i<results.length; i++){
-			let li = document.createElement('li')
-
-			// album cover
-			let img = document.createElement('img')
-			img.setAttribute('src', results[i].artworkUrl100)
-			img.setAttribute('alt', `Album Cover for ${results[i].artistName} ${results[i].trackName}`)
-			img.classList.add('album-search')
-			li.appendChild(img)
-
-			// artist name (url)
-			let artist = document.createElement('a')
-			artist.setAttribute("href", "/artist/" + results[i].artistId)
-			artist.innerHTML = results[i].artistName
-			li.appendChild(artist)
-
-			// song title
-			let song = document.createElement('p')
-			song.innerHTML = ` - ${results[i].trackName} ` 
-			song.innerHTML += `(${results[i].releaseDate.split('-')[0]})`
-			li.appendChild(song)
-
-			ul.appendChild(li)
+			console.log(data)
+			setSearchResults(data)
 		}
-	}
+		
+		searchStuff(inputText)
+
+
+		if(inputText.length == 0)
+			document.title = "Search"
+		else
+			document.title = 'Searching: "' + inputText + '"'
+
+	}, [inputText])
+
 
 	function queryChange(event){
 		document.title = "Δ: " + event.target.value
@@ -106,18 +72,9 @@ export default function Search(){
 	async function start(){
 		let search = document.querySelector('#search-bar').value
 		setInputText(search)
-		if(search != '' || search != inputText)
-			await fetching(search)
-
-		let results = document.querySelector('.results')
-		results.appendChild(searchResults.map( term => {
-			<SearchTerm parameters={term}></SearchTerm>
-		}))
-		//let document.querySelector(".results").innerHTML = searchResults.map(term => <SearchTerm parameters={term}></SearchTerm>)
-		//document.querySelector('.results').appendChild(searchResults.map(term => <SearchTerm parameters={term}></SearchTerm>))
 	}
 
-	//fetching()
+
 	return(<>
 		<Header></Header>
 		<div role="search" className="search">
@@ -127,9 +84,24 @@ export default function Search(){
 		
 		<main>
 			<ul className="results">
-				{ searchResults.map((term)=> {
-					return(<SearchTerm parameters={term}></SearchTerm>)
-				}) }
+				{searchResults.map((song, index)=> {
+					return(<li key={index}>
+						<a href={"/album/" + song.collectionId}>
+							<img 
+								src={song.artworkUrl100} 
+								alt={`Album Cover for ${song.artistName} ${song.trackName}`} 
+								className="album-search"
+							/>
+						</a>
+						<a href={"/artist/" + song.artistId}>{song.artistName}</a>
+		
+						<p>{song.trackName} - {song.releaseDate.split('-')[0]}</p>
+		
+						<p>{song.re}</p>
+		
+					</li>)
+				})}
+
 			</ul>
 		</main>
 

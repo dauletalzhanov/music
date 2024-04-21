@@ -8,10 +8,9 @@ function SearchTerm(props){
 
 	return(<>
 		<li>
-			<img src={props.artworkUrl100}/>
+			<p>{props.artistName}</p>
 
 		</li>
-				
 	</>)
 }
 

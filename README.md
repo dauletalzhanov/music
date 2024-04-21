@@ -11,6 +11,7 @@ Web Application themed around music where you can:
 Additional Research Process:
 - Personas
 - User Journeys
+- Information Architecture Map
 - Survey about UX / UI design for album and artist pages
 
 ## Technical Aspects

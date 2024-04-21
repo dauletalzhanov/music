@@ -89,6 +89,7 @@ export default function Album(){
     async function addSong(event){
         //console.log(event.target.getAttribute("id"))
         const index = event.target.getAttribute("id")
+        
         console.log(trackList[index])
         const song = trackList[index]
 
@@ -103,9 +104,7 @@ export default function Album(){
             //timeAdded: new Date().now(),
         }
 
-        const docID = `${addition.artistName} - ${addition.songName}`
-
-        await setDoc(doc(db, "song", docID), addition)
+        await addDoc(collection(db, "song"), addition)
 
         console.log(addition)
     }

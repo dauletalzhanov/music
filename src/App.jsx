@@ -1,7 +1,7 @@
 // importing libraries and react stuff
-import React, { ReactDOM, useEffect } from "react"
+import React from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+//import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 //import { MongoClient } from "mongodb"
 
@@ -25,7 +25,7 @@ import Album from "./Pages/Album"
   </BrowserRouter>
 */
 
-// modern router system (2024)
+// updated router system (2024)
 const router = createBrowserRouter([
   {
     path: '/',

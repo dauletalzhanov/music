@@ -14,7 +14,7 @@ export default function Profile(){
 	let [embedURL, setEmbedURL] = useState('')
 	let [alt_text, setAltText] = useState('')
 	let [playlist, setPlaylist] = useState([])
-	let [latest, setLatest] = useState([])
+	let [latest, setLatest] = useState("")
 	
 	useEffect(() => {	
 		document.title = `Profile`
@@ -32,18 +32,29 @@ export default function Profile(){
 	useEffect(()=>{
 		async function getPlaylist(db){
 			const songColl = collection(db, "song")
-			//const res = query(songColl, orderBy('timeAdded'))
+			//let q = await query(songColl, orderBy("createTime", "desc"))
 			const songDocs = await getDocs(songColl)
-			const songSnap = songDocs.docs.map(doc => {
+
+			let songSnap = songDocs.docs.map(doc => {
 				let data = doc.data()
 				data["id"] = doc.id
+				data["timeAdded"] = doc._document.createTime.timestamp.seconds//.timeStamp
+				//console.log(doc)
 				return data
 			})
 
-			console.log(songDocs)
+			songSnap.sort((a, b) => b.timeAdded - a.timeAdded)
+			console.log(songSnap)
 
 			setPlaylist(songSnap)
-		  
+			
+			if(songSnap.length > 0){
+				let temp = songSnap[0]
+				setLatest(temp.artistName + " - " + temp.songName)
+				//console.log(latest)
+			}
+				
+			
 			//console.log(songSnap)
 			//latest = playlist.sort((a, b) => new Date(a.timeAdded) - new Date(b.timeAdded))
 			//setLatest("latest")
@@ -107,7 +118,7 @@ export default function Profile(){
 					</div>
 					<div className="stat">
 						<p>Latest Track:</p>
-						<p><strong>{"Dua Lipa - Dance the Night"}</strong></p>
+						<p><strong>{latest}</strong></p>
 					</div>
 				</div>
 			</div>
