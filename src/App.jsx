@@ -3,6 +3,7 @@ import React from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 //import { BrowserRouter, Routes, Route } from "react-router-dom"
 
+// i wanted to Mongo DB at first instead of Firebase
 //import { MongoClient } from "mongodb"
 
 // pages
@@ -12,6 +13,7 @@ import NoPage from "./Pages/NoPage"
 import Charts from "./Pages/Charts"
 import Profile from "./Pages/Profile"
 import Album from "./Pages/Album"
+import Landing from "./Pages/Landing"
 
 // first router system
 /*
@@ -59,13 +61,17 @@ const router = createBrowserRouter([
       path: '/album/:id',
       element: <Album></Album>
     }]
+  },
+  {
+    path: '/landing',
+    element: <Landing></Landing>
   }
-
   //{
   //  path: "*",
   //  element: <NoPage></NoPage>
   //}
 ])
+
 
 export default function App() {
   return (<>

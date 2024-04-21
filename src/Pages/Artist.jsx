@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react"
 import { useParams } from "react-router-dom"
+import { Helmet } from "react-helmet"
 
 import Header from "../Components/Header"
 
-import "./CSS/artist.css"
+//import "./CSS/artist.css"
+import styles from "./CSS/artist.module.css"
 
 function Artist(){
 	const params = useParams()
@@ -53,7 +55,7 @@ function Artist(){
 	return(<>
 		<Header></Header>
 
-		<div role="contentinfo" className="artistSection">
+		<div role="contentinfo" className={styles.artistSection}>
 			<p>Artist Name: {artistInfo.artistName}</p>
 			<p>Primary Genre: {artistInfo.primaryGenreName}</p>
 			{artistInfo.artistType != "Artist" ? <p>Artist Type: {artistInfo.artistType}</p> : ""}
@@ -62,20 +64,17 @@ function Artist(){
 			
 		</div>
 
-		<div role="main" className="albums">
+		<div role="main" className={styles.albums}>
 			{albums.map((value, index)=> {
 				return (
 					<a key={index} href={'/album/' + value['collectionId']}>
-						<img className="artist-album-cover" alt={"album cover for: " + value["collectionName"]} src={value['albumCover']}/> 
+						<img className={styles["artist-album-cover"]} alt={"album cover for: " + value["collectionName"]} src={value['albumCover']}/> 
 						<p role="definition" >{value['collectionName']}</p> 
 					</a>
 				)})
 			}
 		</div>
 
-		
-		
-				
 	</>)
 }
 

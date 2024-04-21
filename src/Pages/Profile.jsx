@@ -15,6 +15,16 @@ export default function Profile(){
 	let [alt_text, setAltText] = useState('')
 	let [playlist, setPlaylist] = useState([])
 	let [latest, setLatest] = useState("")
+
+	useEffect(() => {
+		let allStyles = document.querySelectorAll("style")
+		let head = allStyles.parentNode
+		for(let i=0; i<allStyles.length; i++){
+			
+			console.log(allStyles[i])
+		}
+
+	})
 	
 	useEffect(() => {	
 		document.title = `Profile`

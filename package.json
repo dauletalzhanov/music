@@ -12,17 +12,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "dotenv": "^16.4.5",
+    "embla-carousel-react": "^8.0.2",
     "firebase": "^10.11.0",
+    "lucide-react": "^0.372.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
     "nodemon": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
-    "react-helmet-async": "^2.0.4"
+    "react-helmet": "^6.1.0",
+    "react-helmet-async": "^2.0.4",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/node": "^20.12.7",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",

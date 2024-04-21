@@ -36,7 +36,7 @@ export default function Search(){
 			root.style.backgroundColor = color
 		}
 
-		changeBackground()
+		//changeBackground()
 
 	}, [])
 
@@ -117,7 +117,7 @@ export default function Search(){
 	return(<>
 		<Header></Header>
 		<div role="search" className="search">
-			<input id="search-bar" type='text' onChange={queryChange} placeholder="search music..."></input>
+			<input id="search-bar" type='text' onChange={queryChange} value={params.query} placeholder="search music..."></input>
 			<button onClick={start}>Search</button>
 		</div>
 		

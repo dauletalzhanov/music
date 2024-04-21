@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+
 import Header from "../Components/Header";
 import Ranking from "../Components/Ranking";
 
@@ -37,7 +39,7 @@ export default function Charts() {
         getCharts(url100);
 
         //document.body.style.backgroundColor = `rgb(${getRand(230, 255)},${getRand(230, 255)},${getRand(230, 255)})`;
-		document.title = `Billboard Rankings`
+		//document.title = `Billboard Rankings`
     }, []);
 
     return(<>
@@ -52,6 +54,11 @@ export default function Charts() {
                 <Ranking title='Songs' url={url100} />
                 <Ranking title='Global' url={urlGlo} />
             </div>
+
+            <Helmet>
+                <title>Billboard Rankings</title>
+                <meta name="description" content="iTunes Search Engine! Browse Popular Songs of the Week on Billboard Charts! Save Your Favourite Songs into Personal Playlists."/>
+            </Helmet>
 
     </>);
 }

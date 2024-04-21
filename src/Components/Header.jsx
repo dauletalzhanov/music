@@ -4,9 +4,12 @@ function Header(){
 	return(<>
 		<div className="Header">
 			<div aria-label="navigate to the charts" role="navigation"><a href="/charts">Charts</a></div>
-			<div aria-label="navigate to the about us" role="navigation"><a href="/about">About Us</a></div>
+			<div aria-label="navigate to the error page" role="navigation"><a href="/error">Error</a></div>
 			<div aria-label="navigate to the search page" role="navigation"><a href="/">Search</a></div>
+			<div aria-label="navigate to the about us" role="navigation"><a href="/landing">Landing</a></div>
 			<div aria-label="navigate to the profile page" role="navigation"><a href="/profile">Profile</a></div>
+			<div aria-label="navigate to the profile page" role="navigation"><Link to="/profile">Profile</Link></div>
+
 			
 		</div>
 
