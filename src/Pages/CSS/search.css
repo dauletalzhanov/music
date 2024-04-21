@@ -77,26 +77,53 @@ li {
 	color: white;
 	display: flex;
 	align-items: center;
+	position: relative;
 }
 
-li > img {
+li > a > img {
 	margin: 0 1vw;
 	width: 7vw;
-	border-radius: 2px;
+	border-radius: 0.3vw;
 	transition: width 1s, border-radius 1s;
 }
 
-li > img:hover {
+li > a > img:hover {
 	width: 15vw;
-	border-radius: 4px;
+	border-radius: 0.7vw;
 }
 
-li > a {
+.search-artist {
 	text-decoration: none;
 	font-weight: bold;
 	color: black;
 }
 
-li > p {
+.search-song-details {
 	color: black;
+}
+
+.addingFromSearch {
+	position: absolute;
+	right: 1vw;
+
+	border: none;
+	
+	height: 5vh;
+	width: 6vw;
+	border-radius: 8px;
+
+	text-align: center;
+
+	background-color: black;
+	color: white;
+}
+
+.addingFromSearch:hover {
+	background-color: #dddddd;
+	color: black;
+}
+
+.addingFromSearch:active {
+	color: black;
+	background-color: white;
 }

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
 
+import { addDoc, collection,  } from "firebase/firestore"
+import { db } from "../../firebase"
+
 import Header from "../Components/Header"
 import SearchTerm from "../Components/SearchTerm"
 
@@ -74,6 +77,42 @@ export default function Search(){
 		setInputText(search)
 	}
 
+	function convertTime(millies){
+
+        let time = millies
+        time /= 1000
+        time = Math.floor(time)
+        let mins = Math.floor(time/60)
+        let secs = time - 60*mins
+        mins = mins < 10 ? "0"+mins : mins
+        secs = secs < 10 ? "0"+secs : secs
+        time = `${mins}:${secs}`
+
+        return time
+    }
+
+	async function addSong(event){
+
+		const id = event.target.getAttribute("id")
+		const song = searchResults[id]
+
+		const addition = {
+			songName: song.trackName,
+			artistName: song.artistName,
+			artistURL: song.artistId,
+			albumId: song.collectionId,
+			length: convertTime(song.trackTimeMillis),
+			artworkURL: song.artworkUrl100.replace("100x100bb", "1000x1000bb"),
+			genre: song.primaryGenreName,
+			user: "user"
+		}
+
+		await addDoc(collection(db, "song"), addition)
+
+		//console.log(song)
+		//console.log(addition)
+	}
+
 
 	return(<>
 		<Header></Header>
@@ -85,20 +124,23 @@ export default function Search(){
 		<main>
 			<ul className="results">
 				{searchResults.map((song, index)=> {
+					let albumCover = song.artworkUrl100
+					albumCover = albumCover.replace("100x100bb", "1000x1000bb")
+
 					return(<li key={index}>
 						<a href={"/album/" + song.collectionId}>
 							<img 
-								src={song.artworkUrl100} 
+								src={albumCover} 
 								alt={`Album Cover for ${song.artistName} ${song.trackName}`} 
 								className="album-search"
 							/>
 						</a>
-						<a href={"/artist/" + song.artistId}>{song.artistName}</a>
+						<a className="search-artist" href={"/artist/" + song.artistId}>{song.artistName} -</a>
 		
-						<p>{song.trackName} - {song.releaseDate.split('-')[0]}</p>
-		
-						<p>{song.re}</p>
-		
+						<p className="search-song-details">{song.trackName} - {song.releaseDate.split('-')[0]}</p>
+
+						<button id={index} className="addingFromSearch" onClick={addSong}> Add </button>
+				
 					</li>)
 				})}
 
