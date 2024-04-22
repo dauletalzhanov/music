@@ -128,7 +128,7 @@ export default function Profile(){
 					</div>
 					<div className="stat">
 						<p>Latest Track:</p>
-						<p><strong>{latest}</strong></p>
+						<p className="latest-song"><strong>{latest}</strong></p>
 					</div>
 				</div>
 			</div>
@@ -146,7 +146,7 @@ export default function Profile(){
 						<div className="leftie">
 							<img src={song.artworkURL} alt={"album cover for " + song.artistName + song.songName} className="album-cover" />
 							<div className="song-details">
-								<Link className="artistName" to={"/"+song.artistURL}> {song.artistName}</Link>
+								<Link className="artistName" to={"/artist/"+song.artistURL}> {song.artistName}</Link>
 								<p className="songName">{song.songName}</p>
 								<p>{song.length}</p>
 							</div>

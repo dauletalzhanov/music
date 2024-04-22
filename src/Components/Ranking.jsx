@@ -9,8 +9,6 @@ function Ranking({title, url}){
 			let response = await fetch(url)
 			response = await response.json()
 
-			
-			
 			setSongs(response['data'])
 			return response['data']
 		}
@@ -28,7 +26,7 @@ function Ranking({title, url}){
 					<p>{song['artist']} - {song['name']}</p>
 				</div>
 				<div className="rightie">
-					<Link to={"/search/" + song['artist'] + " - " + song['name']}> Search </Link>
+					<Link className="search-song" to={"/search/" + song['artist'] + " - " + song['name']}> Search </Link>
 				</div>
 				
 			</div>)

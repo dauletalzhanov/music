@@ -78,6 +78,7 @@ h5 {
 
 .metrics > .stat:last-of-type {
 	margin-bottom: 0;
+	max-width: 10vw;
 }
 
 /*****************SONGS********************/

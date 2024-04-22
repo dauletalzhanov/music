@@ -100,3 +100,7 @@ body {
 .song > .leftie > img:hover {
 	width: 9.3vw;
 }
+
+.search-song:focus {
+	font-weight: bolder;
+}

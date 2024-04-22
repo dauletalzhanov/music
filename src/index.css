@@ -11,7 +11,7 @@ body {
 
 .Header {
 	display: grid;
-	grid-template-columns: repeat(5, 20vw);
+	grid-template-columns: repeat(4, 25vw);
 }
 
 .Header > div {
@@ -26,4 +26,8 @@ body {
 .Header > div > a {
 	text-decoration: none;
 	color: white;
+}
+
+.Header > div > a:focus {
+	font-weight: bolder;
 }
