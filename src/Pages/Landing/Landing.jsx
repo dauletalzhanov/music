@@ -1,22 +1,22 @@
 import { useState } from "react"
 import { Helmet } from "react-helmet"
-import Header from "../Components/Header"
+import Header from "../../Components/Header"
 import { Link } from "react-router-dom"
 
 // images
-import notTaylor from "../assets/taylor_cropped.jpg"
-import mic from "../assets/mic.jpg"
-import taylor_albums from "../assets/taylor.json"
+import notTaylor from "../../assets/taylor_cropped.jpg"
+import mic from "../../assets/mic.jpg"
+import taylor_albums from "./taylor.json"
 
-import fb from "../assets/fb.svg"
-import twit from "../assets/twitter.svg"
-import ig from "../assets/ig.svg"
-import yt from "../assets/youtube.svg"
+import fb from "../../assets/fb.svg"
+import twit from "../../assets/twitter.svg"
+import ig from "../../assets/ig.svg"
+import yt from "../../assets/youtube.svg"
 
 // css
-import "./CSS/landing_page.css"
+import "./landing_page.css"
 
-import Carousel from "../Components/Carousel"
+import Carousel from "../../Components/Carousel"
 
 export default function Landing(){
 	console.log(taylor_albums)

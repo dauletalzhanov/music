@@ -13,7 +13,7 @@ import NoPage from "./Pages/NoPage"
 import Charts from "./Pages/Charts"
 import Profile from "./Pages/Profile"
 import Album from "./Pages/Album"
-import Landing from "./Pages/Landing"
+import Landing from "./Pages/Landing/Landing"
 
 // first router system
 /*
