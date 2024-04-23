@@ -1,28 +1,26 @@
+import { useState } from "react"
 import { Helmet } from "react-helmet"
 import Header from "../Components/Header"
 import { Link } from "react-router-dom"
 
+// images
 import notTaylor from "../assets/taylor_cropped.jpg"
 import mic from "../assets/mic.jpg"
+import taylor_albums from "../assets/taylor.json"
 
 import fb from "../assets/fb.svg"
 import twit from "../assets/twitter.svg"
 import ig from "../assets/ig.svg"
 import yt from "../assets/youtube.svg"
 
-import { Button } from "@/Components/ui/button"
-import { Card, CardContent } from "@/Components/ui/card"
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
-  } from "@/Components/ui/carousel.jsx"
-
+// css
 import "./CSS/landing_page.css"
-  
+
+import Carousel from "../Components/Carousel"
+
 export default function Landing(){
+	console.log(taylor_albums)
+
 	return(<>
 		<Helmet>
 			<title>MUSIC</title>
@@ -40,7 +38,7 @@ export default function Landing(){
 				<div className="transition-pb"></div>
 
 				<div className="taylors-section">
-					<img src={notTaylor} alt="not-taylor-swift" />
+					<img src={notTaylor} alt="this is not a picture of taylor swift" />
 					<div className="taylors-stats">
 						<Link to="/artist/159260351">Browse Taylor Swift</Link>
 						<p className="white">65 Billion Plays on iTunes</p>
@@ -50,15 +48,17 @@ export default function Landing(){
 						
 
 					</div>
-					<img src={mic} alt="not-taylor-swift" />
+					<img src={mic} alt="picture of a microphone" />
 				</div>
-
 				<div className="transition-ba"></div>
 			</div>
 
-			<div className="transition-review-youtube">
-
+			<div className="taylors-albums">
+				<Carousel items={taylor_albums} />
+					
 			</div>
+
+			<div className="transition-review-youtube"></div>
 			<div className="youtube-section">
 
 				<div className="itunes-section">

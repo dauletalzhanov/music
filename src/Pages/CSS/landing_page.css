@@ -80,6 +80,43 @@
 	color: goldenrod;
 	margin-top: 3vh;
 }
+/*		_________	Taylors Albums	______		*/
+.taylors-albums {
+	height: 50vh;
+	margin: 0 13vw;
+	padding: 1vh 2vw;
+	
+	display: flex;
+	justify-content: center;
+}
+
+.carousel {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.carousel-content {
+	width: 100%;
+}
+
+.taylor-album {
+	display: none;
+}
+
+.taylor-album.active {
+	display: block;
+}
+
+.carousel-button {
+	border: 1px solid lightgray;
+}
+
+.carousel-album {
+	height: 50vh;
+	width: 50vh;
+	object-fit: cover;
+}
 
 /******************************************/
 
