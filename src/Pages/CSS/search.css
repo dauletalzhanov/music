@@ -15,6 +15,7 @@ body {
 
 .search {
 	padding-top: 10vh;
+	margin-bottom: 2vh;
 	display: flex;
 	justify-content: center;	
 	align-items: end;
@@ -35,12 +36,17 @@ body {
 	color: black;
 }
 
+.search > button:focus{
+	border: 2px solid blue;
+}
+
+
 
 #search-bar {
-	background-color: #747474;
+	background-color: #cecece;
 	color: white;
 	border: none;
-	height: 3vh;
+	height: 4vh;
 	width: 20vw;
 	padding: 0.5vh 0.5vw;
 
@@ -59,6 +65,31 @@ body {
 
 #search-bar::placeholder {
 	color: lightgray;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-control {
+  padding-top: 0; /* Adjust as needed */
+}
+
+.form-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.7vh 0.5vw; /* Adjust as needed */
+  pointer-events: none;
+  transition: all 0.2s ease-out;
+  color: #000000; /* Bootstrap text color for placeholder */
+}
+
+.form-control:focus + .form-label,
+.form-control:not(:placeholder-shown) + .form-label {
+  transform: translateY(-100%);
+  font-size: 0.75rem; /* Adjust as needed */
+  color: #495057; /* Bootstrap text color for active input */
 }
 
 
@@ -84,6 +115,14 @@ li {
 	position: relative;
 }
 
+li > a:focus {
+	border: 2px solid blue;
+  
+	/* Optionally, you can add other styles to enhance visibility */
+	outline: none; /* Remove default outline */
+	box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5);
+}
+
 li > a > img {
 	margin: 0 1vw;
 	width: 7vw;
@@ -94,6 +133,10 @@ li > a > img {
 li > a > img:hover {
 	width: 15vw;
 	border-radius: 0.7vw;
+}
+
+li > a > img:active {
+	border: 5px solid white;
 }
 
 .search-artist {
@@ -131,3 +174,7 @@ li > a > img:hover {
 	color: black;
 	background-color: white;
 }
+
+.addingFromSearch:focus {
+	border: 2px solid blue;
+  }

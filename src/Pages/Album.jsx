@@ -97,7 +97,7 @@ export default function Album(){
             artworkURL: albumInfo.albumCover,
             artistName: song.artistName,
             songName: song.trackName,
-            artistURL : `artist/${song.artistId}`,
+            artistURL : song.artistId,
             genre: song.primaryGenreName,
             length: convertTime(song.trackTimeMillis),
             user: "user"

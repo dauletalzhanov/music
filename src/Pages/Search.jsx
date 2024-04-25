@@ -13,7 +13,7 @@ export default function Search(){
 	const [inputText, setInputText] = useState('')
 	const [searchResults, setSearchResults] = useState([])
 
-	let params = useParams(":query")
+	let params = useParams("query")
 
 	let term = ``
 	let query = ``
@@ -57,7 +57,10 @@ export default function Search(){
 			setSearchResults(data)
 		}
 		
-		searchStuff(inputText)
+		if(inputText.length == 0)
+			searchStuff( params.query ? params.query : inputText)
+		else
+			searchStuff(inputText)
 
 
 		if(inputText.length == 0)
@@ -73,7 +76,7 @@ export default function Search(){
 	}
 
 	async function start(){
-		let search = document.querySelector('#search-bar').value
+		const search = document.querySelector('#search-bar').value
 		setInputText(search)
 	}
 
@@ -117,7 +120,15 @@ export default function Search(){
 	return(<>
 		<Header></Header>
 		<div role="search" className="search">
-			<input id="search-bar" type='text' onChange={queryChange} value={params.query} placeholder="search music..."></input>
+			<div class="form-group">
+				<input
+					type="text"
+					class="form-control"
+					id="search-bar"
+					placeholder=" "
+					aria-label="Search music"/>
+				<label for="search-bar" class="form-label">Search Music</label>
+			</div>
 			<button onClick={start}>Search</button>
 		</div>
 		

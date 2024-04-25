@@ -44,7 +44,7 @@ export default function Charts() {
 
     return(<>
             <Header></Header>
-            <div role="banner" className="title">
+            <div role="banner" className="billboard-title">
                 <h1>Billboard Charts</h1>
                 <p role="contentinfo" aria-label="charts for this week">{beginning} - {end}</p>
             </div>

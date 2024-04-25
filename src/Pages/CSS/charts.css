@@ -9,7 +9,7 @@ body {
 	font-family: 'San Francisco', Helvetica, sans-serif;
 }
 
-.title {
+.billboard-title {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -25,8 +25,14 @@ body {
 	box-shadow: 10px 10px 156px -58px rgba(0,0,0,0.75);
 }
 
-.title > h3 {
+.billboard-title > h1 {
+	margin: 2vh 0;
+	font-size: 2.25vw;
+}
+
+.billboard-title > p {
 	margin-bottom: 2vh;
+	font-size: 1vw;
 }
 
 .rank-container {

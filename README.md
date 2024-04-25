@@ -21,7 +21,7 @@ Web application was made using:
 - HTML, CSS, Javascript with .jsx extension
 
 React Sublibraries:
-- React-Dom
+- React-Router-Dom
 - React-Helmet
 - React-Cookies
 - Redux Toolkit
