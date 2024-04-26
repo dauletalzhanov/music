@@ -8,10 +8,18 @@ import notTaylor from "../../assets/taylor_cropped.jpg"
 import mic from "../../assets/mic.jpg"
 import taylor_albums from "./taylor.json"
 
+// social media icons
 import fb from "../../assets/fb.svg"
 import twit from "../../assets/twitter.svg"
 import ig from "../../assets/ig.svg"
 import yt from "../../assets/youtube.svg"
+
+// services icons
+import looking_glass from "../../assets/looking_glass.svg"
+import pedestal from "../../assets/charts.svg"
+import floppy_disk from "../../assets/floppy.svg"
+import scenery from "../../assets/visualise.svg"
+
 
 // css
 import "./landing_page.css"
@@ -28,12 +36,76 @@ export default function Landing(){
 		</Helmet>
 
 		<Header></Header>
-
-		<div id="artistSection">	
-			
-		</div>
 		
 		<main>
+			<div id="services">
+				<h5>Services</h5>
+				<div className="service-boxes">
+					<div className="service-box">
+						<div className="service-container">
+							<img src={looking_glass} alt="looking glass symbolising searching" />
+
+						</div>
+						<h6>1. Search Music</h6>
+						<p>
+							Browse iTunes’ Extensive Library with your favourite artists, 
+							albums and tracks! The catalogue has music from all over the 
+							world with updates occuring in moments’ notice!
+						</p>
+
+					</div>
+
+					<div className="service-box">
+						<div className="service-container">
+							<img src={pedestal} alt="pedestal symbolising charts" />
+
+
+						</div>
+						<h6>2. Charts</h6>
+						<p>
+							Get updated on most popular music that get updated every week 
+							straight from Billboard charts! You can check out Top Songs, 
+							Albums and Songs Globally!
+						</p>
+
+					</div>
+
+					<div className="service-box">
+						<div className="service-container">
+							<img src={floppy_disk} alt="floppy disk symbolising saving music" />
+
+						</div>
+						<h6>3. Save Songs</h6>
+						<p>
+							Save your favourite tracks into your very own personal playlists!
+							Have access to them at any time. Add or remove as many songs as 
+							you please into your own domain.
+						</p>
+
+					</div>
+
+					<div className="service-box">
+						<div className="service-container">
+							<img src={scenery} alt="scenery symbolising visualisations" />
+
+						</div>
+						<h6>4. Virtualisations</h6>
+						<p>
+							Enjoy visualisations ranging from album covers to GIFs to aid 
+							you with your music selection.  
+						</p>
+
+					</div>
+				</div>
+
+				<div className="service-line"></div>
+
+				<h5>Powered By</h5>
+				
+			</div>
+
+			
+
 			<div className="browse-taylor-swift">
 				<div className="transition-pb"></div>
 
