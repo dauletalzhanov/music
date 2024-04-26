@@ -20,6 +20,11 @@ import pedestal from "../../assets/charts.svg"
 import floppy_disk from "../../assets/floppy.svg"
 import scenery from "../../assets/visualise.svg"
 
+// powered by images
+import itunes from "../../assets/itunes.svg"
+import firebase from "../../assets/firebase.svg"
+import giphy from "../../assets/giphy.svg"
+import react from "../../assets/react.svg"
 
 // css
 import "./landing_page.css"
@@ -101,6 +106,32 @@ export default function Landing(){
 				<div className="service-line"></div>
 
 				<h5>Powered By</h5>
+
+				<div className="powered-bys">
+					<div className="powered-by">
+						<img src={itunes} alt="itunes logo" />
+						<p>iTunes' Music Catalogue</p>
+					</div>
+
+					<div className="powered-by">
+						<img src={firebase} alt="firebase logo" />
+						<p>Google's Firebase Database</p>
+					</div>
+
+					<div className="powered-by">
+						<img src={giphy} alt="giphy logo" />
+						<p>Giphy's Dynamic GIFs</p>
+					</div>
+
+					<div className="powered-by">
+						<img src={react} alt="react logo" />
+						<p>Facebook's React Library</p>
+					</div>
+
+					
+
+
+				</div>
 				
 			</div>
 

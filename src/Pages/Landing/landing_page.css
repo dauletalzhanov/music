@@ -87,6 +87,32 @@
 }
 
 /******************************************/
+.powered-bys {
+	display: flex;
+	justify-content: space-around;
+}
+
+.powered-by {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.powered-by > p {
+	font-family: "Roboto", sans-serif;
+	text-align: center;
+	font-size: 1.25vw;
+	width: 10vw;
+}
+
+.powered-by > img {
+	margin-bottom: 0.65vh;
+	width: 7.5vw;
+	height: 7.5vw;
+}
+
+/******************************************/
 
 .transition-review-youtube{
 	margin: 0 13vw;
