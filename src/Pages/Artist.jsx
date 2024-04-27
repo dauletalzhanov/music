@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { Helmet } from "react-helmet"
 
 import Header from "../Components/Header"
@@ -66,11 +66,13 @@ function Artist(){
 
 		<div role="main" className={styles.albums}>
 			{albums.map((value, index)=> {
+				const altText = `album cover for "${ value.collectionName }"`
+				const albumUrl = `/album/${ value.collectionId }`
 				return (
-					<a key={index} href={'/album/' + value['collectionId']}>
-						<img className={styles["artist-album-cover"]} alt={"album cover for: " + value["collectionName"]} src={value['albumCover']}/> 
-						<p role="definition" >{value['collectionName']}</p> 
-					</a>
+					<Link key={index} to={albumUrl}>
+						<img className={ styles["artist-album-cover"] } alt={altText} src={ value.albumCover } /> 
+						<p role="definition" > { value.collectionName }</p> 
+					</Link>
 				)})
 			}
 		</div>

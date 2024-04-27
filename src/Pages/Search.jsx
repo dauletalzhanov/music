@@ -139,14 +139,14 @@ export default function Search(){
 					albumCover = albumCover.replace("100x100bb", "1000x1000bb")
 
 					return(<li key={index}>
-						<a href={"/album/" + song.collectionId}>
+						<Link to={"/album/" + song.collectionId}>
 							<img 
 								src={albumCover} 
 								alt={`Album Cover for ${song.artistName} ${song.trackName}`} 
 								className="album-search"
 							/>
-						</a>
-						<a className="search-artist" href={"/artist/" + song.artistId}>{song.artistName} -</a>
+						</Link>
+						<Link className="search-artist" to={"/artist/" + song.artistId}>{song.artistName} -</Link>
 		
 						<p className="search-song-details">{song.trackName} - {song.releaseDate.split('-')[0]}</p>
 
