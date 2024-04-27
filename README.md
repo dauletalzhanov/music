@@ -35,3 +35,14 @@ Third Party Tools and Libraries:
 - Firebase DB
 - iTunes API
 - Giphy API
+
+## How to Install
+Probably not possible because of the custom .env file which requires Giphy Api key and the Firebase Config ¯\_(ツ)_/¯
+
+Install:
+- git clone this repo
+- npm install
+- request for the .env file
+- put the .env file in the main directory
+- npm run dev for development mode
+- npm run build > npm run preview for production mode
