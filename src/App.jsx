@@ -16,7 +16,7 @@ import Charts from "./Pages/Charts"
 import Profile from "./Pages/Profile"
 import Album from "./Pages/Album"
 import Landing from "./Pages/Landing/Landing"
-import LogIn from "./Pages/LogIn"
+import Login from "./Pages/Login"
 
 // first router system
 /*
@@ -71,7 +71,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <LogIn></LogIn>
+    element: <Login></Login>,
+  },
+  {
+    path: '/logout',
+    element: <Login/>
+  },
+  {
+    path: '/signup',
+    element: <Login/>
   },
   //{
   //  path: "*",

@@ -1,6 +1,7 @@
 import Header from "../Components/Header"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import { collection, doc, getDocs, where, query, orderBy, limit, deleteDoc } from "firebase/firestore";
@@ -14,6 +15,14 @@ import "./CSS/no_page.css?inline"
 import aaa from './CSS/search.css?inline' 
 
 export default function Profile(){
+	let [userCookie, setUser] = useCookies(["user"])
+	const navigate = useNavigate()
+	useEffect(()=>{
+		if(userCookie.user=="guest" || userCookie.user == ""){
+			navigate("/login")
+		}
+	}, [])
+
 	const key = import.meta.env.VITE_keyGIF //process.env.keyGIF
 	let [query, setQuery] = useState(`find me`)
 	let url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
@@ -23,10 +32,7 @@ export default function Profile(){
 	let [latest, setLatest] = useState("")
 	//let [genres, setGenres] = useState({})
 	let [favGenre, setFavGenre] = useState("")
-	let [favArtist, setFavArtist] = useState("")
-
-	let [userCookie, setUser] = useCookies(["user"])
-	
+	let [favArtist, setFavArtist] = useState("")	
 	
 	useEffect(() => {	
 		document.title = `Profile`
