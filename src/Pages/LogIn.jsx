@@ -1,4 +1,5 @@
-import { Form, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import { useCookies } from "react-cookie";
 import { Helmet } from "react-helmet";
 
@@ -16,6 +17,8 @@ export default function Login(){
 	const [user, setUser] = useCookies(["user"])
 
 	function submitting(event){
+		event.preventDefault()
+		
 		const value = event.target.parentNode.querySelector("#login-username").value
 		console.log(value)
 
@@ -27,12 +30,12 @@ export default function Login(){
 		
 		<form id="login-form">
 			<div className="login-inputs">
-				<label for="login-username"> Enter Username </label>
+				<label htmlFor="login-username"> Enter Username </label>
 				<input type="text" name="username" id="login-username" />
 			</div>
 
 			<div>
-				<label for="login-password"> Enter Password </label>
+				<label htmlFor="login-password"> Enter Password </label>
 				<input type="password" name="password" id="login-password" />
 			</div>
 
