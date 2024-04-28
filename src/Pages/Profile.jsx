@@ -7,6 +7,11 @@ import { db } from '../../firebase'
 
 import "./CSS/profile.css"
 
+import "./CSS/album.css?inline"
+import "./CSS/search.css?inline"
+import "./CSS/no_page.css?inline"
+import aaa from './CSS/search.css?inline' 
+
 export default function Profile(){
 	const key = import.meta.env.VITE_keyGIF //process.env.keyGIF
 	let [query, setQuery] = useState(`find me`)

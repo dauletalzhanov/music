@@ -9,6 +9,11 @@ import SearchTerm from "../Components/SearchTerm"
 
 import './CSS/search.css'
 
+import "./CSS/album.css?inline"
+import "./CSS/profile.css?inline"
+import "./CSS/no_page.css?inline"
+import aaa from './CSS/search.css?inline' 
+
 export default function Search(){
 	const [inputText, setInputText] = useState('')
 	const [searchResults, setSearchResults] = useState([])

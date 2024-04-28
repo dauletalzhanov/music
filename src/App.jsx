@@ -1,6 +1,8 @@
 // importing libraries and react stuff
 import React from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { CookiesProvider, useCookies } from "react-cookie"
+
 //import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 // i wanted to Mongo DB at first instead of Firebase
@@ -14,6 +16,7 @@ import Charts from "./Pages/Charts"
 import Profile from "./Pages/Profile"
 import Album from "./Pages/Album"
 import Landing from "./Pages/Landing/Landing"
+import LogIn from "./Pages/LogIn"
 
 // first router system
 /*
@@ -65,7 +68,11 @@ const router = createBrowserRouter([
   {
     path: '/landing',
     element: <Landing></Landing>
-  }
+  },
+  {
+    path: '/login',
+    element: <LogIn></LogIn>
+  },
   //{
   //  path: "*",
   //  element: <NoPage></NoPage>
@@ -73,10 +80,19 @@ const router = createBrowserRouter([
 ])
 
 
+
 export default function App() {
+  const [user, setUser] = useCookies("user")
+  if(user.user == undefined)
+    setUser("user", "guest")
+
+  console.log(user)
+
   return (<>
     <React.StrictMode>
-      <RouterProvider router={router}></RouterProvider>
+      <CookiesProvider defaultSetOptions={{ path: '/' }}>
+        <RouterProvider router={router}></RouterProvider>
+      </CookiesProvider>
     </React.StrictMode>
   </>)
 

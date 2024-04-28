@@ -6,6 +6,12 @@ import Ranking from "../Components/Ranking";
 
 import './CSS/charts.css';
 
+import "./CSS/album.css?inline"
+import "./CSS/search.css?inline"
+import "./CSS/profile.css?inline"
+import "./CSS/no_page.css?inline"
+import aaa from './CSS/search.css?inline' 
+
 export default function Charts() {
     const [beginning, setBeginning] = useState('');
     const [end, setEnd] = useState('');
