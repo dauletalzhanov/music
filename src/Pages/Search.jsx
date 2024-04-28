@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
+import { useCookies } from "react-cookie"
 
 import { addDoc, collection,  } from "firebase/firestore"
 import { db } from "../../firebase"
@@ -17,6 +18,7 @@ import aaa from './CSS/search.css?inline'
 export default function Search(){
 	const [inputText, setInputText] = useState('')
 	const [searchResults, setSearchResults] = useState([])
+	const [userCookie, setUserCookie] = useCookies(["user"])
 
 	let params = useParams("query")
 
@@ -112,7 +114,7 @@ export default function Search(){
 			length: convertTime(song.trackTimeMillis),
 			artworkURL: song.artworkUrl100.replace("100x100bb", "1000x1000bb"),
 			genre: song.primaryGenreName,
-			user: "user"
+			user: userCookie.user
 		}
 
 		await addDoc(collection(db, "song"), addition)
@@ -131,7 +133,9 @@ export default function Search(){
 					class="form-control"
 					id="search-bar"
 					placeholder=" "
-					aria-label="Search music"/>
+					aria-label="Search music"
+					onChange={queryChange}
+				/>
 				<label for="search-bar" class="form-label">Search Music</label>
 			</div>
 			<button onClick={start}>Search</button>

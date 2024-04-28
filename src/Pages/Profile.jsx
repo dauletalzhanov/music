@@ -1,6 +1,7 @@
 import Header from "../Components/Header"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 import { collection, doc, getDocs, where, query, orderBy, limit, deleteDoc } from "firebase/firestore";
 import { db } from '../../firebase'
@@ -23,6 +24,8 @@ export default function Profile(){
 	//let [genres, setGenres] = useState({})
 	let [favGenre, setFavGenre] = useState("")
 	let [favArtist, setFavArtist] = useState("")
+
+	let [userCookie, setUser] = useCookies(["user"])
 	
 	
 	useEffect(() => {	
@@ -51,6 +54,9 @@ export default function Profile(){
 				//console.log(doc)
 				return data
 			})
+
+
+			songSnap = songSnap.filter(song => song.user == userCookie.user)
 
 			setPlaylist(songSnap)
 		}

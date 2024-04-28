@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import React from "react"
+import { useCookies } from "react-cookie"
 
 import { db } from "../../firebase"
 import { collection, doc, collectionGroup, addDoc, getDocs, setDoc} from "firebase/firestore";
@@ -22,6 +23,8 @@ export default function Album(){
     let [embedURL, setEmbedURL] = useState('')
     const key = import.meta.env.VITE_keyGIF //process.env.keyGIF
     let url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
+
+    const [userCookie, setUserCookier] = useCookies(["user"])
 
     useEffect(()=>{
         async function getAlbum(){
@@ -100,7 +103,7 @@ export default function Album(){
             artistURL : song.artistId,
             genre: song.primaryGenreName,
             length: convertTime(song.trackTimeMillis),
-            user: "user"
+            user: userCookie.user
             //timeAdded: new Date().now(),
         }
 
