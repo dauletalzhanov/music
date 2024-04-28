@@ -30,7 +30,6 @@ export default function Profile(){
 	let [alt_text, setAltText] = useState('')
 	let [playlist, setPlaylist] = useState([])
 	let [latest, setLatest] = useState("")
-	//let [genres, setGenres] = useState({})
 	let [favGenre, setFavGenre] = useState("")
 	let [favArtist, setFavArtist] = useState("")	
 	
@@ -164,7 +163,7 @@ export default function Profile(){
 	return(<>
 		<Header></Header>
 		<div className="profile-details">
-			<h3>Profile Section</h3>
+			<h3>{userCookie.user}'s Profile</h3>
 			<div className="profile-content">
 				<div className="mood">
 					<div>

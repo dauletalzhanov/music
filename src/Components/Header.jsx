@@ -13,7 +13,7 @@ function Header(){
 	let check = ""
 	
 	//let check = userCookie.user == "" || userCookie.user == "guest" ? loginPage : profilePage
-	if(check = userCookie.user == "" || userCookie.user == "guest")
+	if(userCookie.user == "" || userCookie.user == "guest")
 		check = loginPage
 	else if(location.pathname == "/profile")
 		check = switchUser
