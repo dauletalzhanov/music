@@ -7,18 +7,12 @@ import Header from "@/Components/Header";
 
 import "./CSS/login.css"
 
-import "./CSS/album.css?inline"
-import "./CSS/search.css?inline"
-import "./CSS/profile.css?inline"
-import "./CSS/no_page.css?inline"
-import aaa from './CSS/search.css?inline' 
-
 export default function Login(){
 	const [user, setUser] = useCookies(["user"])
 
 	function submitting(event){
 		event.preventDefault()
-		
+
 		const value = event.target.parentNode.querySelector("#login-username").value
 		console.log(value)
 

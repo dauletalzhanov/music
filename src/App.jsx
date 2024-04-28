@@ -71,16 +71,16 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <Login></Login>,
+    element: <Login></Login>
   },
   {
     path: '/logout',
-    element: <Login/>
+    element: <Login></Login>
   },
   {
     path: '/signup',
-    element: <Login/>
-  },
+    element: <Login></Login>
+  }
   //{
   //  path: "*",
   //  element: <NoPage></NoPage>
