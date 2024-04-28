@@ -139,7 +139,8 @@ export default function Search(){
 		
 		<main>
 			<ul className="results">
-				{searchResults.map((song, index)=> {
+				{ searchResults.length == 0 ? "No Songs Here" : searchResults.map((song, index)=> {
+
 					let albumCover = song.artworkUrl100
 					albumCover = albumCover.replace("100x100bb", "1000x1000bb")
 

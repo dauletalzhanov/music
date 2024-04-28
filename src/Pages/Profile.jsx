@@ -20,6 +20,10 @@ export default function Profile(){
 	let [alt_text, setAltText] = useState('')
 	let [playlist, setPlaylist] = useState([])
 	let [latest, setLatest] = useState("")
+	//let [genres, setGenres] = useState({})
+	let [favGenre, setFavGenre] = useState("")
+	let [favArtist, setFavArtist] = useState("")
+	
 	
 	useEffect(() => {	
 		document.title = `Profile`
@@ -37,40 +41,89 @@ export default function Profile(){
 	useEffect(()=>{
 		async function getPlaylist(db){
 			const songColl = collection(db, "song")
-			//let q = await query(songColl, orderBy("createTime", "desc"))
 			const songDocs = await getDocs(songColl)
 
 			let songSnap = songDocs.docs.map(doc => {
 				let data = doc.data()
 				data["id"] = doc.id
-				data["timeAdded"] = doc._document.createTime.timestamp.seconds//.timeStamp
+				data["timeAdded"] = doc._document.createTime.timestamp.seconds
+			
 				//console.log(doc)
 				return data
 			})
 
-			songSnap.sort((a, b) => b.timeAdded - a.timeAdded)
-			console.log(songSnap)
-
 			setPlaylist(songSnap)
-			
-			if(songSnap.length > 0){
-				let temp = songSnap[0]
-				setLatest(temp.artistName + " - " + temp.songName)
-				//console.log(latest)
-			}
-				
-			
-			//console.log(songSnap)
-			//latest = playlist.sort((a, b) => new Date(a.timeAdded) - new Date(b.timeAdded))
-			//setLatest("latest")
-			//console.log("latest", latest)
-		  
 		}
 		
 		getPlaylist(db)
 
 
 	}, [])
+
+	useEffect(()=>{
+
+		function sorting(){
+
+			playlist.sort((a, b) => b.timeAdded - a.timeAdded)
+			console.log(playlist)
+
+			//setPlaylist(songSnap)
+
+			
+			if(playlist.length > 0){
+				let temp = playlist[0]
+				setLatest(temp.artistName + " - " + temp.songName)
+				//
+				//console.log(latest)
+			}
+
+			let temp_genres = {}
+			let artists = {}
+			let fav_genre = ""
+			let fav_artist = ""
+
+			playlist.forEach((song)=>{
+				let currentGenre = song.genre
+				let currentArtist = song.artistName
+				
+				if(fav_genre == "")
+					fav_genre = currentGenre
+
+				if(fav_artist == "")
+					fav_artist = currentArtist
+
+				
+				
+				if(temp_genres[currentGenre])
+					temp_genres[currentGenre]++
+				else
+					temp_genres[currentGenre] = 1
+
+				if(temp_genres[currentGenre] > temp_genres[fav_genre])
+					fav_genre = currentGenre
+				
+				//////////////////////////////////////////////
+				if(artists[currentArtist])
+					artists[currentArtist]++
+				else
+					artists[currentArtist] = 1
+
+				if(artists[currentArtist] > artists[fav_artist])
+					fav_artist = currentArtist
+			})
+
+			//console.log(`Fav Genre: ${fav_genre} : ${temp_genres[fav_genre]}`)
+			//console.log(`Fav Artist: ${fav_artist} : ${artists[fav_artist]}`)
+
+			setFavGenre(fav_genre)
+			setFavArtist(fav_artist)
+			//console.log("fav artist:", artists)
+
+		}
+
+		sorting()
+		
+	}, [playlist])
 
 	function updateQuery(event){
 		setQuery(event.target.value)
@@ -90,8 +143,10 @@ export default function Profile(){
 		//console.log(`removing "${artistName} - ${songName}"`)
 
 		await deleteDoc(doc(db, "song", songID))
+		const updatedPlaylist = playlist.filter(song => song.id !== songID)
+		setPlaylist(updatedPlaylist)
 		//playlist.slice(index, 1)
-		window.location.reload()
+		//window.location.reload()
 	}
 
 	return(<>
@@ -115,11 +170,11 @@ export default function Profile(){
 					</div>
 					<div className="stat">
 						<p>Favourite Genre:</p>
-						<p><strong>{"Pop"}</strong></p>
+						<p><strong>{favGenre}</strong></p>
 					</div>
 					<div className="stat">
 						<p>Favourite Artist:</p>
-						<p><strong>{"Dua Lipa"}</strong></p>
+						<p><strong>{favArtist}</strong></p>
 					</div>
 					<div className="stat">
 						<p>Latest Track:</p>
