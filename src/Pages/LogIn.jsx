@@ -25,16 +25,23 @@ export default function Login(){
 	return(<>
 		<Header></Header>
 		
-		<Form className="login-form">
+		<form id="login-form">
 			<div className="login-inputs">
 				<label for="login-username"> Enter Username </label>
 				<input type="text" name="username" id="login-username" />
 			</div>
+
+			<div>
+				<label for="login-password"> Enter Password </label>
+				<input type="password" name="password" id="login-password" />
+			</div>
+
+			<div className="seperator"></div>
 		
 			<button type="submit" id="login-button" onClick={submitting}>Submit</button>
 
 			<p>Do not have an account? <Link to="/signup">Sign Up</Link></p>
-		</Form>
+		</form>
 
 		<Helmet>
 			<title>Log In</title>
