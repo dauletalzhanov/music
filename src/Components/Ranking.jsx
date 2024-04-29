@@ -30,7 +30,7 @@ function Ranking({title, url}){
 					<p>{song['artist']} - {song['name']}</p>
 				</div>
 				<div className="rightie">
-					<a className="search-song" href={url}> Search </a>
+					<Link className="search-song" to={url}> Search </Link>
 				</div>
 				
 			</div>)

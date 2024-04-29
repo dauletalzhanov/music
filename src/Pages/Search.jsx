@@ -7,6 +7,8 @@ import { db } from "../../firebase"
 
 import Header from "../Components/Header"
 import SearchTerm from "../Components/SearchTerm"
+import Player from "../Components/Player"
+
 
 import './CSS/search.css'
 
@@ -18,7 +20,10 @@ import aaa from './CSS/search.css?inline'
 export default function Search(){
 	const [inputText, setInputText] = useState('')
 	const [searchResults, setSearchResults] = useState([])
+	const [musicSrc, setMusicSrc] = useState("")
+
 	const [userCookie, setUserCookie] = useCookies(["user"])
+	
 
 	let params = useParams("query")
 
@@ -77,6 +82,11 @@ export default function Search(){
 
 	}, [inputText])
 
+	useEffect(()=>{
+		console.log(musicSrc)
+
+	}, [musicSrc])
+
 
 	function queryChange(event){
 		document.title = "Δ: " + event.target.value
@@ -123,6 +133,15 @@ export default function Search(){
 		//console.log(addition)
 	}
 
+	async function playMusic(event){
+		const id = event.target.getAttribute("id")
+		const song = searchResults[id]
+
+		//let music = new Audio(song.previewUrl)
+		//await music.play()
+		setMusicSrc(song.previewUrl)
+	}
+
 
 	return(<>
 		<Header></Header>
@@ -160,6 +179,8 @@ export default function Search(){
 		
 						<p className="search-song-details">{song.trackName} - {song.releaseDate.split('-')[0]}</p>
 
+
+						<button id={index} onClick={playMusic}> Play </button>
 						<button id={index} className="addingFromSearch" onClick={addSong}> Add </button>
 				
 					</li>)
@@ -167,6 +188,9 @@ export default function Search(){
 
 			</ul>
 		</main>
+
+		
+		<Player musicSrc={musicSrc}></Player>
 
 
 	</>)

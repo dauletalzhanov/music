@@ -31,3 +31,13 @@ body {
 .Header > div > a:focus {
 	font-weight: bolder;
 }
+
+/*********************************/
+
+.music-player {
+	position: fixed;
+	bottom: 5vh;
+	right: 30vw;
+	width: 40vw;
+	margin: 0 auto;
+}
