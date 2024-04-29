@@ -17,6 +17,8 @@ import Profile from "./Pages/Profile"
 import Album from "./Pages/Album"
 import Landing from "./Pages/Landing/Landing"
 import Login from "./Pages/Login"
+import Logout from "./Pages/Logout"
+import Signup from "./Pages/Signup"
 
 // first router system
 /*
@@ -75,11 +77,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/logout',
-    element: <Login></Login>
+    element: <Logout></Logout>
   },
   {
     path: '/signup',
-    element: <Login></Login>
+    element: <Signup></Signup>
   }
   //{
   //  path: "*",
