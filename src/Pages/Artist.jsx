@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom"
 import { Helmet } from "react-helmet"
 
 import Header from "../Components/Header"
+import Player from "@/Components/Player"
 
 //import "./CSS/artist.css"
 import styles from "./CSS/artist.module.css"
@@ -76,6 +77,8 @@ function Artist(){
 				)})
 			}
 		</div>
+
+		<Player musicSrc={""}></Player>
 
 	</>)
 }

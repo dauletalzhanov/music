@@ -6,9 +6,9 @@ import { useCookies } from "react-cookie"
 import { db } from "../../firebase"
 import { collection, doc, collectionGroup, addDoc, getDocs, setDoc} from "firebase/firestore";
 
-
 import Header from "../Components/Header"
 import TrackList from "../Components/Tracklist"
+import Player from "@/Components/Player"
 
 import "./CSS/album.css"
 
@@ -162,5 +162,7 @@ export default function Album(){
                 })}
             </ul>
         </main>
+
+        <Player musicSrc={""}></Player>
     </>)
 }

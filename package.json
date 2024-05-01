@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "https://itunes.apple.com",
   "scripts": {
     "dev": "vite",
     "old": "nodemon ./old_version/itunes.html ",

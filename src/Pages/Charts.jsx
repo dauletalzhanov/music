@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 
 import Header from "../Components/Header";
 import Ranking from "../Components/Ranking";
+import Player from "@/Components/Player";
 
 import './CSS/charts.css';
 
@@ -60,6 +61,8 @@ export default function Charts() {
                 <Ranking title='Songs' url={url100} />
                 <Ranking title='Global' url={urlGlo} />
             </div>
+
+            <Player musicSrc={""}></Player>
 
             <Helmet>
                 <title>Billboard Rankings</title>

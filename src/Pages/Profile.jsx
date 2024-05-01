@@ -7,6 +7,8 @@ import { useCookies } from "react-cookie";
 import { collection, doc, getDocs, where, query, orderBy, limit, deleteDoc } from "firebase/firestore";
 import { db } from '../../firebase'
 
+import Player from "@/Components/Player";
+
 import "./CSS/profile.css"
 
 import "./CSS/album.css?inline"
@@ -218,5 +220,7 @@ export default function Profile(){
 				})}
 			</div>
 		</div>
+
+		<Player musicSrc={""}></Player>
 	</>)
 }

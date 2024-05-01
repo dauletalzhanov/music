@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	currentTrack: "",
 	isPlaying: false,
-	currentTime: 0
+	playingTime: 0
 }
 
 export const playerSlice = createSlice({
@@ -13,6 +13,7 @@ export const playerSlice = createSlice({
 		playTrack(state, action){
 			state.currentTrack = action.payload
 			state.isPlaying = true
+			state.playingTime = 0
 		},
 
 		pausePlayback(state){
@@ -25,9 +26,13 @@ export const playerSlice = createSlice({
 		stopPlayback(state){
 			state.currentTrack = null
 			state.isPlaying = false
+			state.playingTime = 0
 		},
 		addTime(state){
-			state.currentTime = state.currentTime + 1
+			state.playingTime = state.playingTime + 1
+		},
+		updateTime(state, action){
+			state.playingTime = action.payload
 		}
 	}
 
@@ -38,7 +43,8 @@ export const {
 	pausePlayback, 
 	resumePlayback, 
 	stopPlayback,
-	addTime
+	addTime,
+	updateTime
 } = playerSlice.actions
 
 export default playerSlice.reducer
