@@ -11,7 +11,7 @@ import {
 } from "../features/playerSlice"
 
 
-export default function Player({musicSrc}){
+export default function Player({musicSrc = ""}){
 	const dispatch = useDispatch()
 	const { currentTrack, isPlaying, playingTime } = useSelector( (state) => state.player )
 	//let [timeCookie, setTiming] = useCookies(["timing"])
