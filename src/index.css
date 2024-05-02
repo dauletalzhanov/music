@@ -41,3 +41,21 @@ body {
 	width: 40vw;
 	margin: 0 auto;
 }
+
+.player-stop-button {
+	position: fixed;
+	bottom: 5vh;
+	right: 20vw;
+
+	border: 1px solid black;
+	border-radius: 64px;
+	padding: 1vw;
+}
+
+.player-stop-button:hover {
+	background-color: rgb(237, 150, 100);
+}
+
+.invisible {
+	display: none;
+}

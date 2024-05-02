@@ -24,7 +24,7 @@ export const playerSlice = createSlice({
 			state.isPlaying = true
 		},
 		stopPlayback(state){
-			state.currentTrack = null
+			state.currentTrack = ""
 			state.isPlaying = false
 			state.playingTime = 0
 		},

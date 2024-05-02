@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 import Header from "../Components/Header";
 import Ranking from "../Components/Ranking";
@@ -16,6 +17,7 @@ import aaa from './CSS/search.css?inline'
 export default function Charts() {
     const [beginning, setBeginning] = useState('');
     const [end, setEnd] = useState('');
+    const { currentTrack } = useSelector((state) => state.player)
 
     const url100 = 'https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-hot-100/recent.json';
     const url200 = 'https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-200/recent.json';
@@ -62,7 +64,7 @@ export default function Charts() {
                 <Ranking title='Global' url={urlGlo} />
             </div>
 
-            <Player musicSrc={""}></Player>
+            { currentTrack ? <Player musicSrc={ "" } /> : "" }
 
             <Helmet>
                 <title>Billboard Rankings</title>

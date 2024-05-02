@@ -18,6 +18,7 @@ export default function Album(){
 
     const [trackList, setTracks] = useState([])
 	const [albumInfo, setAlbumInfo] = useState({})
+    const [musicSrc, setMusicSrc] = useState("")
 
     let [query, setQuery] = useState('')
     let [embedURL, setEmbedURL] = useState('')
@@ -89,6 +90,18 @@ export default function Album(){
         //console.log(query)
     }
 
+    function playMusic(event){
+        const index = event.target.getAttribute("id")
+        const song = trackList[index]
+        const songLocation = song.previewUrl
+
+        console.log(songLocation)
+
+        setMusicSrc(songLocation)
+
+
+    }
+
     async function addSong(event){
         //console.log(event.target.getAttribute("id"))
         const index = event.target.getAttribute("id")
@@ -150,12 +163,16 @@ export default function Album(){
                     let content = trackNum + `${i.trackName}`
                     let time = convertTime(i.trackTimeMillis)
 
-                    return (<li className="album-track" key={index} onMouseEnter={hovering}>
+                    return (<li className="album-track" id={index} key={index} onDoubleClick={playMusic} onMouseEnter={hovering}>
                                 <p>{content}</p>
                                 
                                 <div className="track-rightie">
                                     <p>{time}</p>
-                                    <button aria-label="add song to a playlist" id={index} onClick={addSong}>+</button>
+
+                                    <button aria-label="play this song" className="play-music-album" id={index} onClick={playMusic}>Play</button>
+
+                                    {userCookie.user == "guest" ? "" :<button aria-label="add song to a playlist" id={index} onClick={addSong}>+</button>}
+                                    
                                 </div>
                                 
                             </li>)
@@ -163,6 +180,6 @@ export default function Album(){
             </ul>
         </main>
 
-        <Player musicSrc={""}></Player>
+        <Player musicSrc={musicSrc}></Player>
     </>)
 }

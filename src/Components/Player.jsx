@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useCookies } from "react-cookie"
+
 import {
 	playTrack,
 	pausePlayback,
@@ -9,23 +11,26 @@ import {
 	updateTime
 } from "../features/playerSlice"
 
+
 export default function Player({musicSrc}){
 	const dispatch = useDispatch()
-	const audioRef = useRef(0)
-	//const [audioRef, setAudioRef] = useState(0)
 	const { currentTrack, isPlaying, playingTime } = useSelector((state) => state.player)
-
+	let [timeCookie, setTiming] = useCookies(["timing"])
+	const audioRef = useRef(playingTime)
+	
+	
 	useEffect(() => {
-		
 		if(isPlaying){
 			audioRef.current.currentTime = playingTime
+			//document.querySelector(".music-player").classList.toggle("invisible")
+			
 		}
+		audioRef.current.currentTime = playingTime
 
 	}, [isPlaying])
 
 	if(musicSrc !== ""){
 		dispatch(playTrack(musicSrc))
-		
 	}
 		
 
@@ -33,15 +38,24 @@ export default function Player({musicSrc}){
 
 	function changeTime(event){
 		let time = event.target.currentTime
-		time = Math.round(time)
-
+		//time = Math.round(time * 10) / 10
+		time = Math.floor(time)
 		//console.log(time)
 
+		setTiming("timing", time)
+
 		dispatch(updateTime(time))
-		console.log(playingTime)
+		//console.log(playingTime)
 	}
 
-	return(<>
+	function stopMusic(event){
+		dispatch(stopPlayback())
+		event.target.previousSibling.pause()
+		event.target.parentNode.classList.toggle("invisible")
+
+	}
+
+	return(<div className="music-player-container">
 		<audio controls autoPlay
 			src={musicSrc=="" ? currentTrack : musicSrc} 
 			className="music-player" 
@@ -49,5 +63,6 @@ export default function Player({musicSrc}){
 			ref = { audioRef }
 			
 		/>
-	</>)
+		<button className="player-stop-button" onClick={stopMusic}> Stop </button>
+	</div>)
 }

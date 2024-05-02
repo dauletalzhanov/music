@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
 import { useCookies } from "react-cookie"
+import { Helmet } from "react-helmet"
+
+import { useSelector } from "react-redux"
 
 import { addDoc, collection,  } from "firebase/firestore"
 import { db } from "../../firebase"
@@ -8,7 +11,6 @@ import { db } from "../../firebase"
 import Header from "../Components/Header"
 import SearchTerm from "../Components/SearchTerm"
 import Player from "../Components/Player"
-
 
 import './CSS/search.css'
 
@@ -18,12 +20,21 @@ import "./CSS/no_page.css?inline"
 import aaa from './CSS/search.css?inline' 
 
 export default function Search(){
+	// search engine
 	const [inputText, setInputText] = useState('')
-	const [searchResults, setSearchResults] = useState([])
-	const [musicSrc, setMusicSrc] = useState("")
-
-	const [userCookie, setUserCookie] = useCookies(["user"])
 	
+	// search results
+	const [searchResults, setSearchResults] = useState([])
+	
+	// cookie results
+	const [userCookie, setUserCookie] = useCookies(["user"])
+
+	// redux
+	const { currentTrack } = useSelector((state) => state.player)
+	//const { currentTrack, isPlaying, playingTime } = useSelector((state) => state.player)
+	
+	//const dispatch = useDispatch()
+	const [musicSrc, setMusicSrc] = useState("")
 
 	let params = useParams("query")
 
@@ -137,9 +148,15 @@ export default function Search(){
 		const id = event.target.getAttribute("id")
 		const song = searchResults[id]
 
+		
+
 		//let music = new Audio(song.previewUrl)
 		//await music.play()
 		setMusicSrc(song.previewUrl)
+
+		const walkman = document.querySelector("audio").parentNode
+		if(walkman.classList.contains("invisible") == true)
+			walkman.classList.toggle("invisible")
 	}
 
 
@@ -167,31 +184,38 @@ export default function Search(){
 					let albumCover = song.artworkUrl100
 					albumCover = albumCover.replace("100x100bb", "1000x1000bb")
 
-					return(<li key={index}>
-						<Link to={"/album/" + song.collectionId}>
-							<img 
-								src={albumCover} 
-								alt={`Album Cover for ${song.artistName} ${song.trackName}`} 
-								className="album-search"
-							/>
-						</Link>
-						<Link className="search-artist" to={"/artist/" + song.artistId}>{song.artistName} -</Link>
-		
-						<p className="search-song-details">{song.trackName} - {song.releaseDate.split('-')[0]}</p>
+					return(<li key={index} id={index} onDoubleClick={playMusic}>
+							<Link to={"/album/" + song.collectionId}>
+								<img 
+									src={albumCover} 
+									alt={`Album Cover for ${song.artistName} ${song.trackName}`} 
+									className="album-search"
+								/>
+							</Link>
+
+							<Link className="search-artist" to={"/artist/" + song.artistId}>{song.artistName} -</Link>
+			
+							<p className="search-song-details">{song.trackName} - {song.releaseDate.split('-')[0]}</p>
 
 
-						<button id={index} onClick={playMusic}> Play </button>
-						<button id={index} className="addingFromSearch" onClick={addSong}> Add </button>
-				
+							<div className="search-actions ">
+								<button id={index} className="play-music-search" onClick={playMusic}> Play </button>
+
+								{userCookie.user == "guest"?"" : <button id={index}  onClick={addSong}> Add </button>}
+							
+							</div>
 					</li>)
 				})}
 
 			</ul>
+		
+			{ currentTrack !== "" || musicSrc !== "" ? <Player musicSrc={musicSrc} /> : "" }
 		</main>
 
-		
-		<Player musicSrc={musicSrc}></Player>
 
+		<Helmet>
+			<meta name="description" content="Search Music: Songs, Albums, Artist and anything music related! Play any song in an instant! Carry the song with to other pages!" />
 
+		</Helmet>
 	</>)
 }

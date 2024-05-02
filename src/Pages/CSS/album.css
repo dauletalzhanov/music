@@ -111,6 +111,7 @@
 	border-bottom: #aaaaaa solid 1px;
 }
 
+
 .album-track:nth-child(odd) {
 	background-color: #f0f0f0;
 	border-bottom: #aaaaaa solid 1px;
@@ -122,6 +123,11 @@
 
 .album-track:last-child {
 	border-bottom: 1px solid #aaaaaa;
+}
+
+.album-track:hover {
+	background-color: #d9d9d9;
+	
 }
 
 .track-rightie {

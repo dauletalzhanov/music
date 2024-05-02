@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { useSelector } from "react-redux";
 
 import { collection, doc, getDocs, where, query, orderBy, limit, deleteDoc } from "firebase/firestore";
 import { db } from '../../firebase'
@@ -34,6 +35,7 @@ export default function Profile(){
 	let [latest, setLatest] = useState("")
 	let [favGenre, setFavGenre] = useState("")
 	let [favArtist, setFavArtist] = useState("")	
+	const { currentTrack } = useSelector((state) => state.player)
 	
 	useEffect(() => {	
 		document.title = `Profile`
@@ -221,6 +223,6 @@ export default function Profile(){
 			</div>
 		</div>
 
-		<Player musicSrc={""}></Player>
+		{ currentTrack ? <Player musicSrc={ "" } /> : "" }
 	</>)
 }

@@ -110,9 +110,14 @@ li {
 	padding: 2vw;
 	border-radius: 4px;
 	color: white;
+
 	display: flex;
 	align-items: center;
 	position: relative;
+}
+
+li:hover {
+	background-color: #d9d9d9;
 }
 
 li > a:focus {
@@ -143,10 +148,12 @@ li > a > img:active {
 	text-decoration: none;
 	font-weight: bold;
 	color: black;
+	max-width: 15vw;
 }
 
 .search-song-details {
 	color: black;
+	max-width: 15vw;
 }
 
 .addingFromSearch {
@@ -177,4 +184,40 @@ li > a > img:active {
 
 .addingFromSearch:focus {
 	border: 2px solid blue;
-  }
+}
+
+/***********************************/
+.search-actions {
+	position: absolute;
+	right: 1vw;
+
+	display: flex;
+	gap: 1vw;
+}
+
+.search-actions > button {
+	border: none;
+	
+	height: 5vh;
+	width: 6vw;
+	border-radius: 8px;
+
+	text-align: center;
+
+	background-color: black;
+	color: white;
+}
+
+.search-actions > button:hover {
+	background-color: #c6a8f7;
+	color: black;
+}
+
+.search-actions > button:active {
+	color: black;
+	background-color: white;
+}
+
+.search-actions > button:focus {
+	border: 2px solid blue;
+}

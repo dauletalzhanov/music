@@ -8,6 +8,7 @@ Web Application themed around music where you can:
 - Browse artists, albums and songs.
 - Save songs into a personal playlist
 - Browse popular charts from billboards: Top Songs, Top Albums, Top Songs Globally
+- Play music!
 
 ## Figma
 - [Wireframes - Figma Link](https://www.figma.com/file/7IF7jA9pTjnaRbCxaD7PFt/MUSIC?type=design&node-id=0%3A1&mode=design&t=hEiavYoXwH2cQrqQ-1 )
