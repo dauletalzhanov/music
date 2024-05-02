@@ -3,7 +3,15 @@ import { Link, useParams } from "react-router-dom"
 import { useCookies } from "react-cookie"
 import { Helmet } from "react-helmet"
 
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import {
+	playTrack,
+	pausePlayback,
+	resumePlayback,
+	stopPlaying,
+	updateTime
+} from "../features/playerSlice"
+
 
 import { addDoc, collection,  } from "firebase/firestore"
 import { db } from "../../firebase"
@@ -30,6 +38,7 @@ export default function Search(){
 	const [userCookie, setUserCookie] = useCookies(["user"])
 
 	// redux
+	const dispatch = useDispatch()
 	const { currentTrack } = useSelector((state) => state.player)
 	//const { currentTrack, isPlaying, playingTime } = useSelector((state) => state.player)
 	
@@ -153,10 +162,11 @@ export default function Search(){
 		//let music = new Audio(song.previewUrl)
 		//await music.play()
 		setMusicSrc(song.previewUrl)
+		dispatch(playTrack(song.previewUrl))
 
-		const walkman = document.querySelector("audio").parentNode
-		if(walkman.classList.contains("invisible") == true)
-			walkman.classList.toggle("invisible")
+		//const walkman = document.querySelector("audio").parentNode
+		//if(walkman.classList.contains("invisible") == true)
+		//	walkman.classList.toggle("invisible")
 	}
 
 
@@ -209,7 +219,7 @@ export default function Search(){
 
 			</ul>
 		
-			{ currentTrack !== "" || musicSrc !== "" ? <Player musicSrc={musicSrc} /> : "" }
+			{ currentTrack !== "" ? <Player musicSrc={musicSrc} /> : "" }
 		</main>
 
 

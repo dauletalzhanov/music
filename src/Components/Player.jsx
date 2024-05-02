@@ -47,12 +47,13 @@ export default function Player({musicSrc = ""}){
 		//console.log(playingTime)
 	}
 
-	async function stopMusic(event){
-		await dispatch(stopPlaying())
+	function stopMusic(event){
+		dispatch(stopPlaying())
+		dispatch(playTrack(""))
 		//useDispatch(stopPlaying())
 		event.target.previousSibling.pause()
 
-		event.target.parentNode.classList.toggle("invisible")
+		//event.target.parentNode.classList.toggle("invisible")
 
 	}
 
@@ -62,8 +63,7 @@ export default function Player({musicSrc = ""}){
 			className="music-player" 
 			onTimeUpdate={ changeTime }
 			ref = { audioRef }
-			
-		/>
+		></audio>
 		<button className="player-stop-button" onClick={stopMusic}> Stop </button>
 	</div>)
 }

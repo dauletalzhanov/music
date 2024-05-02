@@ -3,6 +3,16 @@ import { useParams, Link } from "react-router-dom"
 import React from "react"
 import { useCookies } from "react-cookie"
 
+import { useSelector, useDispatch } from "react-redux"
+
+import {
+    playTrack,
+    pausePlayback,
+    resumePlayback,
+    stopPlaying,
+    updateTime
+} from "../features/playerSlice"
+
 import { db } from "../../firebase"
 import { collection, doc, collectionGroup, addDoc, getDocs, setDoc} from "firebase/firestore";
 
@@ -15,6 +25,7 @@ import "./CSS/album.css"
 export default function Album(){
     const params =  useParams()
     const albumID = params["id"]
+    const { currentTrack } = useSelector((state) => state.player)
 
     const [trackList, setTracks] = useState([])
 	const [albumInfo, setAlbumInfo] = useState({})
@@ -25,7 +36,9 @@ export default function Album(){
     const key = import.meta.env.VITE_keyGIF //process.env.keyGIF
     let url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
 
+    const dispatch = useDispatch()
     const [userCookie, setUserCookier] = useCookies(["user"])
+
 
     useEffect(()=>{
         async function getAlbum(){
@@ -98,6 +111,7 @@ export default function Album(){
         console.log(songLocation)
 
         setMusicSrc(songLocation)
+        dispatch(playTrack(songLocation))
 
 
     }
@@ -179,8 +193,7 @@ export default function Album(){
                 })}
             </ul>
         </main>
+        { currentTrack == "" ? "" :  <Player musicSrc={ musicSrc } /> }
         
-        
-        <Player musicSrc={musicSrc}></Player>
     </>)
 }
