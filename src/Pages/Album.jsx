@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import React from "react"
 import { useCookies } from "react-cookie"
 
@@ -134,7 +134,7 @@ export default function Album(){
                         <img src={albumInfo.albumCover} alt="album cover" id="album-cover" />
                         <div>
                             <h2>{albumInfo.collectionName}</h2>
-                            <h2>{albumInfo.artistName}</h2>
+                            <h2><Link to={"/artist/" + albumInfo.artistId}>{albumInfo.artistName}</Link></h2>
                         </div>
 
                     </div>
@@ -179,7 +179,8 @@ export default function Album(){
                 })}
             </ul>
         </main>
-
+        
+        
         <Player musicSrc={musicSrc}></Player>
     </>)
 }

@@ -52,7 +52,8 @@ function Artist(){
 					alb[i].albumCover = albumCover
 				}
 
-				alb = alb.filter(a => a.trackCount > 3)
+				alb = alb.filter(a => a.collectionName.toLowerCase().includes("single") == false && a.collectionName.toLowerCase().includes(" ep") == false && a.trackCount >= 5)
+				//let alb = dataResult.filter(a => a.collectionName.toLowerCase().includes("single") == false)
 
 				setAlbums([...alb])
 				
@@ -65,10 +66,6 @@ function Artist(){
 		getAlbums()
 	}, [])
 
-	useEffect(()=>{
-		//console.log(albums)
-
-	}, [albums])
 
 	function filterAlbums(event){
 
@@ -115,7 +112,7 @@ function Artist(){
 			let albumName = album.collectionName.toLowerCase()
 			//console.log(albumName)
 
-			return albumName.includes("single")
+			return albumName.includes("single")  || albumName.includes(" ep") || album.trackCount < 5
 		})
 
 		setAlbums(albumFiltered)
@@ -123,7 +120,10 @@ function Artist(){
 
 	function setDefault(){
 
-		let alb = dataResult.filter(a => a.trackCount > 3)
+		//let alb = dataResult.filter(a => a.trackCount > 3)
+		//let alb = dataResult.filter(a => a.collectionName.toLowerCase().includes("single") == false)
+		let alb = dataResult.filter(a => a.collectionName.toLowerCase().includes(" single") == false && a.collectionName.toLowerCase().includes(" ep") == false && a.trackCount >= 5)
+		
 		setAlbums(alb)
 	}
 
@@ -157,8 +157,18 @@ function Artist(){
 				return (
 					<Link key={index} to={albumUrl}>
 						<img className={ styles["artist-album-cover"] } alt={altText} src={ value.albumCover } /> 
+
+						<div>
+							<p role="definition" > { value.collectionName }</p>
+							<p>{ value.releaseDate.slice(0, 10) }</p>
+							<p>{ value.trackCount } { value.trackCount == 1 ? "Song" : "Songs" }</p>
+							<p>{  value.collectionExplicitness }</p>
+							
+							
+
+						</div>
 						
-						<p role="definition" > { value.collectionName }</p> 
+						 
 					</Link>
 				)})
 			}
