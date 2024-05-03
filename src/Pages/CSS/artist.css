@@ -32,6 +32,10 @@ h1 {
 	gap: 1vw;
 }
 
+.artist-albums > a:focus {
+	border: 4px solid blue;
+}
+
 .artist-albums > a:nth-child(even) {
 	background-color: #eeeeee;
 }
@@ -52,7 +56,7 @@ h1 {
 	padding: 1vh 0;
 }
 
-.artist-filter > p {
+.artist-filter > legend {
 	text-align: center;
 	font-weight: 600;
 }

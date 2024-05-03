@@ -219,26 +219,23 @@ function Artist(){
 
 			<a href={artistInfo.artistLinkUrl}>iTunes</a>
 
-			<div className="artist-filter">
-				<p>Filtering and Sorting</p>
-				<input type="text" name="filter-albums" id="filter-albums" placeholder="filter albums here" onChange={filterAlbums}/>
+			<fieldset className="artist-filter">
+				<legend>Filtering and Sorting</legend>
+				<input type="text" name="filter-albums" id="filter-albums-mobile" placeholder="filter albums here" onChange={filterAlbums}/>
 				<button type="button" onClick={ sortDate } >Sort by Date</button>
 				<button type="button" onClick={ sortName } >Sort by Name</button>
 				<button type="button" onClick={ getSingles } > Singles Only </button>
 				<button type="button" onClick={ setDefault } > Default </button>
 				
-				<select name="explicitness" id="explicitness" onChange={selectExplicitness} >
-					<option value="default">Choose Explicitness</option>
+				<select name="explicitness" id="explicitness" aria-labelledby="chooseExplicitness" onChange={selectExplicitness} >
+					<option id="chooseExplicitness" value="default">Choose Explicitness</option>
 					<option value="explicit" >Explicit</option>
 					<option value="notExplicit">Not Explicit</option>
 					<option value="cleaned" >Clean</option>
 				</select>
-			</div>
+			</fieldset>
 
-			<div className="details-about-the-album">
-				
-
-			</div>
+			
 
 			
 		</div>
@@ -259,10 +256,10 @@ function Artist(){
 						<img className="artist-album-cover" alt={ altText } src={ value.albumCover } /> 
 
 						<div>
-							<p aria-label="album name" role="definition" > { value.collectionName }</p>
-							<p aria-label="how release date">{ value.releaseDate.slice(0, 10) }</p>
-							<p aria-label="number of songs">{ value.trackCount } { value.trackCount == 1 ? "Song" : "Songs" }</p>
-							<p aria-label="how naughty the album is">{  value.collectionExplicitness }</p>
+							<p role="definition" > { value.collectionName }</p>
+							<p>{ value.releaseDate.slice(0, 10) }</p>
+							<p>{ value.trackCount } { value.trackCount == 1 ? "Song" : "Songs" }</p>
+							<p>{  value.collectionExplicitness }</p>
 						</div>
 						
 						 
@@ -275,17 +272,17 @@ function Artist(){
 
 		<div className="artist-bottom-panel mobile-only">
 			<div className="bottom-panel-sort">
-				<p>Sort</p>
+				<p role="button" tabIndex="0" >Sort</p>
 				<div className="hovering-sort-artist">
 					<button type="button" onClick={ sortDate } >Sort by Date</button>
 					<button type="button" onClick={ sortName } >Sort by Name</button>
 				</div>
 			</div>
 
-			<button type="button" onClick={ setDefault } > Default </button>
+			<button onClick={ setDefault } > Default </button>
 
 			<div className="bottom-pane-filter">
-				<p className="drop-up-access-filter-albums">Filter</p>
+				<p role="button" tabIndex="0" >Filter</p>
 				<div className="drop-up-filter-albums-artist">
 					<button type="button" onClick={ getSingles } > Singles </button>
 					<button type="button" onClick={ getExplicit } > Explicit </button>

@@ -9,7 +9,7 @@ export default function Signup(){
 	const [userCookie, setCookie] = useCookies(["user"])
 	const navigate = useNavigate()
 	
-	const really = userCookie.user !== "guest" ? <p>You want another account?!</p> : ""
+	const really = userCookie.user == "guest" ? "" : <p>You want to make another account?!</p>
 	function signUp(){
 		console.log("epic")
 
@@ -40,6 +40,8 @@ export default function Signup(){
 
 		<Helmet>
 			<title>Sign Up</title>
+			<meta name="description" content="" />
+			<meta name="keywords" content="iTunes, Apple, Firebase, Google, Music, iTunes, React, Facebook, Meta, giphy, artist, song, billboard, top 100, top, play music, etc.," />
 
 		</Helmet>
 		

@@ -6,6 +6,8 @@ import { Helmet } from "react-helmet";
 import Header from "@/Components/Header";
 
 import "./CSS/login.css"
+import "./CSS/login_mobile.css"
+
 
 export default function Login(){
 	const [user, setUser] = useCookies(["user"])
@@ -22,23 +24,27 @@ export default function Login(){
 	return(<>
 		<Header></Header>
 		
-		<form id="login-form">
-			<div className="login-inputs">
-				<label htmlFor="login-username"> Enter Username </label>
-				<input type="text" name="username" id="login-username" />
-			</div>
+		<fieldset>
+			<legend>Log In!</legend>
+			<form aria-label="login form" id="login-form">
+				<div className= { "login-inputs" }>
+					<label htmlFor="login-username"> Enter Username </label>
+					<input type="text" name="username" id="login-username" />
+				</div>
 
-			<div>
-				<label htmlFor="login-password"> Enter Password </label>
-				<input type="password" name="password" id="login-password" />
-			</div>
+				<div>
+					<label htmlFor="login-password"> Enter Password </label>
+					<input type="password" name="password" id="login-password" />
+				</div>
 
-			<div className="seperator"></div>
+				<div className="seperator"></div>
+			
+				<button type="submit" id="login-button" onClick={submitting}>Submit</button>
+
+				<p>Do not have an account? <Link to="/signup">Sign Up</Link></p>
+			</form>
+		</fieldset>
 		
-			<button type="submit" id="login-button" onClick={submitting}>Submit</button>
-
-			<p>Do not have an account? <Link to="/signup">Sign Up</Link></p>
-		</form>
 
 		<Helmet>
 			<title>Log In</title>
