@@ -37,6 +37,12 @@ Third Party Tools and Libraries:
 - iTunes API
 - Giphy API
 
+## Assists
+Had help from:
+- Used [Box-Shadow](https://www.cssmatic.com/box-shadow) to preview box shadow values.
+- [HTML color picker](https://htmlcolorcodes.com/color-picker/) to pick color for Figma. Was not helpful honestly.
+- Google Fonts
+
 ## How to Install
 Probably not possible because of the custom .env file which requires Giphy Api key and the Firebase Config ¯\_(ツ)_/¯
 

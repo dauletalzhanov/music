@@ -21,7 +21,7 @@ function Header(){
 		check = profilePage
 
 	return(<>
-		<div className="Header">
+		<div aria-label="Header navigation to different parts of the website" className="Header">
 			<div aria-label="navigate to the charts" role="navigation"><NavLink to="/charts">Charts</NavLink></div>
 			<div aria-label="navigate to the search page" role="navigation"><NavLink to="/">Search</NavLink></div>
 			<div aria-label="navigate to the about us" role="navigation"><NavLink to="/landing">Landing</NavLink></div>

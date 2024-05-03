@@ -1,0 +1,71 @@
+@media screen and (min-width: 600px) {
+	.mobile-only {
+		display: none;
+	}
+}
+
+h1 {
+	text-align: center;
+}
+
+.artistSection {
+	position: fixed;
+	padding: 1vh 1vw;
+
+}
+
+/************albums************/
+.artist-albums {
+	margin-top: 1vh;
+	margin-left: 40vw;
+	display: flex;
+	flex-direction: column;
+}
+
+.artist-albums > a {
+	padding: 1vh 0;
+	color: black;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1vw;
+}
+
+.artist-albums > a:nth-child(even) {
+	background-color: #eeeeee;
+}
+
+.artist-album-cover {
+	width: 10vw;
+	transition: width 1s;
+}
+
+.artist-album-cover:hover {
+	width: 15vw;
+}
+
+/************filtering************/
+.artist-filter {
+	display: flex;
+	flex-direction: column;
+	padding: 1vh 0;
+}
+
+.artist-filter > p {
+	text-align: center;
+	font-weight: 600;
+}
+
+.artist-filter > input {
+	border: 1px solid black;
+}
+
+.artist-filter > button {
+	border: 1px solid black;
+}
+
+.artist-filter > button:hover {
+	background-color: #eeeeee;
+}
+

@@ -7,7 +7,8 @@ import Header from "../Components/Header"
 import Player from "@/Components/Player"
 
 //import "./CSS/artist.css"
-import styles from "./CSS/artist.module.css"
+import "./CSS/artist.css"
+import "./CSS/artist_mobile.css"
 
 function Artist(){
 	const params = useParams()
@@ -17,6 +18,8 @@ function Artist(){
 	let [artistInfo, setAristInfo] = useState({})
 	let [dataResult, setDataResults] = useState([])
 	let [orderDate, setOrderDate] = useState("desc")
+	let [orderName, setOrderName] = useState("desc")
+	
 
 	useEffect(()=>{
 		const artistID = params['id']
@@ -86,7 +89,6 @@ function Artist(){
 
 	function sortDate(){
 		let albumSorted = albums.sort((a, b) => {
-
 			const firstDate = new Date(a.releaseDate.slice(0, 10)) 
 			const seconDate = new Date(b.releaseDate.slice(0, 10)) 
 
@@ -105,6 +107,19 @@ function Artist(){
 
 		setAlbums(albumSorted)
 
+	}
+
+	function sortName(specific = "desc"){
+		let albumSorted = []
+		if(orderName == "asc"){
+			albumSorted = albums.slice().sort((a, b) => a.collectionName.localeCompare(b.collectionName))
+			setOrderName("desc")
+		} else {
+			albumSorted = albums.slice().sort((a, b) => b.collectionName.localeCompare(a.collectionName))
+			setOrderName("asc")
+		}
+			
+		setAlbums(albumSorted)
 	}
 
 	function getSingles(){
@@ -127,10 +142,61 @@ function Artist(){
 		setAlbums(alb)
 	}
 
+	function selectExplicitness(event){
+		const selectedOption = event.target.value
+		
+		if(selectedOption == "default"){
+			setDefault()
+			return
+		}
+		let albumFiltered = []
+
+		albumFiltered = dataResult.filter((album)=> album.collectionExplicitness == selectedOption)
+		
+		/*
+		if(albums.length == 0)
+			albumFiltered = dataResult.filter((album)=> album.collectionExplicitness == selectedOption)
+		else
+			albumFiltered = albums.filter((album)=> album.collectionExplicitness == selectedOption)
+		*/
+
+		setAlbums(albumFiltered)
+
+
+	}
+
+	function hoverAlbum(event){
+		const id = event.target.getAttribute("id")
+		const target = albums[id]
+		//console.log(target)
+		
+		let details = document.querySelector(".details-about-the-album")
+		details.innerHTML = ""
+
+		for(let key in target){
+			let node = document.createElement("p")
+
+			let inputText = ""
+			if(typeof target[key] == "string")
+				inputText = `${key} : ${ target[key].length < 50 ? target[key] : "too long" }`
+			else
+				inputText = `${key} : ${target[key]}`
+			
+			if(inputText.includes("too long"))
+				continue
+			
+			
+			
+			node.innerHTML = inputText
+			//details.appendChild(node)
+			
+		}
+	}
+
 	return(<>
 		<Header></Header>
 
-		<div role="contentinfo" className={styles.artistSection}>
+		<div role="contentinfo" className="artistSection desktop-only">
 			<p>Artist Name: {artistInfo.artistName}</p>
 			<p>Primary Genre: {artistInfo.primaryGenreName}</p>
 			
@@ -138,34 +204,50 @@ function Artist(){
 
 			<a href={artistInfo.artistLinkUrl}>iTunes</a>
 
-			<form action="">
-				<input type="text" name="filter-albums" id="filter-albums" onChange={filterAlbums}/>
-				<button type="button" onClick={sortDate} >Sort by Date</button>
-				<button type="button" onClick={getSingles} > Singles Only </button>
-				<button type="button" onClick={setDefault} > Default </button>
+			<div className="artist-filter">
+				<p>Filtering and Sorting</p>
+				<input type="text" name="filter-albums" id="filter-albums" placeholder="filter albums here" onChange={filterAlbums}/>
+				<button type="button" onClick={ sortDate } >Sort by Date</button>
+				<button type="button" onClick={ sortName } >Sort by Name</button>
+				<button type="button" onClick={ getSingles } > Singles Only </button>
+				<button type="button" onClick={ setDefault } > Default </button>
 				
+				<select name="explicitness" id="explicitness" onChange={selectExplicitness} >
+					<option value="default">Choose Explicitness</option>
+					<option value="explicit" >Explicit</option>
+					<option value="notExplicit">Not Explicit</option>
+					<option value="cleaned" >Clean</option>
+				</select>
+			</div>
+
+			<div className="details-about-the-album">
 				
-			</form>
+
+			</div>
 
 			
 		</div>
 
-		<div role="main" className={styles.albums}>
+		<div className="artist-info mobile-only">
+			<p>{artistInfo.artistName}</p>
+			<input type="text" name="filter-albums" id="filter-albums" placeholder="filter albums here" onChange={filterAlbums}/>
+
+
+		</div>
+
+		<div aria-label="list of albums" role="main" className="artist-albums">
 			{albums.map((value, index)=> {
 				const altText = `album cover for "${ value.collectionName }"`
 				const albumUrl = `/album/${ value.collectionId }`
 				return (
-					<Link key={index} to={albumUrl}>
-						<img className={ styles["artist-album-cover"] } alt={altText} src={ value.albumCover } /> 
+					<Link key={index} id={index} onMouseEnter={hoverAlbum} to={albumUrl}>
+						<img className="artist-album-cover" alt={ altText } src={ value.albumCover } /> 
 
 						<div>
-							<p role="definition" > { value.collectionName }</p>
-							<p>{ value.releaseDate.slice(0, 10) }</p>
-							<p>{ value.trackCount } { value.trackCount == 1 ? "Song" : "Songs" }</p>
-							<p>{  value.collectionExplicitness }</p>
-							
-							
-
+							<p aria-label="album name" role="definition" > { value.collectionName }</p>
+							<p aria-label="how release date">{ value.releaseDate.slice(0, 10) }</p>
+							<p aria-label="number of songs">{ value.trackCount } { value.trackCount == 1 ? "Song" : "Songs" }</p>
+							<p aria-label="how naughty the album is">{  value.collectionExplicitness }</p>
 						</div>
 						
 						 
@@ -178,7 +260,8 @@ function Artist(){
 
 		<Helmet>
 			<title> Artist: { artistInfo.artistName ? artistInfo.artistName : "Loading" } </title>
-			<meta name="description" content="Browse Artist" />
+			<meta name="description" content={ `Music Catalogue for the Artist: "${artistInfo.artistName ? artistInfo.artistName : "Loading"}". Their entire discography available right here.` } />
+			<meta name="keywords" content={ `Music, iTunes, Apple, ${ artistInfo.artistName ? artistInfo.artistName + ", " + dataResult.slice(0, 10).map((a) => a.collectionName) : "Loading" }`} />
 
 		</Helmet>
 

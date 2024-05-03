@@ -144,6 +144,8 @@ export default function Search(){
 			length: convertTime(song.trackTimeMillis),
 			artworkURL: song.artworkUrl100.replace("100x100bb", "1000x1000bb"),
 			genre: song.primaryGenreName,
+            musicSrc: song.previewUrl,
+            albumID: song.collectionId,
 			user: userCookie.user
 		}
 

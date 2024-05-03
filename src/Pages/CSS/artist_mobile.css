@@ -1,0 +1,63 @@
+@media screen and (max-width: 600px) {
+	/* Your mobile-specific styles here */
+	.desktop-only {
+		display: none;
+	}
+
+	.artist-albums {
+		margin-left: 0;
+		
+		display: flex;
+		align-items: center;
+		
+	}
+
+	.artist-albums > a {
+		padding: 3vw;
+		margin: 2vh 0;
+		width: 90vw;
+
+		border: 1px solid black;
+		border-radius: 1.11vw;
+
+		font-size: 3vw;
+	}
+
+	.artist-album-cover {
+		width: 22vw;
+		border-radius: 0.66vw;
+	}
+
+	.artist-album-cover:hover {
+		width: 35vw;
+	}
+
+	.artist-info {
+		position: fixed;
+		width: 100%;
+		background-color: #000000cc;
+		
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.artist-info > p {
+		text-align: center;
+		font-size: 5vw;
+		color: white;
+	}
+
+	.artist-info > input {
+		width: 83vw;
+		height: 3.75vh;
+		margin: 1.875vh 0;
+
+		border-radius: 32px;
+		text-align: center;
+
+		-webkit-box-shadow: inset 10px 10px 18px -6px rgba(33,33,33,1);
+		-moz-box-shadow: inset 10px 10px 18px -6px rgba(33,33,33,1);
+		box-shadow: inset 10px 10px 18px -6px rgba(33,33,33,1);
+	}
+  }

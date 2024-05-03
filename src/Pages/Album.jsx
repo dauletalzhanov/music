@@ -130,6 +130,8 @@ export default function Album(){
             artistURL : song.artistId,
             genre: song.primaryGenreName,
             length: convertTime(song.trackTimeMillis),
+            musicSrc: song.previewUrl,
+            albumID: song.collectionId,
             user: userCookie.user
             //timeAdded: new Date().now(),
         }
