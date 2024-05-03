@@ -193,6 +193,21 @@ function Artist(){
 		}
 	}
 
+	function getExplicit(){
+		let albumFiltered = dataResult.filter((album)=> album.collectionExplicitness == "explicit")
+		setAlbums(albumFiltered)
+	}
+
+	function getNotExplicit(){
+		let albumFiltered = dataResult.filter((album)=> album.collectionExplicitness == "notExplicit")
+		setAlbums(albumFiltered)
+	}
+
+	function getClean(){
+		let albumFiltered = dataResult.filter((album)=> album.collectionExplicitness == "cleaned")
+		setAlbums(albumFiltered)
+	}
+
 	return(<>
 		<Header></Header>
 
@@ -260,17 +275,22 @@ function Artist(){
 
 		<div className="artist-bottom-panel mobile-only">
 			<div className="bottom-panel-sort">
-				<p>it is </p>
-
+				<p>Sort</p>
+				<div className="hovering-sort-artist">
+					<button type="button" onClick={ sortDate } >Sort by Date</button>
+					<button type="button" onClick={ sortName } >Sort by Name</button>
+				</div>
 			</div>
 
-			<button>Default</button>
+			<button type="button" onClick={ setDefault } > Default </button>
 
 			<div className="bottom-pane-filter">
-				<p className="drop-up-access-filter-albums">hee</p>
+				<p className="drop-up-access-filter-albums">Filter</p>
 				<div className="drop-up-filter-albums-artist">
-					<p>Singles Only</p>
-					<p>Explicitnes</p>
+					<button type="button" onClick={ getSingles } > Singles </button>
+					<button type="button" onClick={ getExplicit } > Explicit </button>
+					<button type="button" onClick={ getNotExplicit } > Not Explicit </button>
+					<button type="button" onClick={ getClean } > Cleaned </button>
 				</div>
 				
 

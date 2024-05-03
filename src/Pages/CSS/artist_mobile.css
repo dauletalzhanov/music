@@ -4,6 +4,11 @@
 		display: none;
 	}
 
+	.Header {
+		position: fixed;
+		top: 0;
+	}
+
 	.artist-albums {
 		margin-left: 0;
 		
@@ -23,6 +28,10 @@
 		font-size: 3vw;
 	}
 
+	.artist-albums > a:first-child {
+		margin-top: 12vh;
+	}
+
 	.artist-albums > a:last-child {
 		margin-bottom: 15vh;
 	}
@@ -38,6 +47,9 @@
 
 	.artist-info {
 		position: fixed;
+		top: 8vw;
+		padding-top: 2vh;
+
 		width: 100%;
 		background-color: #000000cc;
 		
@@ -80,10 +92,8 @@
 	}
 
 	.artist-bottom-panel > div {
-		background-color: white;
 		width: 20vw;
 		height: 5vh;
-		color: black;
 		text-align: center;
 
 		position: relative;
@@ -93,10 +103,89 @@
 		display: none;
 	}
 
+	.bottom-pane-filter {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+	}
+
 	.bottom-pane-filter:hover > .drop-up-filter-albums-artist {
 		display: flex;
 		flex-direction: column-reverse;
+		gap: 3vh;
+
 		position: absolute;
-		top: -10vh;
+		bottom: 7vh;
+
+		background-color: rgba(0, 0, 0, 0.5);
+
+		border-top-left-radius: 10vw;
+		border-top-right-radius: 10vw;
+		border-radius: 4vw;
+		
+
+		-webkit-box-shadow: 0px 0px 28px 8px rgba(148,148,148,1);
+		-moz-box-shadow: 0px 0px 28px 8px rgba(148,148,148,1);
+		box-shadow: 0px 0px 28px 8px rgba(148,148,148,1);
+	}
+
+	.drop-up-filter-albums-artist > button {
+		background-color: black;
+		border-radius: 10vw;
+
+		color: white;
+
+		height: 5vh;
+		width: 30vw;
+	}
+
+	.drop-up-filter-albums-artist > button:hover {
+		color: black;
+		background-color: white;
+	}
+
+	.bottom-panel-sort {
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+		justify-content: center;
+		
+
+		position: relative;
+
+	}
+
+	.hovering-sort-artist {
+		display: none;
+
+	}
+
+	.bottom-panel-sort:hover > .hovering-sort-artist {
+		display: flex;
+		flex-direction: column-reverse;
+		gap: 3vh;
+
+		border-radius: 4vw;
+		background-color: rgba(0, 0, 0, 0.5);
+
+		position: absolute;
+		bottom: 7vh;
+		
+	}
+
+	.hovering-sort-artist > button {
+		background-color: black;
+		color: white;
+		
+		border-radius: 10vw;
+
+		height: 5vh;
+		width: 30vw;
+	}
+
+	.hovering-sort-artist > button:hover {
+		background-color: white;
+		color: black;
 	}
   }
