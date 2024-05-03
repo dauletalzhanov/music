@@ -254,6 +254,28 @@ function Artist(){
 					</Link>
 				)})
 			}
+
+			
+		</div>
+
+		<div className="artist-bottom-panel mobile-only">
+			<div className="bottom-panel-sort">
+				<p>it is </p>
+
+			</div>
+
+			<button>Default</button>
+
+			<div className="bottom-pane-filter">
+				<p className="drop-up-access-filter-albums">hee</p>
+				<div className="drop-up-filter-albums-artist">
+					<p>Singles Only</p>
+					<p>Explicitnes</p>
+				</div>
+				
+
+				
+			</div>
 		</div>
 
 		{ currentTrack ? <Player /> : "" }
