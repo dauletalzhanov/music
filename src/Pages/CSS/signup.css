@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP&family=Oswald:wght@200..700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sawarabi+Mincho&family=Tenor+Sans&display=swap');
+
+
+#background-signup {
+	width: 100vw;
+	height: 100vh;
+	
+	background-image: url("../../assets/guitar.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-blend-mode: darken;
+
+	
+	display: grid;
+	grid-template-rows: 10vh 90vh;
+	grid-template-columns: 30vw 70vw;
+	
+
+	color: white;
+
+	
+}
+
+#background-signup > Header {
+	grid-column-start: 0;
+	grid-column-end: 2;
+}
+
+#background-signup > .leftie-background-signup {
+	grid-row-start: 2;
+	padding: 1vh;
+
+	justify-self: center;
+}
+
+#background-signup > .rightie-background-signup {
+	grid-row-start: 2;
+	background-color: #00000080;
+	
+
+	padding: 1vw;
+
+	width: 70vw;
+	height: 90vh;
+
+	place-self: center;
+
+	text-align: center;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/*****************************************/
+
+.signup-logo {
+	height: 10vh;
+	margin-top: 20vh;
+
+	display: flex;
+	align-items: center;
+}
+
+.signup-logo > img {
+	height: 5vw;
+}
+
+.signup-logo > p {
+	font-size: 5vw;
+	font-family: "Sawarabi Mincho", "Roboto Serif", serif;
+}
+
+.rightie-background-signup > p {
+	margin-top: 10vh;
+	font-size: 30px;
+	font-family: "Oswald", "Roboto", sans-serif;
+
+	width: 18vw;
+}
+
+/*****************************************/
+.leftie-background-signup {
+	display: flex;
+	flex-direction: column;
+}
+
+.signup-texts {
+	margin-top: 12vh;
+	margin-bottom: 5vh;
+
+	font-family: "Roboto", "San Francisco", sans-serif;
+	font-weight: 500;
+	font-size: 1vw;
+	color: #3a3a3a;
+}
+
+#create-an-account {
+	font-size: 2vw;
+	margin: 1vh 0;
+	color: black;
+	font-weight: 700;
+}
+
+.signup-form {
+	margin-top: 5vh;
+}
+
+#really {
+	font-size: 1vw;
+}
+
+/*****************************************/
+
+.signup-form {
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1vw;
+}
+
+.signup-form > div {
+	display: flex;
+	flex-direction: column;
+
+	font-family: "Roboto", sans-serif;
+	
+}
+
+.signup-form > div > input {
+	color: black;
+	width: 25vw;
+	height: 4vh;
+	padding-left: 0.4vw;
+
+	background-color: rgba(255, 255, 255, 0.33);
+}
+
+.signup-form > div > input:focus {
+	background-color: #efeeff;
+	border: 1px solid rgba(0, 0, 255, 1);
+	border-radius: 8px;
+	outline: none;
+}
+
+.signup-button {
+	background-color: rgba(0, 0, 255, 0.5);
+	width: 10vw;
+	height: 6vh;
+	border-radius: 32px;
+}
+
+.signup-button:focus {
+	background-color: blue;
+	outline: 1px solid black;
+	border: 1px solid black;
+}
+
+.signup-button:active {
+	background-color: blue;
+	outline: 1px solid black;
+	border: 1px solid black;
+}

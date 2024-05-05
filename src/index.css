@@ -4,6 +4,25 @@
 	src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP&family=Oswald:wght@200..700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sawarabi+Mincho&family=Tenor+Sans&display=swap');
+
+/*
+"Roboto"
+"Roboto Sans"
+"Bebas Neue"
+"Playfair Display SC"
+"Playfair Display"
+"Tenor Sans"
+"Oswald"
+"Noto Sans JP"
+"Noto Serif JP"
+"EB Garamond"
+"Sawarabi Mincho"
+
+
+
+*/
+
 body {
 	font-family: 'San Francisco', Helvetica, sans-serif;
 	margin: 0;
@@ -26,6 +45,7 @@ body {
 .Header > div > a {
 	text-decoration: none;
 	color: white;
+	font-size: 1vw;
 }
 
 .Header > div > a:focus {
@@ -58,4 +78,8 @@ body {
 
 .invisible {
 	display: none;
+}
+
+a:focus {
+	border: 1px solid blue;
 }

@@ -49,6 +49,8 @@ export default function Login(){
 		<Helmet>
 			<title>Log In</title>
 			<meta name="description" content="Log In to Add Songs to Charts" />
+			<meta name="keywords" content="Log In, Login, Register, Signup, Sign Up, Log Out, Logout, iTunes, Apple, Firebase, Google, Music, iTunes, React, Facebook, Meta, giphy, artist, song, billboard, top 100, top, play music, etc.," />
+
 		</Helmet>	
 	</>)
 }
