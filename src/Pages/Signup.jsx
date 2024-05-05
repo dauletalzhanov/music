@@ -24,36 +24,40 @@ export default function Signup(){
 		<div id="background-signup" className="desktop-only" >
 			<Header></Header>
 
-			<div className="leftie-background-signup ">
+			<main className="leftie-background-signup ">
 				<div className="signup-texts">
-					<p aria-roledescription="paragraph" >Welcome to Smoky Music!</p>
+					<p aria-label="welcome sign" role="banner" >Welcome to Smoky Music!</p>
 
-					<p id="create-an-account">Create an Account!</p>
-					<p>Already have an account? <Link role="link" to="/login" aria-label="Navigate to the log in page" >Log In</Link></p>
+					<p role="contentinfo" id="create-an-account">Create an Account!</p>
+					<nav aria-label="Takes you to the log in page">
+						<p >Already have an account? <Link role="link" to="/login" aria-label="Navigate to the log in page" >Log In</Link></p>
+					</nav>
+					
 				</div>
 				
 				{ really }
 
-				<form className="signup-form">
-					<div>
-						<label htmlFor="username">Username:</label>
-						<input type="text" name="username" id="username" aria-label="Username"  />
-					</div>
+				<form className="signup-form" aria-label="Sign Up Form">
+					<fieldset className="signup-form">
+						<div>
+							<label htmlFor="username">Username:</label>
+							<input type="text" name="username" id="username" aria-label="Username" />
+						</div>
 
-					<div>
-						<label htmlFor="password">Password:</label>
-						<input type="password" name="password" id="password" aria-label="Password" />
-					</div>
+						<div>
+							<label htmlFor="password">Password:</label>
+							<input type="password" name="password" id="password" aria-label="Password" />
+						</div>
 
-					<div>
-						<label htmlFor="confirm-password">Confirm Password:</label>
-						<input type="password" name="confirm-password" id="confirm-password" aria-label="Confirm Password" />
-					</div>
+						<div>
+							<label htmlFor="confirm-password">Confirm Password:</label>
+							<input type="password" name="confirm-password" id="confirm-password" aria-label="Confirm Password" />
+						</div>
+					</fieldset>
 
-					<button onClick={signUp} className="signup-button">Sign Up</button>
-					
+					<button type="submit" onClick={signUp} className="signup-button">Sign Up</button>
 				</form>
-			</div>
+			</main>
 
 			<div className="rightie-background-signup">
 				<div className="signup-logo">
