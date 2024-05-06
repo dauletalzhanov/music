@@ -1,21 +1,67 @@
 import { Helmet } from "react-helmet"
 import { Link, useNavigate } from "react-router-dom"
 import { useCookies } from "react-cookie"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import bcrypt from "bcryptjs"
+
+import { collection, doc, getDocs, getDoc, setDoc, where, query, orderBy, limit, deleteDoc } from "firebase/firestore"
+import { db } from '../../firebase'
 
 import Header from "../Components/Header"
 
-
 import white_logo from "../assets/white_logo.svg"
+
 import "./CSS/signup.css"
+import "./CSS/signup_mobile.css"
 
 export default function Signup(){
 	const [userCookie, setCookie] = useCookies(["user"])
 	const navigate = useNavigate()
+	const [errors, setErrors] = useState([])
 	
 	const really = userCookie.user == "guest" ? "" : <p id="really"> You want to make another account?!</p>
-	function signUp(){
-		console.log("epic")
+	
+	async function signUp(event){
+
+		event.preventDefault();
+		const formData = new FormData(event.target);
+
+		const username = formData.get("username")
+		const password = formData.get("password")
+		const confirmpassword = formData.get("confirm_password")
+
+		if(password !== confirmpassword){
+			//alert("passwords dont match")
+			if(errors.includes("Passwords do not match") == false)
+				setErrors(c => [...c, "Passwords do not match"])
+			return
+		}
+
+		
+		const docRef = doc(db, "user", username)
+		const usersSnap = await getDoc(docRef)
+		
+		if(usersSnap.exists()){
+			console.log("user exists")
+			if(errors.includes(`${username} already exists`) == false)
+				setErrors(c => [...c, `${username} already exists`])
+			return 
+		}
+
+		const salt = await bcrypt.genSalt(10)
+		const hash = await bcrypt.hash(password, salt)
+		
+		let newUser = {
+			username: username,
+			password: hash,
+			mood: "find me"
+		}
+
+		console.log(newUser)
+
+		await setDoc(doc(db, "user", username), newUser)
+		setCookie("user", username)
+		navigate("/profile")
 
 	}
 	
@@ -37,25 +83,30 @@ export default function Signup(){
 				
 				{ really }
 
-				<form className="signup-form" aria-label="Sign Up Form">
+				<form className="signup-form mobile-only" aria-label="Sign Up Form" onSubmit={signUp}>
+					<div className="error-messages">
+						{ errors.map((i) => <p>{i}</p>) }
+					</div>
 					<fieldset className="signup-form">
 						<div>
 							<label htmlFor="username">Username:</label>
-							<input type="text" name="username" id="username" aria-label="Username" />
+							<input type="text" name="username" id="username" aria-label="Username" required />
 						</div>
 
 						<div>
 							<label htmlFor="password">Password:</label>
-							<input type="password" name="password" id="password" aria-label="Password" />
+							<input type="password" name="password" id="password" aria-label="Password" required />
 						</div>
 
 						<div>
 							<label htmlFor="confirm-password">Confirm Password:</label>
-							<input type="password" name="confirm-password" id="confirm-password" aria-label="Confirm Password" />
+							<input type="password" name="confirm_password" id="confirm_password" aria-label="Confirm Password" required />
 						</div>
 					</fieldset>
 
-					<button type="submit" onClick={signUp} className="signup-button">Sign Up</button>
+					<button type="submit" className="signup-button">Sign Up</button>
+
+
 				</form>
 			</main>
 
@@ -71,6 +122,8 @@ export default function Signup(){
 			
 
 		</div>
+
+		
 
 		<Helmet>
 			<title>Sign Up</title>
