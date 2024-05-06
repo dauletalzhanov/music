@@ -24,7 +24,7 @@
 
 	.signup-form > div {
 		width: 90vw;
-		font-size: 4vh;
+		font-size: 8vw;
 
 		display: flex;
 		align-items: center;
@@ -38,9 +38,10 @@
 
 	.signup-button {
 		margin-top: 5vh;
-		font-size: 5vh;
+		font-size: 10vw;
 		width: 50vw;
 		height: 10vh;
+
 	}
 
 

@@ -1,8 +1,12 @@
 import Header from "../Components/Header"
 import { Helmet } from "react-helmet"
 import { useCookies } from "react-cookie"
-import { redirect, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
+
+import "./CSS/logout.css"
+import "./CSS/logout_mobile.css"
+
 
 
 export default function Logout(){
@@ -28,10 +32,10 @@ export default function Logout(){
 	return(<>
 		<Header></Header>
 
-		<div>
+		<div id="logout">
 			<p> Are you sure you want to log out? </p>
 
-			<div>
+			<div id="logout-buttons">
 				<button onClick={signOut}> Yes </button>
 				<button onClick={leave}> No </button>
 			</div>

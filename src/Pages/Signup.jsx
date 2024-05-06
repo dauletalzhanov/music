@@ -123,6 +123,32 @@ export default function Signup(){
 
 		</div>
 
+		<form className="signup-form mobile-only" aria-label="Sign Up Form" onSubmit={signUp}>
+			<div className="error-messages">
+				{ errors.map((i) => <p>{i}</p>) }
+			</div>
+			<fieldset className="signup-form">
+				<div>
+					<label htmlFor="username">Username:</label>
+					<input type="text" name="username" id="username" aria-label="Username" required />
+				</div>
+
+				<div>
+					<label htmlFor="password">Password:</label>
+					<input type="password" name="password" id="password" aria-label="Password" required />
+				</div>
+
+				<div>
+					<label htmlFor="confirm-password">Confirm Password:</label>
+					<input type="password" name="confirm_password" id="confirm_password" aria-label="Confirm Password" required />
+				</div>
+			</fieldset>
+
+			<button type="submit" className="signup-button">Sign Up</button>
+
+
+		</form>
+
 		
 
 		<Helmet>
