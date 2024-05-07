@@ -21,6 +21,7 @@ import SearchTerm from "../Components/SearchTerm"
 import Player from "../Components/Player"
 
 import './CSS/search.css'
+import "./CSS/search_mobile.css"
 
 import "./CSS/album.css?inline"
 import "./CSS/profile.css?inline"
@@ -184,7 +185,7 @@ export default function Search(){
 		
 		<main>
 			<div>
-				
+
 			</div>
 			<ul className="results">
 				{ searchResults.length == 0 ? "No Songs Here" : searchResults.map((song, index)=> {
@@ -201,10 +202,14 @@ export default function Search(){
 								/>
 							</Link>
 
-							<Link className="search-artist" to={"/artist/" + song.artistId}>{song.artistName} -</Link>
-			
-							<p className="search-song-details">{song.trackName} - {song.releaseDate.split('-')[0]}</p>
+							<div className="search-album-details">
+								<Link className="search-artist" to={"/artist/" + song.artistId}>{song.artistName}</Link>
 
+								<p className="search-song-details">{song.trackName}</p>
+								<p> { song.releaseDate.split('-')[0] } </p>
+							</div>
+
+							
 
 							<div className="search-actions ">
 								<button id={index} className="play-music-search" onClick={playMusic}> Play </button>

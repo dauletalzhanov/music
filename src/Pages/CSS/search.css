@@ -72,24 +72,24 @@ body {
 }
 
 .form-control {
-  padding-top: 0; /* Adjust as needed */
+  padding-top: 0; 
 }
 
 .form-label {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0.7vh 0.5vw; /* Adjust as needed */
+  padding: 0.7vh 0.5vw; 
   pointer-events: none;
   transition: all 0.2s ease-out;
-  color: #000000; /* Bootstrap text color for placeholder */
+  color: #000000; 
 }
 
 .form-control:focus + .form-label,
 .form-control:not(:placeholder-shown) + .form-label {
   transform: translateY(-100%);
-  font-size: 0.75rem; /* Adjust as needed */
-  color: #495057; /* Bootstrap text color for active input */
+  font-size: 0.7vw; 
+  color: black; 
 }
 
 
@@ -142,6 +142,17 @@ li > a > img:hover {
 
 li > a > img:active {
 	border: 5px solid white;
+}
+
+li > div.search-album-details {
+	align-self: flex-start;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	height: 7vw;
+	color: black;
 }
 
 .search-artist {

@@ -1,0 +1,73 @@
+@media screen and (max-width: 600px) {
+	.Header {
+		z-index: 1;
+	}
+
+
+	#search-bar {
+		width: 58vw;
+		height: 11vw;
+		font-size: 3.33vw;
+		padding-left: 3vw;
+	}
+
+	.search > button {
+		height: 11vw;
+		width: 27vw;
+		font-size: 3.33vw;
+	}
+
+	.form-label {
+		padding: 3vw 3vw;
+	}
+
+	.form-control:focus + .form-label,
+	.form-control:not(:placeholder-shown) + .form-label {
+		transform: translateY(-75%);
+		font-size: 2.5vw; 
+	}
+
+	/*****************************/
+	li {
+		width: 85vw;
+
+		padding: 3vw;
+
+		font-size: 3vw;
+	}
+
+	li > a > img {
+		width: 20vw;
+		height: 20vw;
+		border-radius: 1vw;
+
+	}
+
+	li > a > img:hover {
+		width: 20vw;
+		height: 20vw;
+	}
+
+	.search-artist, .search-song-details  {
+		max-width: 30vw;
+
+	}
+
+	.search-actions {
+		display: flex;
+		flex-direction: column;
+
+		right: 4vw;
+	}
+
+	.search-actions > button {
+		height: 7vw;
+		width: 17.5vw;
+		border-radius: 1.11vw;
+
+
+	}
+
+
+	/*****************************/
+}
