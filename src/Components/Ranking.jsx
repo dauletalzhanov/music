@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-function Ranking({title, url}){
+function Ranking({title, url, invisible}){
 	const [songs, setSongs] = useState([])
 
 	useEffect(()=>{
@@ -16,7 +16,7 @@ function Ranking({title, url}){
 	}, [])
 
 	
-	return(<div className="ranking">
+	return(<div className={`ranking ${invisible?"invisible":""}`}>
 		<p className="ranking-title">{title}</p>
 
 		{songs.map((song, index) => {

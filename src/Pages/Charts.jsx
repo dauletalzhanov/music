@@ -134,15 +134,9 @@ export default function Charts() {
                     <p onClick={handleGlobal}>Global</p>
                 </div>
 
-                <Ranking title='Albums' url={url200} />
+                <Ranking title='Albums' url={url200} invisible={true} />
                 <Ranking title='Songs' url={url100} />
-                <Ranking title='Global' url={urlGlo} />
-                
-
-                
-                
-                
-                
+                <Ranking title='Global' url={urlGlo} invisible={true} />
 
             </div>
 

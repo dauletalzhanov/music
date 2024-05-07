@@ -159,16 +159,9 @@ export default function Search(){
 		const id = event.target.getAttribute("id")
 		const song = searchResults[id]
 
-		
-
-		//let music = new Audio(song.previewUrl)
-		//await music.play()
 		setMusicSrc(song.previewUrl)
 		dispatch(playTrack(song.previewUrl))
 
-		//const walkman = document.querySelector("audio").parentNode
-		//if(walkman.classList.contains("invisible") == true)
-		//	walkman.classList.toggle("invisible")
 	}
 
 
@@ -190,6 +183,9 @@ export default function Search(){
 		</div>
 		
 		<main>
+			<div>
+				
+			</div>
 			<ul className="results">
 				{ searchResults.length == 0 ? "No Songs Here" : searchResults.map((song, index)=> {
 
