@@ -20,11 +20,11 @@ export default function Charts() {
     const [end, setEnd] = useState('');
     const { currentTrack } = useSelector((state) => state.player)
 
-    const url100 = 'https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-hot-100/recent.json';
-    const url200 = 'https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-200/recent.json';
-    const urlGlo = 'https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-global-200/recent.json';
+    const url100 = 'https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-hot-100/recent.json'
+    const url200 = 'https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-200/recent.json'
+    const urlGlo = 'https://raw.githubusercontent.com/KoreanThinker/billboard-json/main/billboard-global-200/recent.json'
 
-    let [mobileRank, setMobile] = useState(url100)
+    const [mobileRank, setMobile] = useState(url100)
 
     useEffect(() => {
         async function getDates(url) {
@@ -54,6 +54,8 @@ export default function Charts() {
 		//document.title = `Billboard Rankings`
     }, []);
 
+    useEffect(()=>{}, [mobileRank])
+
     function handleAlbum(event){
         let kids = event.target.parentNode.querySelectorAll("p")
         for(let i=0; i<kids.length; i++){
@@ -62,7 +64,16 @@ export default function Charts() {
 
         event.target.classList.toggle("charts-selected")
 
-        setMobile(url200)
+        let rankings = document.querySelectorAll(".charts-mobile > .ranking")
+        for(let i=0; i<rankings.length; i++){
+            rankings[i].classList.add("invisible")
+        }
+
+        rankings[0].classList.remove("invisible")
+
+
+        //setMobile(url200)
+        //console.log(mobileRank)
     }
 
     function handleSongs(event){
@@ -73,7 +84,15 @@ export default function Charts() {
 
         event.target.classList.toggle("charts-selected")
 
-        setMobile(url100)
+        let rankings = document.querySelectorAll(".charts-mobile > .ranking")
+        for(let i=0; i<rankings.length; i++){
+            rankings[i].classList.add("invisible")
+        }
+
+        rankings[1].classList.remove("invisible")
+
+        //setMobile(url100)
+        //console.log(mobileRank)
     }
 
     function handleGlobal(event){
@@ -84,7 +103,15 @@ export default function Charts() {
 
         event.target.classList.toggle("charts-selected")
 
-        setMobile(urlGlo)
+        let rankings = document.querySelectorAll(".charts-mobile > .ranking")
+        for(let i=0; i<rankings.length; i++){
+            rankings[i].classList.add("invisible")
+        }
+
+        rankings[2].classList.remove("invisible")
+
+        //setMobile(urlGlo)
+        //console.log(mobileRank)
     }
 
     return(<>
@@ -107,7 +134,15 @@ export default function Charts() {
                     <p onClick={handleGlobal}>Global</p>
                 </div>
 
-                <Ranking url={ mobileRank } />
+                <Ranking title='Albums' url={url200} />
+                <Ranking title='Songs' url={url100} />
+                <Ranking title='Global' url={urlGlo} />
+                
+
+                
+                
+                
+                
 
             </div>
 

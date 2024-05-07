@@ -1,5 +1,5 @@
 @media screen and (max-width: 600px) {
-	.desktop-only, .ranking-title {
+	.desktop-only, .ranking-title, .invisible {
 		display: none;
 	} 
 
