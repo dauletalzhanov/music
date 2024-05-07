@@ -11,6 +11,7 @@ import { db } from '../../firebase'
 import Player from "@/Components/Player";
 
 import "./CSS/profile.css"
+import "./CSS/profile_mobile.css"
 
 import "./CSS/album.css?inline"
 import "./CSS/search.css?inline"

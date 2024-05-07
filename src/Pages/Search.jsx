@@ -206,6 +206,7 @@ export default function Search(){
 								<Link className="search-artist" to={"/artist/" + song.artistId}>{song.artistName}</Link>
 
 								<p className="search-song-details">{song.trackName}</p>
+								
 								<p> { song.releaseDate.split('-')[0] } </p>
 							</div>
 
