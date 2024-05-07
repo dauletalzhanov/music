@@ -57,5 +57,10 @@
 		background-color: #ccc;
 	}
 
+	.login-errors {
+		font-size: 5vw;
+		margin-bottom: 4vh;
+	}
+
 
 }

@@ -23,7 +23,7 @@ export default function Signup(){
 	
 	async function signUp(event){
 
-		event.preventDefault();
+		//event.preventDefault();
 		const formData = new FormData(event.target);
 
 		const username = formData.get("username")

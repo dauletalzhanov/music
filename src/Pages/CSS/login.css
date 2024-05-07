@@ -72,3 +72,8 @@
 	-moz-box-shadow: 10px 9px 17px 0px rgba(206,206,206,1);
 	box-shadow: 10px 9px 17px 0px rgba(206,206,206,1);
 }
+
+.login-errors {
+	font-size: 1.2vw;
+	margin-bottom: 2vh;
+}

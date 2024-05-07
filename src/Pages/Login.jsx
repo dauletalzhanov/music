@@ -62,15 +62,15 @@ export default function Login(){
 		<fieldset>
 			
 			<form aria-label="login form" id="login-form" onSubmit={submitting}>
-				<p>{errors}</p>
+				<p className="login-errors">{errors}</p>
 				<div className= { "login-inputs" }>
 					<label htmlFor="login-username"> Enter Username </label>
-					<input type="text" name="username" id="login-username" />
+					<input type="text" name="username" id="login-username" required/>
 				</div>
 
 				<div>
 					<label htmlFor="login-password"> Enter Password </label>
-					<input type="password" name="password" id="login-password" />
+					<input type="password" name="password" id="login-password" required />
 				</div>
 
 				<div className="seperator"></div>
