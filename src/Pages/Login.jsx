@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
-
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { Helmet } from "react-helmet";
+import bcrypt from "bcryptjs"
+
+import { collection, doc, getDocs, getDoc, setDoc, where, query, orderBy, limit, deleteDoc } from "firebase/firestore"
+import { db } from '../../firebase'
 
 import Header from "@/Components/Header";
 
@@ -11,21 +15,54 @@ import "./CSS/login_mobile.css"
 
 export default function Login(){
 	const [user, setUser] = useCookies(["user"])
+	const [errors, setErrors] = useState("")
+	const navigate = useNavigate()
 
-	function submitting(event){
+	async function submitting(event){
+		
 		event.preventDefault()
 
-		const value = event.target.parentNode.querySelector("#login-username").value
-		console.log(value)
+		const formData = new FormData(event.target)
+		
+		const username = formData.get("username")
+		const password = formData.get("password")
 
-		setUser("user", value)
+		const docRef = doc(db, "user", username)
+		const usersSnap = await getDoc(docRef)
+
+		
+
+		if(usersSnap.exists() == false){
+			setErrors(`No such user: ${username}`)
+			return
+		}
+
+		//console.log(usersSnap.data())
+		const truePassword = usersSnap.data().password
+		//console.log(truePassword)
+
+
+		const compareResult = await bcrypt.compare(password, truePassword)
+		if(compareResult == false){
+			setErrors(`Wrong password`)
+			return
+		}
+		//onst value = event.target.parentNode.querySelector("#login-username").value
+		//console.log(value)
+		//setUser("user", value)
+
+		setUser("user", username)
+		navigate("/profile")
+		
 	}
 
 	return(<>
 		<Header></Header>
 		
 		<fieldset>
-			<form aria-label="login form" id="login-form">
+			
+			<form aria-label="login form" id="login-form" onSubmit={submitting}>
+				<p>{errors}</p>
 				<div className= { "login-inputs" }>
 					<label htmlFor="login-username"> Enter Username </label>
 					<input type="text" name="username" id="login-username" />
@@ -38,7 +75,7 @@ export default function Login(){
 
 				<div className="seperator"></div>
 			
-				<button type="submit" id="login-button" onClick={submitting}>Submit</button>
+				<button type="submit" id="login-button">Submit</button>
 
 				<p>Do not have an account? <Link to="/signup">Sign Up</Link></p>
 			</form>
