@@ -1,0 +1,61 @@
+#logout {
+	margin: 0 auto;
+	margin-top: 20vh;
+	
+	font-size: 1vw;
+	text-align: center;
+	
+	padding: 2vw;
+	width: 25vw;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	border: 1px solid #a0a0a0;
+	border-radius: 0.4vw;
+	background-color: #eee;
+
+	-webkit-box-shadow: 10px 9px 17px 0px rgba(206,206,206,1);
+	-moz-box-shadow: 10px 9px 17px 0px rgba(206,206,206,1);
+	box-shadow: 10px 9px 17px 0px rgba(206,206,206,1);
+}
+
+#logout > p {
+	font-family: "Roboto", "San Francisco", sans-serif;
+	font-weight: 400;
+	font-size: 1.7vw;
+}
+
+#logout-buttons {
+	margin-top: 5vh;
+	padding-top: 3vh;
+	width: 20vw;
+	border-top: 1px solid #9c9c9c;
+
+	display: flex;
+	justify-content: space-around;
+}
+
+#logout-buttons > button {
+	height: 3vw;
+	width: 6vw;
+	background-color: #3A4DB2;
+	color: white;
+	border-radius: 0.4vw;
+
+	-webkit-box-shadow: 10px 9px 17px 0px rgba(206,206,206,1);
+	-moz-box-shadow: 10px 9px 17px 0px rgba(206,206,206,1);
+	box-shadow: 10px 9px 17px 0px rgba(206,206,206,1);
+
+}
+
+#logout-buttons > button:hover {
+	background-color: white;
+	color: black;
+}
+
+#logout-buttons > button:focus {
+	outline: 2px solid blue;
+}

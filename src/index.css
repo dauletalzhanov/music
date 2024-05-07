@@ -42,7 +42,6 @@ body {
 .Header > div > a {
 	text-decoration: none;
 	color: white;
-	font-size: 1vw;
 }
 
 .Header > div > a:focus {

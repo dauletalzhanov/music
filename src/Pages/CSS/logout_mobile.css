@@ -26,6 +26,7 @@
 	#logout > p {
 		font-family: "Roboto", "San Francisco", sans-serif;
 		font-weight: 400;
+		font-size: 5vw;
 	}
 
 	#logout-buttons {
@@ -41,7 +42,7 @@
 	#logout-buttons > button {
 		height: 10vw;
 		width: 25vw;
-		background-color: slateblue;
+		background-color: #3A4DB2;
 		color: white;
 		border-radius: 2.22vw;
 

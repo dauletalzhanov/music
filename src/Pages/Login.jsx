@@ -25,7 +25,6 @@ export default function Login(){
 		<Header></Header>
 		
 		<fieldset>
-			<legend>Log In!</legend>
 			<form aria-label="login form" id="login-form">
 				<div className= { "login-inputs" }>
 					<label htmlFor="login-username"> Enter Username </label>
