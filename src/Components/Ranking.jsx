@@ -20,20 +20,21 @@ function Ranking({title, url}){
 		<p className="ranking-title">{title}</p>
 
 		{songs.map((song, index) => {
-			let url = `/search/${song['artist']} - ${song['name']}%20`
-			//let url = `/search/${song['artist']}/`
-			
+			const url = `/search/${song['artist']} - ${song['name']}%20`
+			const altText = `album cover for ${song.artist} - ${song.name}`
 
-			return(<div key={index} className="song">
-				<div className="leftie">
-					<img src={song['image']}  alt={"album cover for "+ song.artist + " - " + song.name} />
-					<p>{song['artist']} - {song['name']}</p>
-				</div>
-				<div className="rightie">
-					<Link className="search-song" to={url}> Search </Link>
-				</div>
-				
-			</div>)
+			return( <div key={index} className="song">
+						<div className="leftie">
+							<img 
+								src={song['image']}  
+								alt={altText} 
+							/>
+							<p>{song['artist']} - {song['name']}</p>
+						</div>
+						<div className="rightie">
+							<Link className="search-song" to={url}> Search </Link>
+						</div>
+					</div>)
 		})}
 		
 		

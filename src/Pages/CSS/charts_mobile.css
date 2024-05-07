@@ -1,0 +1,93 @@
+@media screen and (max-width: 600px) {
+	.desktop-only, .ranking-title {
+		display: none;
+	} 
+
+	.billboard-title {
+		margin: 0 auto;
+		margin-top: 10vh;
+		height: 11vh;
+		width: 85vw;
+
+	}
+
+	.billboard-title > h1 {
+		font-size: 6vw;
+	}
+
+	.billboard-title > p {
+		font-size: 3.5vw;
+	}
+
+	/**************************/
+
+	.charts-mobile {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.charts-heading {
+		width: 85vw;
+		height: 5vh;
+		margin: 0 auto;
+		margin-top: 2vh;
+		
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		background-color: #eeeeee;
+
+		border-top-left-radius: 2.22vw;
+		border-top-right-radius: 2.22vw;
+		border: 1px solid #cfcfcf;
+		
+	}
+
+	.charts-heading > p {
+		margin: 0;
+		height: 5vh;
+		width: 20vw;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.charts-selected {
+		background-color: #050527;
+		color: white;
+	}
+
+	/**************************/
+
+	.ranking {
+		margin: 0 auto;
+		width: 85vw;
+		padding: 0;
+
+		margin-bottom: 10vh;
+	}
+
+	.song {
+		height: 27vw;
+		font-size: 3.33vw;
+		
+	}
+
+	.song > .leftie > p {
+		max-width: 40vw;
+	}
+
+	.song > .leftie > img {
+		width: 20vw;
+		height: 20vw;
+	}
+
+	.song > .leftie > img:hover {
+		width: 20vw;
+		height: 20vw;
+	}
+
+
+}
