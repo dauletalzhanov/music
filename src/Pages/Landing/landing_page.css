@@ -245,7 +245,7 @@
 }
 
 .carousel > div > div.taylor-album.active > a > img {
-	width: 30vw;
+	width: 20vw;
 }
 
 
@@ -286,7 +286,6 @@
 
 .fancy-review {
 	font-size: 1vw;
-	max-height: fit-content;
 	font-family: "Playfair Display";
 
 }
@@ -402,7 +401,7 @@ footer {
 }
 
 #footer-signup-email::placeholder {
-	font-family: sans-serif;
+	font-family: "Roboto", sans-serif;
 }
 
 .footer-button {
@@ -424,6 +423,8 @@ footer {
 .footer-button:active {
 	background-color: white;
 }
+
+/* _________________________ */
 
 .footer-rightie {
 	display: flex;

@@ -86,6 +86,7 @@
 	}
 
 	/*****************************************************/
+	
 	.taylor-title {
 		font-size: 5vw;
 		margin: 0;
@@ -137,8 +138,81 @@
 	}
 
 	/*****************************************************/
-
 	
+	.youtube-section {
+		padding: 3vh 2vw;
+
+		justify-content: space-around;
+	}
+
+	.itunes-lorem-ipsum {
+		font-size: 2vw;
+		width: fit-content;
+	}
+
+	.itunes-heading {
+		font-size: 3vw;
+	}
+
+	iframe {
+		height: 40vw;
+		width: 40vw;
+		border-radius: 16px;
+	}
+
+	/*****************************************************/
+
+	footer {
+		padding: 1vh 1vw;
+	}
+
+	.footer-footer {
+		font-size: 2vw;
+	}
+	
+	.footer-title {
+		font-size: 3vw;
+	}
+
+	/* ---------------------------------------- */
+	.footer-body {
+		
+	}
+
+	.footer-leftie > label {
+		margin-top: 0;
+		font-size: 2vw;
+	}
+
+	#footer-signup-email {
+		width: 40vw;
+		height: 5vw;
+		padding-left: 2vw;
+		font-size: 2vw;
+	}
+
+	.footer-button {
+		margin-top: 1vh;
+		width: 10vw;
+		height: 5vw;
+		font-size: 2vw;
+	}
+
+	.footer-rightie {
+		width: 40vw;
+		display: flex;
+		justify-content: space-between;
+		font-size: 1.8vw;
+
+	}
+
+	.footer-rightie > div > p:first-of-type{
+		font-size: 2vw;
+	}
+
+	.footer-socials > a {
+		width: 2.5vw;
+	}
 	
 	
 
