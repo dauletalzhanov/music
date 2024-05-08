@@ -87,6 +87,10 @@
 
 	/*****************************************************/
 	
+	.taylor-reviews {
+		margin-bottom: 2vh;
+	}
+
 	.taylor-title {
 		font-size: 5vw;
 		margin: 0;
@@ -175,9 +179,6 @@
 	}
 
 	/* ---------------------------------------- */
-	.footer-body {
-		
-	}
 
 	.footer-leftie > label {
 		margin-top: 0;

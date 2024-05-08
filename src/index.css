@@ -69,7 +69,7 @@ body {
 }
 
 .player-stop-button:hover {
-	background-color: rgb(237, 150, 100);
+	background-color: red;
 }
 
 .invisible {
@@ -78,4 +78,29 @@ body {
 
 a:focus {
 	border: 1px solid blue;
+}
+
+@media screen and (max-width: 800px) {
+	.music-player {
+		bottom: 5vh;
+		left: 5vw;
+		width: 70vw;
+	}
+	
+	.player-stop-button {
+		position: fixed;
+		bottom: 5vh;
+		right: 5vw;
+
+		border-radius: 50%;
+		padding: 3vw;
+
+		background-color: white;
+	}
+	
+	.player-stop-button:hover {
+		background-color: red;
+		color: white;
+	}
+
 }
