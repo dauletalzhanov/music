@@ -24,7 +24,7 @@ export default function Login(){
 
 		const formData = new FormData(event.target)
 		
-		const username = formData.get("username")
+		const username = formData.get("username").toLowerCase()
 		const password = formData.get("password")
 
 		const docRef = doc(db, "user", username)

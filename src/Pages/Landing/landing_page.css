@@ -114,7 +114,7 @@
 
 /******************************************/
 
-.transition-review-youtube{
+.transition-review-youtube {
 	margin: 0 13vw;
 	background: url("../../assets/transition_ry.svg");
 	background-position: center;
@@ -157,7 +157,7 @@
 }
 
 .taylors-section > img {
-	height: 25vh;
+	width: 20vw;
 	border-radius: 0.20vw;
 	filter: blur(2px);
 }

@@ -28,6 +28,7 @@ import react from "../../assets/react.svg"
 
 // css
 import "./landing_page.css"
+import "./landing_mobile.css"
 
 import Carousel from "../../Components/Carousel"
 

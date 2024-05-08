@@ -27,7 +27,7 @@ export default function Signup(){
 		
 		const formData = new FormData(event.target);
 
-		const username = formData.get("username")
+		const username = formData.get("username").toLowerCase()
 		const password = formData.get("password")
 		const confirmpassword = formData.get("confirm_password")
 

@@ -1,0 +1,84 @@
+@media screen and (max-width: 800px) {
+	#services, .transition-review-youtube, .browse-taylor-swift, .taylors-albums, .youtube-section {
+		margin: 0;
+	}
+
+	.transition-review-youtube, .transition-ba, .transition-pb {
+		display: none;
+	}
+
+	/*****************************************************/
+
+	#services {
+		margin-top: 4.5vh;
+	}
+
+	#services > h5 {
+		font-size: 4vw;
+	}
+
+	.service-box {
+		width: 25vw;
+	}
+
+	#services > h5:first-of-type {
+		margin-top: 1vh;
+	}
+
+	.service-container {
+		width: 20vw;
+		height: 20vw;
+	}
+
+	.service-box > h6 {
+		font-size: 3vw;
+
+	}
+
+	.service-container > img {
+		width: 15vw;
+	}
+
+	.service-box > p {
+		font-size: 2.8vw;
+		width: fit-content;
+	}
+
+	.service-line {
+		width: 80vw;
+		margin: 4vh 8vw;
+	}
+
+	/*****************************************************/
+
+	.powered-by > p {
+		font-size: 3vw;
+		width: fit-content;
+	}
+	
+	.powered-by > img {
+		width: 15vw;
+		height: 15vw;
+	}
+
+
+	/*****************************************************/
+
+	.taylors-section {
+		padding: 3vw 1vw;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.taylors-section > .taylors-stats {
+		font-size: 2.5vw;
+		height: fit-content;
+		width: fit-content;
+	}
+
+	.taylors-section > img {
+		width: 40vw;
+		height: 20vw;
+	}
+
+}
