@@ -70,15 +70,76 @@
 		align-items: center;
 	}
 
-	.taylors-section > .taylors-stats {
+	.taylors-stats {
 		font-size: 2.5vw;
 		height: fit-content;
 		width: fit-content;
+	}
+
+	.taylors-stats > a {
+		font-size: 3vw;
 	}
 
 	.taylors-section > img {
 		width: 40vw;
 		height: 20vw;
 	}
+
+	/*****************************************************/
+	.taylor-title {
+		font-size: 5vw;
+		margin: 0;
+		margin-top: 3vh;
+	}
+
+	.carousel {
+		width: fit-content;
+	}
+	
+	.carousel > div {
+		width: fit-content;
+	}
+	
+	.carousel > div > div.taylor-album.active > a {
+		margin: 0;
+		padding: 0;
+	}
+
+	.carousel > div > div.taylor-album.active > a > img {
+		width: 70vw;
+	}
+
+	.carousel > button {
+		width: 6vw;
+		height: 6vw;
+		font-size: 3vw;
+	}
+
+	.taylor-album {
+		gap: 8vw;
+	}
+
+	.taylor-album > p, .taylor-album > a {
+		font-size: 3vw;
+	}
+
+	.fancy-review {
+		font-size: 4vw;
+	}
+
+	.taylor-album.active > div > p {
+		margin-top: 1vh;
+		font-size: 2vw;
+	}
+
+	.review-stars {
+		width: 25vw;
+	}
+
+	/*****************************************************/
+
+	
+	
+	
 
 }

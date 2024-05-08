@@ -189,7 +189,7 @@
 	margin: 5vh 0;
 	font-family: "Bebas Neue";
 	text-align: center;
-	font-size: 1.3vw;
+	font-size: 3vw;
 }
 
 .taylors-albums {
@@ -207,9 +207,7 @@
 	align-items: center;
 }
 
-.carousel-content {
-	width: 100%;
-}
+
 
 .taylor-album {
 	display: none;
@@ -219,15 +217,34 @@
 	display: block;
 }
 
+.carousel {
+	width: fit-content;
+}
+
 .carousel-button {
 	border: 1px solid lightgray;
 	border-radius: 50%;
 	padding: 0.5vw;
 	margin: 0 0.5vw;
-	font-size: 1vw;
+	font-size: 1.5vw;
+
+	width: 4vw;
+	height: 4vw;
 }
 
-.carousel-album {
+.carousel-button:focus {
+	border: 2px solid blue;
+}
+
+.carousel-button:hover {
+	background-color: #ebebeb;
+}
+
+.carousel-button:active {
+	background-color: white;
+}
+
+.carousel > div > div.taylor-album.active > a > img {
 	width: 30vw;
 }
 
@@ -239,7 +256,6 @@
 }
 
 .taylor-reviews {
-
 	margin-bottom: 20vh;
 }
 
@@ -253,6 +269,15 @@
 	text-align: center;
 }
 
+.taylor-album > p {
+	font-size: 1vw;
+}
+
+.taylor-album > a {
+	font-size: 1vw;
+	margin: 2vh 0;
+}
+
 .taylor-reviews > .taylor-album > div {
 	display: flex;
 	flex-direction: column;
@@ -260,10 +285,13 @@
 }
 
 .fancy-review {
-	font-size: 1.5vw;
+	font-size: 1vw;
 	max-height: fit-content;
 	font-family: "Playfair Display";
 
+}
+.taylor-album > div > p {
+	margin-top: 2vh;
 }
 
 .review-stars {
