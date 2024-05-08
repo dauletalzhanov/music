@@ -18,7 +18,7 @@ import yt from "../../assets/youtube.svg"
 import looking_glass from "../../assets/looking_glass.svg"
 import pedestal from "../../assets/charts.svg"
 import floppy_disk from "../../assets/floppy.svg"
-import scenery from "../../assets/visualise.svg"
+import retro from "../../assets/retro.svg"
 
 // powered by images
 import itunes from "../../assets/itunes.svg"
@@ -83,21 +83,20 @@ export default function Landing(){
 						<h6>3. Save Songs</h6>
 						<p>
 							Save your favourite tracks into your very own personal playlists!
-							Have access to them at any time. Add or remove as many songs as 
-							you please into your own domain.
+							Add or remove as many songs as you please.
 						</p>
 
 					</div>
 
 					<div className="service-box">
 						<div className="service-container">
-							<img src={scenery} alt="scenery symbolising visualisations" />
+							<img src={retro} alt="scenery symbolising visualisations" />
 
 						</div>
-						<h6>4. Virtualisations</h6>
+						<h6>4. Play Music</h6>
 						<p>
-							Enjoy visualisations ranging from album covers to GIFs to aid 
-							you with your music selection.  
+							Play music samples available from the iTunes at any moment! Take 
+							the music with you wherever you please.
 						</p>
 
 					</div>
