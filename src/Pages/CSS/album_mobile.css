@@ -16,6 +16,7 @@
 
 	.album-leftie {
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
 		width: 90vw;
@@ -30,6 +31,10 @@
 
 	}
 
+	.top-album-info {
+		flex-direction: column;
+	}
+
 	.gray {
 		margin-top: 2vh;
 	}
@@ -40,9 +45,13 @@
 
 	}
 
+	.album-metrics {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.album-metrics > p {
 		font-size: 3vw;
-		text-align: end;
 	}
 
 	.album-metrics > p > strong {
@@ -52,6 +61,10 @@
 	.album-name {
 		display: flex;
 		flex-direction: column;
+
+		text-align: center;
+
+		margin-bottom: 2vh;
 	}
 
 	.album-name > div > h2 {
@@ -65,11 +78,13 @@
 	#album-cover {
 		width: 50vw;
 		height: 50vw;
+
+		margin: 0 auto;
 	}
 
 	#album-cover:hover {
-		width: 40vw;
-		height: 40vw;
+		width: 80vw;
+		height: 80vw;
 	}
 
 	/**************************************/
