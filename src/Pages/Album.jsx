@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import React from "react"
 import { useCookies } from "react-cookie"
+import { Helmet } from "react-helmet"
 
 import { useSelector, useDispatch } from "react-redux"
 
@@ -21,6 +22,7 @@ import TrackList from "../Components/Tracklist"
 import Player from "@/Components/Player"
 
 import "./CSS/album.css"
+import "./CSS/album_mobile.css"
 
 export default function Album(){
     const params =  useParams()
@@ -64,7 +66,7 @@ export default function Album(){
             //console.log(trackList)
 
             
-            document.title = "Album: " + albumInfo.collectionName
+            //document.title = "Album: " + albumInfo.collectionName
         }
         getAlbum();
     }, [trackList, albumInfo])
@@ -75,6 +77,7 @@ export default function Album(){
 			result = await result.json()
             setEmbedURL(result.data.images.downsized_medium.url)
         }
+
         getGIF()
 
     }, [url])
@@ -94,6 +97,10 @@ export default function Album(){
     }
 
     function hovering(event){
+        // mobile
+        if(screen.width < 601)
+            return
+
         let songTitle = event.target.querySelector("p").innerHTML
         songTitle = songTitle.split(".")[1]
 
@@ -145,7 +152,7 @@ export default function Album(){
         <Header></Header>
         <div role="contentinfo" id="album-details">
             <div className="album-leftie">
-                <div>
+                <div className="top-album-info">
                     <div className="album-name">
                         <img src={albumInfo.albumCover} alt="album cover" id="album-cover" />
                         <div>
@@ -196,6 +203,12 @@ export default function Album(){
             </ul>
         </main>
         { currentTrack == "" ? "" :  <Player musicSrc={ musicSrc } /> }
+
+        <Helmet>
+            <title>Album: {albumInfo.collectionName ? albumInfo.collectionName : "Loading"}</title>
+            <meta name="description" content={`Album page for ${albumInfo.collectionName} by ${albumInfo.artistName} on Smoky Music @ Vercel / Netlify`} />
+            <meta name="keywords" content={`Smoky Music, iTunes, Firebase, React, Music, Listen to Music, ${albumInfo.artistName}, ${albumInfo.collectionName}, ${trackList.map(names => names.trackName)}`} />
+        </Helmet>
         
     </>)
 }

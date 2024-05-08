@@ -45,7 +45,7 @@
 	.profile-details {
 		margin: 0 auto;
 		margin-top: 10vh;
-		width: 95vw;
+		width: 98vw;
 	}
 
 	.profile-details > h3 {
@@ -58,6 +58,7 @@
 		height: 30vw;
 		align-self: center;
 		
+		display: none;
 	}
 
 	.mood > div > label, .mood > div > input {

@@ -1,0 +1,110 @@
+@media screen and (max-width: 600px) {	
+	.desktop-only {
+		display: none;
+	}
+
+	#album-details > img {
+		display: none;
+	}
+
+	#album-details {
+		margin: 0 auto;
+		margin-top: 7vh;
+		width: 95vw;
+
+	}
+
+	.album-leftie {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 90vw;
+	}
+
+	.album-leftie > div {
+		display: flex;
+		justify-content: space-between;
+		width: 90vw;
+
+		padding: 0 2vw;
+
+	}
+
+	.gray {
+		margin-top: 2vh;
+	}
+
+	.gray > p, .gray > a {
+		font-size: 3vw;
+		max-width: 40vw;
+
+	}
+
+	.album-metrics > p {
+		font-size: 3vw;
+		text-align: end;
+	}
+
+	.album-metrics > p > strong {
+		display: block;
+	}
+
+	.album-name {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.album-name > div > h2 {
+		font-size: 4vw;
+	}
+	
+	.album-name > div > h2:first-child {
+		font-size: 4vw;
+	}
+
+	#album-cover {
+		width: 50vw;
+		height: 50vw;
+	}
+
+	#album-cover:hover {
+		width: 40vw;
+		height: 40vw;
+	}
+
+	/**************************************/
+
+	#trackList {
+		padding: 0;
+	}
+
+	.album-track {
+		width: 95vw;
+		height: 20vw;
+
+		padding: 0 3vw;
+
+		font-size: 5vw;
+
+		border-radius: 0;
+
+	}
+
+	.album-track:first-of-type {
+		border-top-left-radius: 2.22vw;
+		border-top-right-radius: 2.22vw;
+	}
+
+	.album-track:last-of-type {
+		border-bottom-left-radius: 2.22vw;
+		border-bottom-right-radius: 2.22vw;
+	}
+
+	.track-rightie > button {
+		width: 10vw;
+		height: 10vw;
+	}
+
+
+
+}
