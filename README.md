@@ -43,6 +43,19 @@ Had help from:
 - [HTML color picker](https://htmlcolorcodes.com/color-picker/) to pick color for Figma. Was not helpful honestly.
 - Google Fonts
 
+## Music Player
+Music player was built using:
+- Audio element and react component
+- Redux for storing current time
+
+## If I had more time
+If I had more time I would have worked on:
+- Better music player by using the "new Audio(src)" with custom UI instead of the audio element. 
+- More sections in the landing page and more responsive transition sections
+- Dynamic music source in Ranking when browsing mobile
+- Improving the mood in the profile
+- More accessibility features based on accessibility chrome extensions
+
 ## How to Install
 Probably not possible because of the custom .env file which requires Giphy Api key and the Firebase Config ¯\_(ツ)_/¯
 

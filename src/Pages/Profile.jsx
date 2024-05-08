@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 
-import { collection, doc, getDocs, where, query, orderBy, limit, deleteDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, where, query, orderBy, limit, deleteDoc, updateDoc } from "firebase/firestore";
 import { db } from '../../firebase'
 
 import Player from "@/Components/Player";
@@ -29,15 +29,16 @@ export default function Profile(){
 
 	const key = import.meta.env.VITE_keyGIF //process.env.keyGIF
 	let [query, setQuery] = useState(`find me`)
-	let url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
 	let [embedURL, setEmbedURL] = useState('')
-	let [alt_text, setAltText] = useState('')
+	//let [alt_text, setAltText] = useState('')
 	let [playlist, setPlaylist] = useState([])
 	let [latest, setLatest] = useState("")
 	let [favGenre, setFavGenre] = useState("")
 	let [favArtist, setFavArtist] = useState("")	
 	const { currentTrack } = useSelector((state) => state.player)
-	
+
+	let url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
+
 	useEffect(() => {	
 		document.title = `Profile`
 
@@ -45,7 +46,6 @@ export default function Profile(){
 			let result = await fetch(url, { mode: 'cors' })
 			result = await result.json()
 			setEmbedURL(result.data.images.downsized_medium.url)
-			setAltText()
 		}
 
 		getGIF()
@@ -71,7 +71,22 @@ export default function Profile(){
 			setPlaylist(songSnap)
 		}
 		
+		async function readMood(){
+			const docRef = doc(db, "user", userCookie.user)
+			const docSnap = await getDoc(docRef)
+			if(docSnap.exists()){
+				const mood = docSnap.data().mood
+				console.log(mood)
+				setQuery(mood)
+				url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
+			}
+		}
+
 		getPlaylist(db)
+
+		readMood()
+
+
 
 
 	}, [])
@@ -141,9 +156,17 @@ export default function Profile(){
 		
 	}, [playlist])
 
-	function updateQuery(event){
-		setQuery(event.target.value)
+	async function updateQuery(event){
+		const newMood = event.target.value
+		setQuery(newMood)
 		url = `https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${query}`
+
+		const ref = doc(db, "user", userCookie.user)
+		//console.log(userCookie.user)
+		
+		await updateDoc(ref, { mood: newMood })
+
+		
 	}
 
 	async function removeSong(event){
